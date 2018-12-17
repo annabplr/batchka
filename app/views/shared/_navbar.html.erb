@@ -1,24 +1,24 @@
-<div class="navbar-wagon">
+<div class="navbar-batchka">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <%= link_to root_path, class: "navbar-batchka-brand" do %>
     <%= image_tag "logo.png", height: 50 %>
   <% end %>
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+  <div class="navbar-batchka-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Host", "#", class: "navbar-batchka-item navbar-batchka-link" %>
+      <%= link_to "Trips", "#", class: "navbar-batchka-item navbar-batchka-link" %>
+      <%= link_to "Messages", "#", class: "navbar-batchka-item navbar-batchka-link" %>
 
       <!-- Avatar with dropdown menu -->
-      <div class="navbar-wagon-item">
+      <div class="navbar-batchka-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-batchka-menu", "data-toggle" => "dropdown" %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-batchka-dropdown-menu">
             <li>
               <%= link_to "#" do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
@@ -39,20 +39,37 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-batchka-item navbar-batchka-link" %>
     <% end %>
   </div>
-
+</div>
   <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
+
+<div class="navbar-batchka-bottom">
+  <div class="navbar-batchka-item hidden-md hidden-lg">
+
+    <% if user_signed_in? %>
+    <div class="dropup">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+      <ul class="dropdown-menu dropdown-menu-right navbar-batchka-dropdown-menu">
+      <li><%= link_to "Mon menu de la semaine", menus_path %></li>
+
+      <li><%= link_to "Editer mon profil", edit_user_registration_path %></li>
+      <li><%= link_to "Me déconnecter", destroy_user_session_path %></li>
+    </ul>
+    </div>
+    <% else %>
+    <div class="dropup">
+      <i class="fas fa-ellipsis-h" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-batchka-dropdown-menu">
+        <li><%= link_to "M'inscrire", new_user_registration_path %></li>
+        <li> <%= link_to "Me connecter", new_user_session_path %></li>
+        <li><a href="#">En savoir plus</a></li>
       </ul>
     </div>
+    <% end %>
   </div>
 </div>
 
+<!--  <li>< %= link_to "Ma liste de choses à préparer", menu_todos_path(@menu.id) %></li>
+      <li>< %= link_to "Ma liste de courses", menu_ingredients_path(@menu.id) %></li> -->
