@@ -1,2 +1,34 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home-page">
+  <div class="home-container">
+    <h1>Avec Batchka,<br>je simplifie la préparation de mes repas.</h1>
+
+    <div class="home-buttons">
+      <a href="#home-explanations", class="home-button">Je découvre</a>
+    </div>
+  </div>
+</div>
+
+<div id="home-explanations">
+  <div class="home-container">
+  <h2>Batchka c'est ...</h2>
+<p>Prendre 5 à 10 minutes, une fois par semaine, pour :
+  <ul>
+    <li>prévoir mon menu,</li>
+    <li>faire ma liste de courses</li>
+    <li>planifier les choses que je peux préparer, pour m'avancer</li>
+  </ul></p>
+  <h2>Pourquoi ? </h2>
+    <p>Gagner du temps, moins gaspiller, et surtout, ne plus se casser la tête tous les soirs.</p>
+
+    <h2>Concrétement, ça ressemble à :</h2>
+    <ul>
+      <li>un menu</li>
+      <li>une liste de courses</li>
+      <li>une to-do list</li></ul>
+
+    <p>le tout réuni en un seul endroit et c'est gratuit !</p>
+    <div class="home-buttons">
+    <%= link_to "Je m'inscris", new_user_registration_path , class: "home-button"  %>
+    </div>
+    </div>
+</div>
