@@ -1,1 +1,49 @@
 // Specific CSS for your home-page
+body {
+  background-color: #9dba9a;
+}
+
+.home-page, #home-explanations {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(100vh - 110px);
+}
+
+#home-explanations .home-container {
+  margin-top: 50px; }
+
+.home-container {
+  width: 90%;
+  h1, h2{
+    color: white;
+    font-size: 2.2em;
+  }
+  p, li {
+    color: white;
+  }
+}
+
+.home-buttons {
+  margin-top: 10%;
+  width: 100%;
+  margin-left: 40%;
+}
+
+.home-button {
+  padding: 10px 15px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 20px;
+  &:active {
+    color: white;
+    text-decoration: none;
+    border-bottom: .2em solid white;
+  }
+  &:hover {
+    color: white;
+    text-decoration: none;
+    border-bottom: .2em solid white;
+  }
+}
