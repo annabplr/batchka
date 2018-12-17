@@ -1,0 +1,2 @@
+class Repa < ApplicationRecord
+end
