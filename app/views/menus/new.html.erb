@@ -1,2 +1,13 @@
+<div class="container">
 <h1>Menus#new</h1>
 <p>Find me in app/views/menus/new.html.erb</p>
+
+<%= simple_form_for @menu do |f| %>
+    <p>Mon menu commence le :</p>
+    <%= f.date_field :startdate, :id => "datepicker" %>
+
+    <%= f.button :submit %>
+<% end %>
+
+
+</div>
