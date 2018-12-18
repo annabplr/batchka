@@ -1,7 +1,7 @@
 class MenusController < ApplicationController
 
   before_action :set_menu, only: [:show, :update, :destroy]
-  before_action :create_days, only: :show
+  after_action :create_days, only: :create
 
   def new
     @menu = Menu.new
