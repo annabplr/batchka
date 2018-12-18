@@ -1,6 +1,7 @@
 class MenusController < ApplicationController
 
   before_action :set_menu, only: [:show, :update, :destroy]
+  before_action :create_days, only: :show
 
   def new
     @menu = Menu.new
@@ -11,36 +12,14 @@ class MenusController < ApplicationController
     @current_user = current_user
     @menu.user_id = @current_user.id
 
-    @day = Menu.last.startdate.split('-')
-    @weekday = Date.new(day[0].to_i, day[1].to_i, day[2].to_i).wday
+    start_day
 
-    if @day[1] == "06" || @day[1] == "07" || @day[1] == "08"
-      @menu.season = "summer"
-    elsif @day[1] == "09" || @day[1] == "10" || @day[1] == "11"
-      @menu.season = "fall"
-    elsif @day[1] == "12" || @day[1] == "01" || @day[1] == "02"
-      @menu.season = "winter"
-    else
-      @menu.season = "spring"
-    end
+    def_season
 
-    if @weekday == 1
-      @menu.weekof = "monday"
-    elsif @weekday == 2
-      @menu.weekof = "tuesday"
-    elsif @weekday == 3
-      @menu.weekof = "wednesday"
-    elsif @weekday == 4
-      @menu.weekof = "thursday"
-    elsif @weekday == 5
-      @menu.weekof = "friday"
-    elsif @weekday == 6
-      @menu.weekof = "saturday"
-    elsif @weekday == 0
-      @menu.weekof = "sunday"
-    end
+    @menu.weekof = Date::DAYNAMES[@weekday.wday]
 
     @menu.save!
+
     redirect_to menu_path(@menu)
   end
 
@@ -59,10 +38,71 @@ class MenusController < ApplicationController
   end
 
   def show
+    start_day
+    create_week
+  end
 
+  def create_days
+    create_week
+
+    @resultweek.each do |r|
+      Day.create(weekday: r, menu_id: @menu.id)
+    end
   end
 
   private
+
+  def start_day
+    @startday = @menu.startdate.split('-')
+    @weekday = Date.new(@startday[0].to_i, @startday[1].to_i, @startday[2].to_i)
+  end
+
+  def create_week
+    if @menu.weekof == "Monday"
+      dayposition = 0
+    elsif @menu.weekof == "Tuesday"
+      dayposition = 1
+    elsif @menu.weekof == "Wednesday"
+      dayposition = 2
+    elsif @menu.weekof == "Thursday"
+      dayposition = 3
+    elsif @menu.weekof == "Friday"
+      dayposition = 4
+    elsif @menu.weekof == "Saturday"
+      dayposition = 5
+    elsif @menu.weekof == "Sunday"
+      dayposition = 6
+    end
+
+    globalweek = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
+    return @resultweek = globalweek[dayposition..(dayposition + 6)]
+  end
+
+
+
+  def def_season
+    if @startday[1] == "06"
+      @menu.season = "summer"
+    elsif @startday[1] == "07"
+      @menu.season = "summer"
+    elsif @startday[1] == "08"
+      @menu.season = "summer"
+    elsif @startday[1] == "09"
+      @menu.season = "fall"
+    elsif @startday[1] == "10"
+      @menu.season = "fall"
+    elsif @startday[1] == "11"
+      @menu.season = "fall"
+    elsif @startday[1] == "12"
+      @menu.season = "winter"
+    elsif @startday[1] == "01"
+      @menu.season = "winter"
+    elsif @startday[1] == "02"
+      @menu.season = "winter"
+    else
+      @menu.season = "spring"
+    end
+  end
 
   def set_menu
     @menu = Menu.find(params[:id])

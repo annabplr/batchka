@@ -6,15 +6,6 @@ class DaysController < ApplicationController
     @day = Day.create
   end
 
-  def create
-    @day = Day.new(params_day)
-    if @day.save
-      redirect_to day_path(@day)
-    else
-      render_new
-    end
-  end
-
   def edit
   end
 
@@ -35,6 +26,6 @@ class DaysController < ApplicationController
   end
 
   def params_day
-    params.require(:day).permit(:weekof, :season)
+    params.require(:day).permit(:weekday, :menu_id)
   end
 end

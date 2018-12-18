@@ -1,7 +1,10 @@
 <h1>Menus#show</h1>
-<p>Find me in app/views/menus/show.html.erb</p>
 
-<%= @menu.startdate %>
-<p>Menu du </p>
+<h2>Menu de la semaine du <%= @startday[2] %> / <%= @startday[1] %> / <%= @startday[0] %>  </h2>
 
-<%= @menu.weekof %>
+
+<% @resultweek.each do |day| %>
+  <div class="menu-week">
+    <%= day %>
+  </div>
+<% end %>
