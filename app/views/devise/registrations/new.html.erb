@@ -5,9 +5,7 @@
 
   <div class="form-inputs">
     <%= f.input :username,
-                required: true,
-                autofocus: true ,
-                input_html: { autocomplete: "username" }%>
+                required: true, autofocus: true %>
     <%= f.input :email,
                 required: true,
                 autofocus: true ,
@@ -19,36 +17,26 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :beginweek, collection: ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"],
-                label: "Ma semaine démarre le :";
+    <%= f.input :beginweek, collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+                label: "Ma semaine démarre le :"; %>
+    <%= f.input :groceryshopping, collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+    label: "Je fais mes courses le :";
+    %>
 
-                %>
-                <%= f.input :groceryshopping, collection: ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"],
-                label: "Je fais mes courses le :";
-                %>
+    <div>
+    <p>Je planifie mes repas pour : </p>
+    <%= f.input :breakfast, as: :boolean, label: "Petit déjeuner" %>
+    <%= f.input :lunch, as: :boolean, label: "Déjeuner" %>
+    <%= f.input :collation, as: :boolean, label: "Gouter" %>
+    <%= f.input :dinner, as: :boolean, label: "Diner" %>
+  </div>
 
-                <div>
-                <p>Je planifie mes repas pour : </p>
-                <input type="checkbox" name="breakfast" id="breakfast" />
-                <label for="breakfast">Petit déjeuner</label>
-                <input type="checkbox" name="lunch" id="lunch" />
-                <label for="lunch">Déjeuner</label>
-                <input type="checkbox" name="collation" id="collation" />
-                <label for="collation">Gouter</label>
-                <input type="checkbox" name="dinner" id="dinner" />
-                <label for="dinner">Diner</label>
-              </div>
-
-              <div>
-                <p>En général, je cuisine :</p>
-                <input type="checkbox" name="starter" id="starter" />
-                <label for="starter">Entrée</label>
-                <input type="checkbox" name="maincourse" id="maincourse" />
-                <label for="maincourse">Plat</label>
-                <input type="checkbox" name="dessert" id="dessert" />
-                <label for="dessert">Dessert</label>
-
-              </div>
+  <div>
+    <p>En général, je cuisine :</p>
+    <%= f.input :starter, as: :boolean, label: "Entrée" %>
+    <%= f.input :maincourse, as: :boolean, label: "Plat" %>
+    <%= f.input :dessert, as: :boolean, label: "Dessert" %>
+  </div>
   </div>
 
   <div class="form-actions">
