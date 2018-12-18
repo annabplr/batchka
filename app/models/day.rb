@@ -1,5 +1,5 @@
 class Day < ApplicationRecord
-  belongs_to :menus
+  belongs_to :menu
   has_many :repas
   has_many :plats, through: :repas
   has_many :ingredients, through: :plats
