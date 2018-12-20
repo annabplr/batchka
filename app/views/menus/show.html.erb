@@ -3,8 +3,12 @@
 <h2>Menu de la semaine du <%= @startday[2] %> / <%= @startday[1] %> / <%= @startday[0] %>  </h2>
 
 
-<% @resultweek.each do |day| %>
+<% @days.each do |day| %>
   <div class="menu-week">
-    <%= day %>
+    <%= link_to day.weekday, menu_day_path(menu_id: @menu.id,id: day.id)  %> - <%= day.id %> <br>
+    <p><% day.repas.each do |repa| %>
+     <%= link_to repa.repastype, menu_repa_path(menu_id: @menu.id,id: repa.id) %> <%= repa.id %> -
+    <% end %></p>
+    <br>
   </div>
 <% end %>
