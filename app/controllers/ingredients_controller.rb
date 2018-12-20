@@ -1,18 +1,17 @@
 class IngredientsController < ApplicationController
-
   before_action :set_ingredient, only: [:show, :update, :destroy]
 
   def new
-    @ingredient = Ingredient.create
+    @ingredient = Ingredient.new
   end
 
   def create
-    @ingredient = Ingredient.new(params_ingredient)
-    if @ingredient.save
-      redirect_to ingredient_path(@ingredient)
-    else
-      render_new
-    end
+    @ingredient = Ingredient.create(params_ingredient)
+    @menu = Menu.find(params[:menu_id])
+    @day = Day.find(params[:day_id])
+    @repa = Repa.find(params[:repa_id])
+    @plat = Plat.find(params[:plat_id])
+    redirect_to menu_day_path(menu_id: @menu.id,id: @day.id)
   end
 
   def edit

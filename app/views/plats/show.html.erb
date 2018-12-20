@@ -1,21 +1,26 @@
 <h1>Plats#show</h1>
 <p>T'es dans plat</p>
 
-<%= simple_form_for [@repa, @plat] do |f| %>
-    <p>Intitulé du plat</p>
+<%= simple_form_for([@menu, @plat], url: menu_day_repa_plat_path(menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, id: @plat.id), method: :put) do |f| %>
+    <h2>Intitulé du plat</h2>
     <%= f.input :name %>
-
     <%= f.button :submit %>
 <% end %>
 
-<p>Ingredients principaux : </p>
-<% 5.times do |i| %>
-  <%= simple_form_for @ingredient do |f| %>
+<h2>Ingredients principaux : </h2>
+<ul>
+<% @plat.ingredients.each do |ingredient| %>
+  <li> <%= ingredient.name %> </li>
+<% end %>
+</ul>
 
-  <%= f.input :name %>
-  <%= f.input :quantity %>
-  <%= f.input :ingredienttype %>
-  <% f.hidden :plat_id, @plat.id %>
-  <%= f.button :submit %>
-<% end %>
-<% end %>
+
+<h2>Ajouter un nouvel ingrédient : </h2>
+  <%= simple_form_for([@plat, @ingredient], url: menu_day_repa_plat_ingredients_path(menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, plat_id: @plat.id), method: :post) do |f| %>
+
+    <%= f.input :name %>
+    <%= f.input :quantity %>
+    <%= f.input :ingredienttype %>
+    <%= f.hidden_field :plat_id, value: @plat.id %>
+    <%= f.button :submit %>
+  <% end %>

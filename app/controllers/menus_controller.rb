@@ -76,7 +76,7 @@ class MenusController < ApplicationController
     @repas.each do |repa|
     if repa.repastype == "breakfast" || repa.repastype == "collation"
         Plat.create(plattype: "bfmeal", repa_id: repa.id)
-      elsif repa.repastype == "lunch" || repa.repastype == "lunch"
+      elsif repa.repastype == "lunch" || repa.repastype == "dinner"
         if current_user.starter == true
           Plat.create(plattype: "starter", repa_id: repa.id)
         end

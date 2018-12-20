@@ -10,6 +10,7 @@ class DaysController < ApplicationController
   end
 
   def update
+
   end
 
   def index
@@ -17,6 +18,7 @@ class DaysController < ApplicationController
   end
 
   def show
+    @menu = @day.menu
   end
 
   private

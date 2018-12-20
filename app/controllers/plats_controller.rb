@@ -1,6 +1,6 @@
 class PlatsController < ApplicationController
 
-  before_action :set_plat, only: [:show, :update, :destroy]
+  before_action :set_plat, only: [:show, :edit, :update, :destroy]
 
   def new
     @plat = Plat.create
@@ -11,7 +11,7 @@ class PlatsController < ApplicationController
     if @plat.save
       redirect_to plat_path(@plat)
     else
-      render_new
+      render :new
     end
   end
 
@@ -19,10 +19,17 @@ class PlatsController < ApplicationController
   end
 
   def update
+    @plat.update(params_plat)
+    @day = Day.find(params[:day_id])
+    @menu = Menu.find(params[:menu_id])
+    @repa = Repa.find(params[:repa_id])
+    redirect_to menu_day_repa_plat_path(menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, id: @plat.id)
   end
+
 
   def destroy
     @plat.destroy
+    redirect_to menu_day_path(@plat)
   end
 
   def index
@@ -31,7 +38,10 @@ class PlatsController < ApplicationController
 
   def show
     @ingredient = Ingredient.new
-    @ingredients = @plat.ingredients
+
+    @day = Day.find(params[:day_id])
+    @menu = Menu.find(params[:menu_id])
+    @repa = Repa.find(params[:repa_id])
   end
 
   private
@@ -41,6 +51,7 @@ class PlatsController < ApplicationController
   end
 
   def params_plat
-    params.require(:plat).permit(:weekof, :season)
+    params.require(:plat).permit(:repa_id, :name, :plattype)
   end
 end
+
