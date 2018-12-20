@@ -24,3 +24,5 @@
     <%= f.hidden_field :plat_id, value: @plat.id %>
     <%= f.button :submit %>
   <% end %>
+
+<%= link_to "Retour", menu_day_path(menu_id: @menu.id, id: @day.id)  %>
