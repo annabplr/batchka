@@ -30,6 +30,8 @@ class PlatsController < ApplicationController
   end
 
   def show
+    @ingredient = Ingredient.new
+    @ingredients = @plat.ingredients
   end
 
   private

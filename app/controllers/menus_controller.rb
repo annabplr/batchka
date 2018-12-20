@@ -40,13 +40,53 @@ class MenusController < ApplicationController
   def show
     start_day
     create_week
+    @days = @menu.days
+    @repas = @menu.repas
   end
 
   def create_days
     create_week
-
     @resultweek.each do |r|
       Day.create(weekday: r, menu_id: @menu.id)
+    end
+    create_repas
+    create_plat
+  end
+
+  def create_repas
+    @days = @menu.days
+    @days.each do |day|
+      if current_user.breakfast == true
+        Repa.create(repastype: "breakfast", day_id: day.id)
+      end
+      if current_user.lunch == true
+        Repa.create(repastype: "lunch", day_id: day.id)
+      end
+      if current_user.dinner == true
+        Repa.create(repastype: "dinner", day_id: day.id)
+      end
+      if current_user.collation == true
+        Repa.create(repastype: "collation", day_id: day.id)
+      end
+    end
+  end
+
+  def create_plat
+    @repas = @menu.repas
+    @repas.each do |repa|
+    if repa.repastype == "breakfast" || repa.repastype == "collation"
+        Plat.create(plattype: "bfmeal", repa_id: repa.id)
+      elsif repa.repastype == "lunch" || repa.repastype == "lunch"
+        if current_user.starter == true
+          Plat.create(plattype: "starter", repa_id: repa.id)
+        end
+        if current_user.maincourse == true
+          Plat.create(plattype: "maincourse", repa_id: repa.id)
+        end
+        if current_user.dessert == true
+          Plat.create(plattype: "dessert", repa_id: repa.id)
+        end
+      end
     end
   end
 
@@ -77,8 +117,6 @@ class MenusController < ApplicationController
     globalweek = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
     return @resultweek = globalweek[dayposition..(dayposition + 6)]
   end
-
-
 
   def def_season
     if @startday[1] == "06"

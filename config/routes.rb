@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :menus do
     resources :days, except: :destroy do
-      resources :repas do
+      resources :repas, except: :show do
         resources :plats do
           resources :ingredients, only: [:new, :create, :edit, :update, :show, :destroy]
         end
@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     end
     resources :todos
     resources :ingredients, only: :index
+    resources :repas, only: :show
   end
 end

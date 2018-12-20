@@ -2,7 +2,7 @@
 <p>Find me in app/views/menus/index.html.erb</p>
 
 <% @menu.each do |m| %>
-  <p> <%= m.startdate %> - <%= m.season %></p>
+  <p> <%= link_to m.startdate, menu_path(m.id)  %> - <%= m.season %></p>
 <% end %>
 
 

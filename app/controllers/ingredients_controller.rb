@@ -39,6 +39,6 @@ class IngredientsController < ApplicationController
   end
 
   def params_ingredient
-    params.require(:ingredient).permit(:weekof, :season)
+    params.require(:ingredient).permit(:plat_id, :name, :ingredienttype, :quantity)
   end
 end

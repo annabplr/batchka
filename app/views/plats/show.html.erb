@@ -1,2 +1,21 @@
 <h1>Plats#show</h1>
-<p>Find me in app/views/plats/show.html.erb</p>
+<p>T'es dans plat</p>
+
+<%= simple_form_for [@repa, @plat] do |f| %>
+    <p>Intitulé du plat</p>
+    <%= f.input :name %>
+
+    <%= f.button :submit %>
+<% end %>
+
+<p>Ingredients principaux : </p>
+<% 5.times do |i| %>
+  <%= simple_form_for @ingredient do |f| %>
+
+  <%= f.input :name %>
+  <%= f.input :quantity %>
+  <%= f.input :ingredienttype %>
+  <% f.hidden :plat_id, @plat.id %>
+  <%= f.button :submit %>
+<% end %>
+<% end %>
