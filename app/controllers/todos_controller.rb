@@ -7,12 +7,9 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(params_todo)
-    if @todo.save
-      redirect_to todo_path(@todo)
-    else
-      render_new
-    end
+    @todo = Todo.create(params_todo)
+    @menu = @todo.menu
+    redirect_to menu_ingredients_path(menu_id: @menu.id)
   end
 
   def edit
@@ -26,7 +23,8 @@ class TodosController < ApplicationController
   end
 
   def index
-    @todo = Todo.all
+    @menu = Menu.find(params[:menu_id])
+    @todos = @menu.todos
   end
 
   def show
@@ -39,6 +37,6 @@ class TodosController < ApplicationController
   end
 
   def params_todo
-    params.require(:todo).permit(:weekof, :season)
+    params.require(:todo).permit(:menu_id, :ingredient_id, :actionverb, :daydue, :comments, :done)
   end
 end

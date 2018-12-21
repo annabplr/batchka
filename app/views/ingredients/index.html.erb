@@ -1,2 +1,29 @@
 <h1>Ingredient#index</h1>
-<p>Find me in app/views/ingredient/index.html.erb</p>
+<p>Je suis dans ingredients index</p>
+
+
+<h2>Mes ingrédients</h2>
+<% @ingredients.each do |i| %>
+  <%= i.name %>
+
+  <%= simple_form_for([i.plat, i], url: menu_day_repa_plat_ingredient_path(menu_id: @menu.id, day_id: i.plat.repa.day.id, repa_id: i.plat.repa.id, plat_id: i.plat.id, id: i.id), method: :put) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :instock %>
+    <%= f.button :submit %>
+  <% end %>
+
+  <%= simple_form_for([@menu, @todo], url: menu_todos_path(menu_id: @menu.id)) do |f| %>
+
+    <%= f.hidden_field :ingredient_id, value: i.id %>
+    <%= f.hidden_field :menu_id, value: @menu.id %>
+    <%= f.input :actionverb, collection: ["Eplucher", "Couper", "Cuire", "Réchauffer", "Rotir", "Poeler"] %>
+    <%= f.input :daydue, collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"] %>
+    <%= f.input :comments %>
+    <%= f.button :submit %>
+  <% end %>
+
+<% end %>
+
+<%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>
+<%= link_to "Ma liste de courses", menu_repas_path(menu_id: @menu.id) %>
+<%= link_to "Ma todo list", menu_todos_path(menu_id: @menu.id)  %>

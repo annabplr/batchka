@@ -10,3 +10,6 @@
      <% end %></p>
    <% end %>
  <% end %>
+
+<%= link_to "Vue de la semaine", menu_path(id: @menu.id) %>
+<%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id)  %>

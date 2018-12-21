@@ -38,7 +38,6 @@ class PlatsController < ApplicationController
 
   def show
     @ingredient = Ingredient.new
-
     @day = Day.find(params[:day_id])
     @menu = Menu.find(params[:menu_id])
     @repa = Repa.find(params[:repa_id])

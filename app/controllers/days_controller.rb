@@ -14,7 +14,8 @@ class DaysController < ApplicationController
   end
 
   def index
-    @day = Day.all
+    @menu = Menu.find(params[:menu_id])
+    @days = @menu.days
   end
 
   def show

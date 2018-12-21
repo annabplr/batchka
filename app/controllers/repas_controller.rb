@@ -3,7 +3,8 @@ class RepasController < ApplicationController
   before_action :set_repa, only: [:show, :update, :destroy]
 
   def index
-    @repa = Repa.all
+    @menu = Menu.find(params[:menu_id])
+    @ingredients = @menu.ingredients
   end
 
   def show

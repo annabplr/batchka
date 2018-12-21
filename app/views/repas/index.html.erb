@@ -1,2 +1,14 @@
 <h1>Repas#index</h1>
 <p>Find me in app/views/repas/index.html.erb</p>
+
+<h3>Ma liste de course</h3>
+
+<% @ingredients.each do |ingredient|  %>
+  <p> <%= ingredient.name  %> <%= ingredient.quantity %> </p>
+<% end %>
+
+
+
+<%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>
+<%= link_to "Ma liste de courses", menu_repas_path(menu_id: @menu.id) %>
+<%= link_to "Ma todo list", menu_todos_path(menu_id: @menu.id)  %>

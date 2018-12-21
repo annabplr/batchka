@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_20_101108) do
+ActiveRecord::Schema.define(version: 2018_12_21_104854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,10 @@ ActiveRecord::Schema.define(version: 2018_12_20_101108) do
     t.string "name"
     t.string "ingredienttype"
     t.integer "quantity"
-    t.boolean "instock", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "unity"
+    t.boolean "instock"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -52,9 +53,9 @@ ActiveRecord::Schema.define(version: 2018_12_20_101108) do
   create_table "repas", force: :cascade do |t|
     t.string "repastype"
     t.bigint "day_id"
-    t.boolean "athome", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "athome"
   end
 
   create_table "todos", force: :cascade do |t|
@@ -63,9 +64,9 @@ ActiveRecord::Schema.define(version: 2018_12_20_101108) do
     t.string "actionverb"
     t.string "daydue"
     t.string "comments"
-    t.boolean "done", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "done"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,14 +80,14 @@ ActiveRecord::Schema.define(version: 2018_12_20_101108) do
     t.string "username"
     t.string "beginweek"
     t.string "groceryshopping"
-    t.boolean "everyday", default: true
-    t.boolean "breakfast", default: true
-    t.boolean "lunch", default: true
-    t.boolean "dinner", default: true
-    t.boolean "collation", default: true
-    t.boolean "starter", default: true
-    t.boolean "maincourse", default: true
-    t.boolean "dessert", default: true
+    t.boolean "everyday"
+    t.boolean "breakfast"
+    t.boolean "lunch"
+    t.boolean "dinner"
+    t.boolean "collation"
+    t.boolean "starter"
+    t.boolean "maincourse"
+    t.boolean "dessert"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
