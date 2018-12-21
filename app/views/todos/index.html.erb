@@ -1,2 +1,15 @@
 <h1>Todos#index</h1>
 <p>Find me in app/views/todos/index.html.erb</p>
+
+<h3>Ma to do list</h3>
+
+<% @todos.each do |todo| %>
+  <p> <%= todo.actionverb %> <%= todo.ingredient.name %> : <%= todo.daydue %>  </p>
+  <p> <%= todo.comments %></p> <br>
+<% end %>
+
+
+
+<%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>
+<%= link_to "Ma liste de courses", menu_repas_path(menu_id: @menu.id) %>
+<%= link_to "Ma todo list", menu_todos_path(menu_id: @menu.id)  %>

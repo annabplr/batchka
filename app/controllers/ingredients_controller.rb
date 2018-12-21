@@ -6,18 +6,23 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    @ingredient = Ingredient.create(params_ingredient)
+    @ingredient = Ingredient.new(params_ingredient)
+    @ingredient.save!
     @menu = Menu.find(params[:menu_id])
     @day = Day.find(params[:day_id])
     @repa = Repa.find(params[:repa_id])
     @plat = Plat.find(params[:plat_id])
-    redirect_to menu_day_path(menu_id: @menu.id,id: @day.id)
+    redirect_to menu_day_repa_plat_path(menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, id: @plat.id)
   end
 
   def edit
   end
 
   def update
+
+    @ingredient.update(params_ingredient)
+    @menu = Menu.find(params[:menu_id])
+    redirect_to menu_ingredients_path(menu_id: @menu.id)
   end
 
   def destroy
@@ -25,8 +30,12 @@ class IngredientsController < ApplicationController
   end
 
   def index
-    @ingredient = Ingredient.all
+    @menu = Menu.find(params[:menu_id])
+    @ingredients = @menu.ingredients
+
+    @todo = Todo.new
   end
+
 
   def show
   end
@@ -38,6 +47,6 @@ class IngredientsController < ApplicationController
   end
 
   def params_ingredient
-    params.require(:ingredient).permit(:plat_id, :name, :ingredienttype, :quantity)
+    params.require(:ingredient).permit(:plat_id, :name, :ingredienttype, :quantity, :instock)
   end
 end

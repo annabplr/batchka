@@ -21,8 +21,10 @@
     <%= f.input :name %>
     <%= f.input :quantity %>
     <%= f.input :ingredienttype %>
+    <%= f.input :instock %>
     <%= f.hidden_field :plat_id, value: @plat.id %>
     <%= f.button :submit %>
   <% end %>
 
 <%= link_to "Retour", menu_day_path(menu_id: @menu.id, id: @day.id)  %>
+<%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
