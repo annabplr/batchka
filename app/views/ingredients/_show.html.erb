@@ -1,0 +1,3 @@
+<li data-ingredient-id="<%= ingredient.id %>"> <%= ingredient.name %> <%= link_to menu_day_repa_plat_ingredient_path(menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, plat_id: @plat.id, id: ingredient.id) , method: :delete, remote: true do %> <i class="fas fa-times"></i> <% end %> <i class="fas fa-pencil-alt"></i>
+
+</li>
