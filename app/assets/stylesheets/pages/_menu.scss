@@ -1,0 +1,75 @@
+ /* menu index */
+
+.lastmenu {
+  border: 3px solid white;
+  border-radius: 2px;
+  margin: 1em 1em;
+  padding: 1em;
+  height: 15vh;
+  p, a, a:hover, a:active, a:target {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.menu_liens {
+  text-align: right;
+  margin-bottom: 2em;
+  margin-right: 1em;
+
+  a {
+    color: white;
+  }
+}
+
+ /* menu_new */
+
+.form_new_menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_new_menu {
+  text-align: center;
+  margin: 2em auto;
+  input {
+  background-color: transparent;
+  border: 1px solid white;
+  box-shadow: 0;
+  color: white;
+  padding: 0.5em;
+  }
+}
+
+
+ /* menu show */
+
+ .display_all_repas {
+  display: flex;
+  justify-content: center;
+ }
+
+.display_repa {
+  color: white;
+  font-size: 0.9em;
+  margin: 0.5em;
+  width: 80%;
+  text-align: center;
+  .repa_name {
+    border: 1px solid white;
+    height: 5vh;
+    width: 100%;
+  }
+}
+
+.repa_detail {
+  margin-top: 0.5em;
+  display: none;
+}
+
+.display_repa_detail {
+  .repa_detail{
+  display: block ;
+  }
+}

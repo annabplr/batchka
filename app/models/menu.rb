@@ -5,4 +5,5 @@ class Menu < ApplicationRecord
   has_many :repas, through: :days
   has_many :plats, through: :repas
   has_many :ingredients, through: :plats
+
 end

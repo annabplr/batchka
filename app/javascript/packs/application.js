@@ -1,2 +1,3 @@
 import "bootstrap";
-import "bootstrap-datepicker";
+
+import "../components/display_repa.js";

@@ -4,6 +4,43 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :beginweek, collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+                label: "Ma semaine démarre le :"; %>
+    <%= f.input :groceryshopping, collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+    label: "Je fais mes courses le :";
+    %>
+
+    <div>
+    <p>Je planifie mes repas pour : </p>
+    <%= f.input :breakfast, as: :boolean, label: "Petit déjeuner" %>
+    <%= f.input :lunch, as: :boolean, label: "Déjeuner" %>
+    <%= f.input :collation, as: :boolean, label: "Gouter" %>
+    <%= f.input :dinner, as: :boolean, label: "Diner" %>
+  </div>
+
+  <div>
+    <p>En général, je cuisine :</p>
+    <%= f.input :starter, as: :boolean, label: "Entrée" %>
+    <%= f.input :maincourse, as: :boolean, label: "Plat" %>
+    <%= f.input :dessert, as: :boolean, label: "Dessert" %>
+  </div>
+  <%= f.input :current_password,
+                hint: "Nous avons besoin de votre mot de passe actuel pour confirmer les changements !",
+                required: true,
+                input_html: { autocomplete: "current-password" } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Mettre à jour" %>
+  </div>
+<% end %>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :username,
+                required: true, autofocus: true %>
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -11,25 +48,25 @@
     <% end %>
 
     <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false
+                hint: "Laissez vide si vous ne souhaitez pas le modifier",
+                required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+                hint: "Nous avons besoin de votre mot de passe actuel pour confirmer les changements !",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Mettre à jour" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3></h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Pas content(e) de Batchka ? <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes vous sûr(e)?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>

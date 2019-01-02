@@ -1,9 +1,46 @@
-<h1>Menus#index</h1>
-<p>Find me in app/views/menus/index.html.erb</p>
+<div class="container">
 
-<% @menu.each do |m| %>
-  <p> <%= link_to m.startdate, menu_path(m.id)  %> - <%= m.season %></p>
-<% end %>
+  <h1>Menus#index</h1>
 
 
-<%= link_to "Créer mon nouveau menu", new_menu_path  %>
+
+  <h3>Mes derniers menus  <%= link_to new_menu_path do  %> <i class="fas fa-plus"></i> <% end %></h3>
+  <div class="last-menus">
+    <div class="row">
+      <% @menu.last(4).each do |m| %>
+      <div class="col-xs-6 col-sm-3">
+        <%= link_to(menu_path(m.id)) do %>
+          <div class="lastmenu">
+            <p>
+              <%= m.startdate%> <%= m.season %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <h3>Trouver de l'inspiration</h3>
+
+  <div class="last-menus">
+    <div class="row">
+      <% @menu.last(2).each do |m| %>
+      <div class="col-xs-6 col-sm-3">
+        <%= link_to(menu_path(m.id)) do %>
+          <div class="lastmenu">
+            <p>
+              <%= m.startdate%> <%= m.season %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+
+<div class="menu_liens">
+  <%= link_to "Nouveau menu", new_menu_path  %>
+  </div>
+</div>

@@ -35,6 +35,7 @@ class MenusController < ApplicationController
 
   def index
     @menu = Menu.all
+    @users = User.all
   end
 
   def show

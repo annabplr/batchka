@@ -27,3 +27,5 @@
 <%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>
 <%= link_to "Ma liste de courses", menu_repas_path(menu_id: @menu.id) %>
 <%= link_to "Ma todo list", menu_todos_path(menu_id: @menu.id)  %>
+<br>
+<%= link_to "Retour", menu_path(@menu) %>
