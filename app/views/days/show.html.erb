@@ -1,15 +1,35 @@
+<div class="container">
+
 <h1>Show Day</h1>
 <h2> <%= @day.weekday %> </h2>
  <% @day.repas.each do |repa| %>
    <h3> <%= repa.repastype %> </h3>
-   <% repa.plats.each do |plat| %>
-     <p> <%= plat.plattype %> : <%= link_to plat.name, menu_day_repa_plat_path(menu_id: @menu.id,day_id: plat.repa.day.id ,repa_id:plat.repa.id, id: plat.id)  %> :
-      <% plat.ingredients.each do |ingredient| %>
-      <%= ingredient.name %> -
 
-     <% end %></p>
+   <% repa.plats.each do |plat| %>
+   <div class="display_plats">
+     <div class="plat_type">
+     <%= plat.plattype %>
+     </div>
+     <div class="plat_name">
+      <% if plat.name.nil? %>
+        <%= link_to menu_day_repa_plat_path(menu_id: @menu.id,day_id: plat.repa.day.id ,repa_id:plat.repa.id, id: plat.id) do %>
+        <i class="fas fa-pencil-alt"></i>
+        <% end %>
+      <% else %>
+      <%= link_to plat.name, menu_day_repa_plat_path(menu_id: @menu.id,day_id: plat.repa.day.id ,repa_id:plat.repa.id, id: plat.id)  %>
+      <% end %>
+     </div>
+     <div class="plat_ingredients">
+      <% plat.ingredients.each do |ingredient| %>
+        <%= ingredient.name %> -
+      <% end %>
+     </div>
+</div>
    <% end %>
+
+
  <% end %>
 
 <%= link_to "Vue de la semaine", menu_path(id: @menu.id) %>
 <%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
+</div>

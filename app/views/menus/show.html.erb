@@ -1,16 +1,37 @@
-<h1>Menus#show</h1>
+<div class="container">
+  <h1>Menus#show</h1>
 
-<h2>Menu de la semaine du <%= @startday[2] %> / <%= @startday[1] %> / <%= @startday[0] %>  </h2>
+  <h4>Semaine du <%= @startday[2] %> / <%= @startday[1] %> / <%= @startday[0] %>  </h2>
 
 
-<% @days.each do |day| %>
-  <div class="menu-week">
-    <%= link_to day.weekday, menu_day_path(menu_id: @menu.id,id: day.id)  %> - <%= day.id %> <br>
-    <p><% day.repas.each do |repa| %>
-     <%= link_to repa.repastype, menu_repa_path(menu_id: @menu.id,id: repa.id) %> <%= repa.id %> -
-    <% end %></p>
-    <br>
-  </div>
-<% end %>
+  <% @days.each do |day| %>
+    <div class="menu-week">
+
+      <%= day.weekday %>
+      <%= link_to menu_day_path(menu_id: @menu.id,id: day.id) do  %>
+        <i class="fas fa-pencil-alt"></i>
+      <% end %>
+
+      <br>
+        <div class="display_all_repas">
+          <% day.repas.each do |repa| %>
+
+            <div class="display_repa">
+              <div class="repa_name">
+            <%= repa.repastype %>
+              </div>
+
+            <div class="repa_detail">
+                <% repa.plats.each do |plat| %>
+                  <%= plat.name %>
+                <% end %>
+            </div>
+            </div>
+
+          <% end %>
+        </div>
+    </div>
+  <% end %>
 
 <%= link_to "Tous mes menus", menus_path  %>
+</div>
