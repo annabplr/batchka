@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Day#index</h1>
 <p>Find me in app/views/day/index.html.erb</p>
 
@@ -7,9 +8,10 @@
 <% @days.each do |day| %>
   <p> <%= day.weekday %> :
   <% day.repas.each do |repa| %>
-    <%= repa.repastype %> -
     <% repa.plats.each do |plat| %>
-      <%= plat.name %>
+      <% if plat.name != nil  %>
+      <%= plat.repa.repastype %> : <%= plat.name %>
+      <% end %>
     <% end %>
   <% end %> </p>
 <% end %>
@@ -20,3 +22,6 @@
 <%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>
 <%= link_to "Ma liste de courses", menu_repas_path(menu_id: @menu.id) %>
 <%= link_to "Ma todo list", menu_todos_path(menu_id: @menu.id)  %>
+
+<p>:)</p>
+</div>
