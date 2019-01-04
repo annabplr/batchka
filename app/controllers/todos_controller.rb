@@ -16,6 +16,8 @@ class TodosController < ApplicationController
   end
 
   def update
+    @todo.update(params_todo)
+    redirect_to menu_todos_path(menu_id: @menu.id)
   end
 
   def destroy

@@ -27,7 +27,10 @@ class IngredientsController < ApplicationController
 
     @ingredient.update(params_ingredient)
     @menu = Menu.find(params[:menu_id])
-    redirect_to menu_ingredients_path(menu_id: @menu.id)
+    @day = Day.find(params[:day_id])
+    @repa = Repa.find(params[:repa_id])
+    @plat = Plat.find(params[:plat_id])
+    redirect_to menu_day_repa_plat_path(menu_id: @menu.id)
   end
 
   def destroy

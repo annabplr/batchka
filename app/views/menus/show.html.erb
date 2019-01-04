@@ -23,9 +23,18 @@
 
             <div class="repa_detail">
                 <% repa.plats.each do |plat| %>
-                  <%= link_to menu_day_repa_plat_path(menu_id: @menu.id,day_id: plat.repa.day.id ,repa_id:plat.repa.id, id: plat.id) do %>
-                  <%= plat.name %>
-                  <% end %>
+                  <div class="edit_platname">
+                    <p> <%= plat.plattype %> : </p>
+                    <%= simple_form_for([@menu, plat], url: menu_day_repa_plat_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id), method: :put, remote: true) do |f| %>
+                      <div class="form_platname form-inline">
+                        <%= f.input :name, label: false %>
+
+                        <%= button_tag type: 'submit', class: "submit-buttons" do %>
+                          <i class="fas fa-check"></i>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
                 <% end %>
             </div>
             </div>

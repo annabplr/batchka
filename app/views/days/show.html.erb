@@ -11,18 +11,44 @@
      <%= plat.plattype %>
      </div>
      <div class="plat_name">
-      <% if plat.name.nil? %>
-        <%= link_to menu_day_repa_plat_path(menu_id: @menu.id,day_id: plat.repa.day.id ,repa_id:plat.repa.id, id: plat.id) do %>
-        <i class="fas fa-pencil-alt"></i>
-        <% end %>
-      <% else %>
-      <%= link_to plat.name, menu_day_repa_plat_path(menu_id: @menu.id,day_id: plat.repa.day.id ,repa_id:plat.repa.id, id: plat.id)  %>
-      <% end %>
+      <div class="edit_platname">
+                    <%= simple_form_for([@menu, plat], url: menu_day_repa_plat_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id), method: :put, remote: true) do |f| %>
+                      <div class="form_platname form-inline">
+                        <%= f.input :name, label: false %>
+
+                        <%= button_tag type: 'submit', class: "submit-buttons" do %>
+                          <i class="fas fa-check"></i>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
      </div>
      <div class="plat_ingredients">
       <% plat.ingredients.each do |ingredient| %>
-        <%= ingredient.name %> -
+        <li data-ingredient-id="<%= ingredient.id %>"> <%= ingredient.name %> <%= link_to menu_day_repa_plat_ingredient_path(menu_id: @menu.id, day_id: ingredient.plat.repa.day.id, repa_id: ingredient.plat.repa.id, plat_id: ingredient.plat.id, id: ingredient.id) , method: :delete, remote: true do %> <i class="fas fa-times"></i> <% end %>
+        </li>
       <% end %>
+      <div class="row add_ingredient">
+  <%= simple_form_for([plat, @ingredient], url: menu_day_repa_plat_ingredients_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, plat_id: plat.id), method: :post, remote: true) do |f| %>
+    <div class="col-xs-12 col-sm-3">
+    <%= f.input :name, label: false, placeholder: "Ingrédient" %>
+    </div>
+
+    <div class="col-xs-12 col-sm-2">
+    <%= f.input :instock, label: "En stock", class: "stock_check" %>
+    </div>
+    <%= f.hidden_field :plat_id, value: plat.id %>
+    <div class="col-xs-12 col-sm-1">
+    <%= button_tag type: 'submit', class: "submit-buttons" do %>
+        <i class="fas fa-check"></i>
+    <% end %>
+    </div>
+
+  <% end %>
+</div>
+     </div>
+     <div class="plat-moreinfo">
+       <%= link_to "Plus de détails", menu_day_repa_plat_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id )  %>
      </div>
 </div>
    <% end %>
