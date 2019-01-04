@@ -20,6 +20,7 @@ class DaysController < ApplicationController
 
   def show
     @menu = @day.menu
+    @ingredient = Ingredient.new
   end
 
   private

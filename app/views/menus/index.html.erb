@@ -7,13 +7,26 @@
   <h3>Mes derniers menus  <%= link_to new_menu_path do  %> <i class="fas fa-plus"></i> <% end %></h3>
   <div class="last-menus">
     <div class="row">
-      <% @menu.last(4).each do |m| %>
+      <% @menu.last(4).sort {|x,y| y <=> x }.each do |m| %>
       <div class="col-xs-6 col-sm-3">
         <%= link_to(menu_path(m.id)) do %>
           <div class="lastmenu">
             <p>
               <%= m.startdate%> <%= m.season %>
             </p>
+            <%= link_to menu_path(m.id) do  %>
+              <i class="fas fa-pencil-alt"></i>
+            <% end %>
+            <%= link_to menu_path(m.id) , method: :delete, remote: true do %> <i class="fas fa-times"></i> <% end %>
+            <%= link_to menu_days_path(m.id) do  %>
+              <p>Mon menu</p>
+            <% end %>
+            <%= link_to menu_repas_path(m.id) do  %>
+              <p>Ma liste de courses</p>
+            <% end %>
+            <%= link_to menu_todos_path(m.id) do  %>
+              <p>Ma to do list</p>
+            <% end %>
           </div>
         <% end %>
       </div>

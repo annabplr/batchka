@@ -2,51 +2,71 @@
   <h1>Ingredient#index</h1>
 
   <h2>Mes ingrédients</h2>
+  <% @menu.days.each do |day| %>
+  <h4><%= day.weekday %></h4>
   <div class="row">
-    <% @ingredients.each do |i| %>
-      <div class="col-xs-6 col-sm-3">
-        <div class="card">
+    <% day.ingredients.each do |i| %>
+      <div class="col-xs-6 col-sm-3 ingredient-card">
+        <div class="edit-ingredient form-group">
           <%= simple_form_for([i.plat, i], url: menu_day_repa_plat_ingredient_path(menu_id: @menu.id, day_id: i.plat.repa.day.id, repa_id: i.plat.repa.id, plat_id: i.plat.id, id: i.id), method: :put, remote: true) do |f| %>
-            <div class="inline-form">
+            <div class="form-inline">
               <%= f.input :instock, label: false %>
               <%= f.input :name, label: false %>
-              <div class="display_edit_ingredient">
-                <div class="button_edit_ingredient">
-                  <i class="fas fa-pencil-alt"></i>
-                </div>
+              <div class="button_edit_ingredient">
+                <i class="fas fa-pencil-alt"></i>
+              </div>
 
-                <div class="form_edit_ingredient">
-                  <%= f.input :ingredienttype, label: false, placeholder: "Type d'ingrédient", collection: ["Légumes", "Fruits", "Féculents", "Protéines", "Epicerie"]%>
-                  <div class="row">
-                    <div class="col-xs-6">
-                      <%= f.input :quantity, label: false, placeholder: "Quantité" %>
-                    </div>
-                    <div class="col-xs-6">
+              <div class="form_edit_ingredient">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <%= f.input :ingredienttype, label: false, placeholder: "Type d'ingrédient", collection: ["Légumes", "Fruits", "Féculents", "Protéines", "Epicerie"]%>
+                  </div>
+                  <div class="col-xs-3 edit-quantity">
+                    <%= f.input :quantity, label: false, placeholder: "Quantité" %>
+                  </div>
+                  <div class="col-xs-3 edit-quantity">
                       <%= f.input :unity, label: false, placeholder: "Unité" %>
-                    </div>
                   </div>
                 </div>
               </div>
-<%= button_tag type: 'submit', class: "submit-buttons" do %>
+              <div class="submit-edit-button">
+                <%= button_tag type: 'submit', class: "submit-buttons" do %>
                 <i class="fas fa-check"></i>
-              <% end %>
-
+                <% end %>
+              </div>
             </div>
           <% end %>
-
-          <%= simple_form_for([@menu, @todo], url: menu_todos_path(menu_id: @menu.id)) do |f| %>
-
-            <%= f.hidden_field :ingredient_id, value: i.id %>
-            <%= f.hidden_field :menu_id, value: @menu.id %>
-            <%= f.input :actionverb, collection: ["Eplucher", "Couper", "Mixer", "Cuire", "Réchauffer", "Rotir", "Poeler"] %>
-            <%= f.input :daydue, collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"] %>
-            <%= f.input :comments %>
-            <%= f.button :submit %>
-          <% end %>
         </div>
+
+        <% i.todos.each do |todo| %>
+          <%= todo.daydue %> - <%= todo.actionverb %> <%= link_to menu_todo_path(menu_id: @menu.id, id: todo.id) , method: :delete, remote: true do %> <i class="fas fa-times"></i> <% end %>
+        <% end %>
+
+        <%= simple_form_for([@menu, @todo], url: menu_todos_path(menu_id: @menu.id)) do |f| %>
+          <div class="create-todo">
+          <%= f.hidden_field :ingredient_id, value: i.id %>
+          <%= f.hidden_field :menu_id, value: @menu.id %>
+          <div class="row">
+            <div class="col-xs-6">
+              <%= f.input :actionverb, collection: ["Eplucher", "Couper", "Mixer", "Cuire", "Réchauffer", "Rotir", "Poeler"] %>
+            </div>
+            <div class="col-xs-5">
+              <%= f.input :daydue, collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"] %>
+            </div>
+            <%= f.input :comments %>
+          </div>
+
+          <div class="submit-todo-button">
+                <%= button_tag type: 'submit', class: "submit-buttons" do %>
+                <i class="fas fa-check"></i>
+                <% end %>
+              </div>
+        </div>
+        <% end %>
       </div>
     <% end %>
   </div>
+  <% end %>
 
   <%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>
   <%= link_to "Ma liste de courses", menu_repas_path(menu_id: @menu.id) %>
