@@ -1,11 +1,47 @@
+.ingredient-card {
+  border: 1px solid white;
+  padding-top: 5px;
+}
+
 .form_edit_ingredient {
   margin-top: 0.5em;
   display: none;
 }
 
-
-.display_repa_detail {
-  .form_edit_ingredient {
-  display: block ;
+.edit-ingredient {
+  position: relative;
+  .ingredient_name, #ingredient_name {
+    width: 75%;
   }
+  .button_edit_ingredient {
+  position: absolute;
+  top: 0.3em;
+  right: 3em;
+  }
+  .submit-edit-button {
+    position: absolute;
+  top: 0.3em;
+  right: 0.5em;
+  }
+    .ingredient_quantity, #ingredient_quantity, .ingredient_unity, #ingredient_unity {
+    width: 100%;
+  }
+  .edit-quantity {
+    padding-left: 3px;
+    padding-right: 0px;
+  }
+}
+
+.create-todo {
+  position: relative;
+  .todo_comments, #todo_comments {
+    width: 90%;
+    padding-left: 15px;
+  }
+}
+
+.submit-todo-button {
+  position: absolute;
+  top: 0.3em;
+  right: 0.5em;
 }
