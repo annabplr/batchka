@@ -58,16 +58,16 @@ class MenusController < ApplicationController
     @days = @menu.days
     @days.each do |day|
       if current_user.breakfast == true
-        Repa.create(repastype: "breakfast", day_id: day.id)
+        Repa.create(repastype: "Petit déjeuner", day_id: day.id)
       end
       if current_user.lunch == true
-        Repa.create(repastype: "lunch", day_id: day.id)
+        Repa.create(repastype: "Déjeuner", day_id: day.id)
       end
       if current_user.dinner == true
-        Repa.create(repastype: "dinner", day_id: day.id)
+        Repa.create(repastype: "Diner", day_id: day.id)
       end
       if current_user.collation == true
-        Repa.create(repastype: "collation", day_id: day.id)
+        Repa.create(repastype: "Gouter", day_id: day.id)
       end
     end
   end
@@ -75,17 +75,17 @@ class MenusController < ApplicationController
   def create_plat
     @repas = @menu.repas
     @repas.each do |repa|
-    if repa.repastype == "breakfast" || repa.repastype == "collation"
-        Plat.create(plattype: "bfmeal", repa_id: repa.id)
-      elsif repa.repastype == "lunch" || repa.repastype == "dinner"
+    if repa.repastype == "Petit déjeuner" || repa.repastype == "Gouter"
+        Plat.create(plattype: "Plat", repa_id: repa.id)
+      elsif repa.repastype == "Déjeuner" || repa.repastype == "Diner"
         if current_user.starter == true
-          Plat.create(plattype: "starter", repa_id: repa.id)
+          Plat.create(plattype: "Entrée", repa_id: repa.id)
         end
         if current_user.maincourse == true
-          Plat.create(plattype: "maincourse", repa_id: repa.id)
+          Plat.create(plattype: "Plat", repa_id: repa.id)
         end
         if current_user.dessert == true
-          Plat.create(plattype: "dessert", repa_id: repa.id)
+          Plat.create(plattype: "Dessert", repa_id: repa.id)
         end
       end
     end

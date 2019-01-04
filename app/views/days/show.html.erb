@@ -5,13 +5,13 @@
  <% @day.repas.each do |repa| %>
    <h3> <%= repa.repastype %> </h3>
 
-   <% repa.plats.each do |plat| %>
-   <div class="display_plats">
+   <% repa.plats.sort{ |x,y| x.id <=> y.id }.each do |plat| %>
+   <div class="row display_plats">
      <div class="plat_type">
      <%= plat.plattype %>
      </div>
-     <div class="plat_name">
-      <div class="edit_platname">
+
+      <div class="col-xs-12 col-sm-4 edit_platname">
                     <%= simple_form_for([@menu, plat], url: menu_day_repa_plat_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id), method: :put, remote: true) do |f| %>
                       <div class="form_platname form-inline">
                         <%= f.input :name, label: false %>
@@ -21,24 +21,26 @@
                         <% end %>
                       </div>
                     <% end %>
-                  </div>
-     </div>
-     <div class="plat_ingredients">
+      </div>
+
+     <div class="col-xs-10 col-sm-5 plat_ingredients">
+      <ul class="list-inline">
       <% plat.ingredients.each do |ingredient| %>
         <li data-ingredient-id="<%= ingredient.id %>"> <%= ingredient.name %> <%= link_to menu_day_repa_plat_ingredient_path(menu_id: @menu.id, day_id: ingredient.plat.repa.day.id, repa_id: ingredient.plat.repa.id, plat_id: ingredient.plat.id, id: ingredient.id) , method: :delete, remote: true do %> <i class="fas fa-times"></i> <% end %>
         </li>
       <% end %>
+      </ul>
       <div class="row add_ingredient">
   <%= simple_form_for([plat, @ingredient], url: menu_day_repa_plat_ingredients_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, plat_id: plat.id), method: :post, remote: true) do |f| %>
-    <div class="col-xs-12 col-sm-3">
+    <div class="col-xs-12 col-sm-6">
     <%= f.input :name, label: false, placeholder: "Ingrédient" %>
     </div>
 
-    <div class="col-xs-12 col-sm-2">
+    <div class="col-xs-12 col-sm-4">
     <%= f.input :instock, label: "En stock", class: "stock_check" %>
     </div>
     <%= f.hidden_field :plat_id, value: plat.id %>
-    <div class="col-xs-12 col-sm-1">
+    <div class="col-xs-12 col-sm-2">
     <%= button_tag type: 'submit', class: "submit-buttons" do %>
         <i class="fas fa-check"></i>
     <% end %>
@@ -47,8 +49,8 @@
   <% end %>
 </div>
      </div>
-     <div class="plat-moreinfo">
-       <%= link_to "Plus de détails", menu_day_repa_plat_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id )  %>
+     <div class="col-xs-2 col-sm-2 plat-moreinfo">
+       <%= link_to "+ de détails", menu_day_repa_plat_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id )  %>
      </div>
 </div>
    <% end %>
@@ -58,4 +60,5 @@
 
 <%= link_to "Vue de la semaine", menu_path(id: @menu.id) %>
 <%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
+<br>
 </div>

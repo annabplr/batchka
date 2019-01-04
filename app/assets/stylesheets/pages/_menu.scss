@@ -54,22 +54,35 @@
   color: white;
   font-size: 0.9em;
   margin: 0.5em;
-  width: 80%;
+  padding-top: 5px;
+  padding-bottom: 5px;
   text-align: center;
-  .repa_name {
-    border: 1px solid white;
-    height: 5vh;
+  border: 1px solid white;
+  width: 100%;
+  .edit_plat {
+    width: 100%;
+  }
+
+  .plattype-platname {
+    font-size: 0.9em;
+  }
+
+  #plat_name, .plat_name {
+    width: 75%;
+    font-size: 0.9em;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px !important;
+  }
+
+  .form_platname {
     width: 100%;
   }
 }
 
-.repa_detail {
-  margin-top: 0.5em;
-  display: none;
-}
-
-.display_repa_detail {
-  .repa_detail{
-  display: block ;
+.menu-week {
+  h3 {
+    font-size: 1.5em;
+    text-align: center;
   }
 }
