@@ -1,0 +1,4 @@
+<li data-todo-id="<%= todo.id %>">
+  <%= todo.daydue %> - <%= todo.actionverb %> <%= link_to menu_todo_path(menu_id: @menu.id, id: todo.id) , method: :delete, remote: true do %> <i class="fas fa-times"></i> <% end %>
+</li>
+

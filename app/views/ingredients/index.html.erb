@@ -5,7 +5,10 @@
   <% @menu.days.each do |day| %>
   <h4><%= day.weekday %></h4>
   <div class="row">
-    <% day.ingredients.each do |i| %>
+    <% day.plats.each do |plat| %>
+      <h2><%= plat.name %></h2>
+    <div>
+    <% plat.ingredients.each do |i| %>
       <div class="col-xs-6 col-sm-3 ingredient-card">
         <div class="edit-ingredient form-group">
           <%= simple_form_for([i.plat, i], url: menu_day_repa_plat_ingredient_path(menu_id: @menu.id, day_id: i.plat.repa.day.id, repa_id: i.plat.repa.id, plat_id: i.plat.id, id: i.id), method: :put, remote: true) do |f| %>
@@ -38,32 +41,16 @@
           <% end %>
         </div>
 
+        <ul id="todos-<%= i.id %>", class="list-inline">
         <% i.todos.each do |todo| %>
-          <%= todo.daydue %> - <%= todo.actionverb %> <%= link_to menu_todo_path(menu_id: @menu.id, id: todo.id) , method: :delete, remote: true do %> <i class="fas fa-times"></i> <% end %>
+          <%= render 'todos/show', menu: @menu, todo: todo %>
         <% end %>
+        </ul>
+        <%= render 'todos/form', menu: @menu, ingredient: i, todo: @todo %>
 
-        <%= simple_form_for([@menu, @todo], url: menu_todos_path(menu_id: @menu.id)) do |f| %>
-          <div class="create-todo">
-          <%= f.hidden_field :ingredient_id, value: i.id %>
-          <%= f.hidden_field :menu_id, value: @menu.id %>
-          <div class="row">
-            <div class="col-xs-6">
-              <%= f.input :actionverb, collection: ["Eplucher", "Couper", "Mixer", "Cuire", "Réchauffer", "Rotir", "Poeler"] %>
-            </div>
-            <div class="col-xs-5">
-              <%= f.input :daydue, collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"] %>
-            </div>
-            <%= f.input :comments %>
-          </div>
-
-          <div class="submit-todo-button">
-                <%= button_tag type: 'submit', class: "submit-buttons" do %>
-                <i class="fas fa-check"></i>
-                <% end %>
-              </div>
-        </div>
-        <% end %>
       </div>
+    <% end %>
+    </div>
     <% end %>
   </div>
   <% end %>

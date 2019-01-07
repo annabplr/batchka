@@ -1,0 +1,23 @@
+<div class="newtodo_form">
+        <%= simple_form_for([@menu, @todo], url: menu_todos_path(menu_id: @menu.id), method: :post, remote: true) do |f| %>
+          <div class="create-todo">
+          <%= f.hidden_field :ingredient_id, value: ingredient.id %>
+          <%= f.hidden_field :menu_id, value: @menu.id %>
+          <div class="row">
+            <div class="col-xs-6">
+              <%= f.input :actionverb, collection: ["Laver", "Faire tremper", "Eplucher", "Couper", "Mixer", "Cuire", "Réchauffer", "Rotir", "Poeler", "Préparer", "Assembler"] %>
+            </div>
+            <div class="col-xs-5">
+              <%= f.input :daydue, collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"] %>
+            </div>
+            <%= f.input :comments %>
+          </div>
+
+          <div class="submit-todo-button">
+                <%= button_tag type: 'submit', class: "submit-buttons" do %>
+                <i class="fas fa-check"></i>
+                <% end %>
+              </div>
+        </div>
+        <% end %>
+        </div>
