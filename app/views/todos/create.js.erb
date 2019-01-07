@@ -1,0 +1,17 @@
+  function refreshForm(innerHTML) {
+    const newTodoForm = document.getElementById('new_todo');
+    newTodoForm.innerHTML = innerHTML;
+  }
+
+  function addTodo(todoHTML) {
+    const todos = document.getElementById("todos-<%=@todo.ingredient.id%>");
+    todos.insertAdjacentHTML('beforeend', todoHTML);
+  }
+
+  <% if @todo.errors.present? %>
+    refreshForm('<%= j render "todos/form", menu: @menu, ingredient: @todo.ingredient, todo: @todo %>');
+  <% else %>
+    addTodo('<%= j render "todos/show", todo: @todo %>');
+    refreshForm('<%= j render "todos/form", menu: @menu, ingredient: @todo.ingredient, todo: @new_todo %>');
+  <% end %>
+

@@ -1,15 +1,23 @@
 class TodosController < ApplicationController
-
   before_action :set_todo, only: [:show, :update, :destroy]
 
   def new
-    @todo = Todo.create
+    @todo = Todo.new
   end
 
   def create
-    @todo = Todo.create(params_todo)
-    @menu = @todo.menu
-    redirect_to menu_ingredients_path(menu_id: @menu.id)
+    @todo = Todo.new(params_todo)
+    @menu = Menu.find(params[:menu_id])
+    @new_todo = Todo.new
+    respond_to do |format|
+      if @todo.save
+        format.html { redirect_to menu_ingredients_path(menu_id: @menu.id) }
+        format.js {}
+      else
+        format.html { render 'ingredients/index' }
+        format.js {}
+      end
+    end
   end
 
   def edit
@@ -17,6 +25,7 @@ class TodosController < ApplicationController
 
   def update
     @todo.update(params_todo)
+    @menu = Menu.find(params[:menu_id])
     redirect_to menu_todos_path(menu_id: @menu.id)
   end
 

@@ -16,9 +16,9 @@
 
 
 <h2>Ingredients principaux : </h2>
-<ul id="ingredients">
+<ul id="ingredientsid">
 <% @plat.ingredients.each do |ingredient| %>
-  <%= render 'ingredients/show', menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, id: @plat.id, ingredient: ingredient %>
+  <%= render 'ingredients/show', menu: @menu, day: @day, repa: @repa, id: @plat, ingredient: ingredient %>
 <% end %>
 </ul>
 

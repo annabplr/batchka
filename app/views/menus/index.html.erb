@@ -9,26 +9,38 @@
     <div class="row">
       <% @menu.last(4).sort {|x,y| y <=> x }.each do |m| %>
       <div class="col-xs-6 col-sm-3">
-        <%= link_to(menu_path(m.id)) do %>
-          <div class="lastmenu">
+
+          <div class="lastmenu", data-menu-id="<%= m.id %>">
+            <%= link_to(menu_path(m.id)) do %>
             <p>
-              <%= m.startdate%> <%= m.season %>
-            </p>
+              Semaine du <%= m.startdate%> </p>
+              <% end %>
+              <div class="menu-editlink">
             <%= link_to menu_path(m.id) do  %>
               <i class="fas fa-pencil-alt"></i>
             <% end %>
-            <%= link_to menu_path(m.id) , method: :delete, remote: true do %> <i class="fas fa-times"></i> <% end %>
+            <%= link_to menu_path(m.id) , method: :delete, remote: true, data: { confirm: 'Êtes vous sur(e)?' }  do %> <i class="fas fa-times"></i> <% end %>
+              </div>
+            <div class="links-menu">
+
+            <div class="link-menu1">
             <%= link_to menu_days_path(m.id) do  %>
-              <p>Mon menu</p>
+              <i class="fas fa-utensils"></i>
             <% end %>
+            </div>
+            <div class="link-menu1">
             <%= link_to menu_repas_path(m.id) do  %>
-              <p>Ma liste de courses</p>
+              <i class="fas fa-shopping-basket"></i>
             <% end %>
+            </div>
+            <div class="link-menu1">
             <%= link_to menu_todos_path(m.id) do  %>
-              <p>Ma to do list</p>
+              <i class="fas fa-clipboard-list"></i>
             <% end %>
+            </div>
+            </div>
           </div>
-        <% end %>
+
       </div>
       <% end %>
     </div>

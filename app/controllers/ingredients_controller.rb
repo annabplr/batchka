@@ -4,22 +4,34 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.new
   end
   def create
-    @ingredient = Ingredient.new(params_ingredient)
 
+    @ingredient = Ingredient.new(params_ingredient)
     @menu = Menu.find(params[:menu_id])
     @day = Day.find(params[:day_id])
     @repa = Repa.find(params[:repa_id])
     @plat = Plat.find(params[:plat_id])
     @new_ingredient = Ingredient.new
-
-    respond_to do |format|
-    if @ingredient.save
-        format.html { redirect_to menu_day_repa_plat_path(menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, id: @plat.id) }
-        format.js { }
-    else
-        format.html { render 'plats/show' }
-        format.js { }
-    end
+    @controllerreference = Rails.application.routes.recognize_path(request.referrer)[:controller];
+    if @controllerreference == "days"
+      respond_to do |format|
+        if @ingredient.save
+            format.html { redirect_to menu_day_path(menu_id: @menu.id, id: @day.id) }
+            format.js { }
+        else
+            format.html { render 'days/show' }
+            format.js { }
+        end
+      end
+    elsif @controllerreference === "plats"
+      respond_to do |format|
+        if @ingredient.save
+            format.html { redirect_to menu_day_repa_plat_path(menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, id: @plat.id) }
+            format.js { }
+        else
+            format.html { render 'plats/show' }
+            format.js { }
+        end
+      end
     end
   end
 
