@@ -10,7 +10,7 @@
       <% @menu.last(4).sort {|x,y| y <=> x }.each do |m| %>
       <div class="col-xs-6 col-sm-3">
 
-          <div class="lastmenu">
+          <div class="lastmenu", data-menu-id="<%= m.id %>">
             <%= link_to(menu_path(m.id)) do %>
             <p>
               Semaine du <%= m.startdate%> </p>
