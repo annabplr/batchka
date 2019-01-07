@@ -1,5 +1,4 @@
 class TodosController < ApplicationController
-
   before_action :set_todo, only: [:show, :update, :destroy]
 
   def new
@@ -10,17 +9,15 @@ class TodosController < ApplicationController
     @todo = Todo.new(params_todo)
     @menu = Menu.find(params[:menu_id])
     @new_todo = Todo.new
-
     respond_to do |format|
       if @todo.save
-          format.html { redirect_to menu_ingredients_path(menu_id: @menu.id) }
-          format.js { }
+        format.html { redirect_to menu_ingredients_path(menu_id: @menu.id) }
+        format.js {}
       else
-          format.html { render 'ingredients/index' }
-          format.js { }
+        format.html { render 'ingredients/index' }
+        format.js {}
       end
     end
-
   end
 
   def edit
