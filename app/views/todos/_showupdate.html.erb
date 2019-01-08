@@ -1,0 +1,19 @@
+          <%= simple_form_for([@menu, todo], url: menu_todo_path(menu_id: @menu.id, id: todo.id), method: :put, remote: true) do |f| %>
+            <li data-checktodo-id="<%= todo.id %>", class="todolist-form form-inline">
+              <% if todo.done == true %>
+                <%= f.hidden_field :done, class: "undone_todo", value: false %>
+                <%= button_tag type: 'submit', class: "submit-buttons checklist-buttons checklist-done" do %>
+                  <i class="fas fa-check"></i>
+                  <%= todo.ingredient.name %> <%= todo.actionverb %> <%= todo.done %> <%= todo.comments %>
+                <% end %>
+              <% else %>
+                <%= f.hidden_field :done, class: "done_todo", value: true %>
+                <%= button_tag type: 'submit', class: "submit-buttons checklist-buttons" do %>
+                  <i class="fas fa-check"></i>
+                  <%= todo.ingredient.name %> <%= todo.actionverb %> <%= todo.done %><%= todo.comments %>
+                <% end %>
+              <% end %>
+            </li>
+          <% end %>
+
+

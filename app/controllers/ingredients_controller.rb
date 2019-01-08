@@ -11,7 +11,7 @@ class IngredientsController < ApplicationController
     @repa = Repa.find(params[:repa_id])
     @plat = Plat.find(params[:plat_id])
     @new_ingredient = Ingredient.new
-    @controllerreference = Rails.application.routes.recognize_path(request.referrer)[:controller];
+    @controllerreference = Rails.application.routes.recognize_path(request.referrer)[:controller]
     if @controllerreference == "days"
       respond_to do |format|
         if @ingredient.save
@@ -42,7 +42,12 @@ class IngredientsController < ApplicationController
     @day = Day.find(params[:day_id])
     @repa = Repa.find(params[:repa_id])
     @plat = Plat.find(params[:plat_id])
-    redirect_to menu_day_repa_plat_path(menu_id: @menu.id)
+    @controllerreference = Rails.application.routes.recognize_path(request.referrer)[:controller]
+    if @controllerreference == "repas"
+      respond_to do |format|
+        format.js { }
+      end
+    end
   end
 
   def destroy

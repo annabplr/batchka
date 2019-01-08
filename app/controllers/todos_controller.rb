@@ -26,7 +26,9 @@ class TodosController < ApplicationController
   def update
     @todo.update(params_todo)
     @menu = Menu.find(params[:menu_id])
-    redirect_to menu_todos_path(menu_id: @menu.id)
+    respond_to do |format|
+      format.js {}
+    end
   end
 
   def destroy
