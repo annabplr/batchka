@@ -1,15 +1,24 @@
 /* -------------------------------------
  * Your CSS code for flash notices and alerts
 * ------------------------------------- */
+.general-alert{
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
 .alert {
   margin: 0;
   text-align: center;
   color: white;
+  font-weight: bold;
+  width: 50%;
 }
 .alert-info {
-  background: $green;
+  background: transparent;
 }
 .alert-warning {
-  background: $red;
+  background: transparent;
+  border: none;
 }

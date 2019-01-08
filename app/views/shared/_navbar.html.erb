@@ -10,26 +10,25 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Mes menus", menus_path, class: "navbar-batchka-item navbar-batchka-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-batchka-item">
         <div class="dropdown">
-          <%= image_tag "https://avatars0.githubusercontent.com/u/42960291?s=460&v=4", class: "avatar dropdown-toggle", id: "navbar-batchka-menu", "data-toggle" => "dropdown" %>
+          <div class= "avatar dropdown-toggle", id= "navbar-batchka-menu", data-toggle="dropdown"> <i class="fas fa-ellipsis-h"></i> </div>
           <ul class="dropdown-menu dropdown-menu-right navbar-batchka-dropdown-menu">
             <li>
               <%= link_to menus_path do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Mes menus") %>
+                <i class="fas fa-utensils"></i>  <%= t(".profile", default: "Mes menus") %>
               <% end %>
             </li>
             <li>
               <%= link_to edit_user_registration_path do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Editer mon profil") %>
+                <i class="far fa-user-circle"></i>  <%= t(".settings", default: "Mon profil") %>
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Me déconnecter") %>
+                <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Me déconnecter") %>
               <% end %>
             </li>
           </ul>
