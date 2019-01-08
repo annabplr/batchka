@@ -6,14 +6,16 @@
 
 
 <% @days.each do |day| %>
-  <p> <%= day.weekday %> :
+  <h4> <%= day.weekday %> :</h4>
+    <ul class="list-unstyled">
   <% day.repas.each do |repa| %>
     <% repa.plats.each do |plat| %>
       <% if plat.name != nil  %>
-      <%= plat.repa.repastype %> : <%= plat.name %>
+      <li> <%= plat.repa.repastype %> : <%= plat.name %> - <%= link_to "Recette", plat.link, target: :_blank %>
       <% end %>
     <% end %>
-  <% end %> </p>
+  <% end %>
+    </ul>
 <% end %>
 
 

@@ -62,7 +62,7 @@ class PlatsController < ApplicationController
   end
 
   def params_plat
-    params.require(:plat).permit(:repa_id, :name, :plattype)
+    params.require(:plat).permit(:repa_id, :name, :link, :plattype)
   end
 end
 

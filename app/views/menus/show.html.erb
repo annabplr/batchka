@@ -23,6 +23,7 @@
                       <div class="form_platname form-inline">
                         <span class="plattype-platname">  <%= plat.plattype %></span>
                         <%= f.input :name, label: false %>
+                        <%= f.input :link, placeholder: "Lien vers la recette", label: false %>
                         <%= button_tag type: 'submit', class: "submit-buttons" do %>
                           <i class="fas fa-check"></i>
                         <% end %>
