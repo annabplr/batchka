@@ -2,20 +2,12 @@
 <h1>Repas#index</h1>
 
 <h3>Ma liste de course</h3>
-
+<ul class="list-inline">
 <% @ingredients.each do |ingredient|  %>
-  <%= simple_form_for([@menu, ingredient], url: menu_day_repa_plat_ingredient_path(menu_id: @menu.id, day_id: ingredient.plat.repa.day.id, repa_id: ingredient.plat.repa.id , plat_id: ingredient.plat.id , id: ingredient.id), method: :put, remote: true) do |f| %>
-    <div class="form-inline">
-    <%= f.input :instock, label: false, class: "done_todo" %>
-    <%= ingredient.name  %> (<%= ingredient.quantity %> - <%= ingredient.plat.name %>)
-    <%= button_tag type: 'submit', class: "submit-buttons" do %>
-        <i class="fas fa-check"></i>
-    <% end %>
-    </div>
-  <% end %>
+  <%= render 'ingredients/showupdate', menu: @menu, ingredient: ingredient %>
 
 <% end %>
-
+</ul>
 
 
 <%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>

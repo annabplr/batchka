@@ -1,0 +1,17 @@
+<%= simple_form_for([@menu, ingredient], url: menu_day_repa_plat_ingredient_path(menu_id: @menu.id, day_id: ingredient.plat.repa.day.id, repa_id: ingredient.plat.repa.id , plat_id: ingredient.plat.id , id: ingredient.id), method: :put, remote: true) do |f| %>
+  <li data-checkingredient-id="<%= ingredient.id %>", class="todolist-form form-inline">
+    <% if ingredient.instock == true %>
+      <%= f.hidden_field :instock, class: "undone_todo", value: false %>
+      <%= button_tag type: 'submit', class: "submit-buttons checklist-buttons checklist-done" do %>
+        <i class="fas fa-check"></i>
+        <%= ingredient.name %> (<%= ingredient.quantity %> - <%= ingredient.plat.name %>) - <%= ingredient.instock %>
+      <% end %>
+    <% else %>
+      <%= f.hidden_field :instock, class: "undone_todo", value: true %>
+        <%= button_tag type: 'submit', class: "submit-buttons checklist-buttons" do %>
+          <i class="fas fa-check"></i>
+          <%= ingredient.name %> (<%= ingredient.quantity %> - <%= ingredient.plat.name %>) - <%= ingredient.instock %>
+        <% end %>
+    <% end %>
+  </li>
+  <% end %>

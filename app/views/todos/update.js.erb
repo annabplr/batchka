@@ -1,17 +1,7 @@
-  function refreshForm(innerHTML) {
-    const checkTodoForm = document.getElementById('update_todo');
+
+function refreshForm(innerHTML) {
+    const checkTodoForm = document.querySelector("[data-checktodo-id='<%= @todo.id %>']");
     checkTodoForm.innerHTML = innerHTML;
   }
 
-  function checkTodo(todoHTML) {
-    const todos = document.getElementById("checktodos-<%=@todo.id%>");
-    todos.insertAdjacentHTML('beforeend', todoHTML);
-  }
-
-  <% if @todo.errors.present? %>
-    refreshForm('<%= j render "todos/form", menu: @menu, ingredient: @todo.ingredient, todo: @todo %>');
-  <% else %>
-    addTodo('<%= j render "todos/show", todo: @todo %>');
-    refreshForm('<%= j render "todos/form", menu: @menu, ingredient: @todo.ingredient, todo: @new_todo %>');
-  <% end %>
-
+refreshForm('<%= j render "todos/showupdate", menu: @menu, todo: @todo %>');

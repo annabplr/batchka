@@ -3,49 +3,15 @@
 <h1>Todos#index</h1>
 
 <h3>Ma to do list</h3>
-
-
 <% @menu.days.each do |day| %>
   <h3> <%= day.weekday %> </h3>
-  <% @todos.each do |todo| %>
-    <% if day.weekday == todo.daydue %>
-      <%= simple_form_for([@menu, todo], url: menu_todo_path(menu_id: @menu.id, id: todo.id), method: :put, remote: true) do |f| %>
-        <div class="todolist-form form-inline">
-          <% if todo.done == true %>
-            <%= f.hidden_field :done, class: "done_todo", value: false %>
-            <%= button_tag type: 'submit', class: "submit-buttons checklist-buttons" do %>
-                <i class="fas fa-check"></i>
-            <%= todo.ingredient.name %> <%= todo.actionverb %> <%= todo.comments %>
-            <% end %>
-          <% elsif todo.done == false || todo.done == nil %>
-            <%= f.hidden_field :done, class: "done_todo", value: true %>
-            <%= button_tag type: 'submit', class: "submit-buttons checklist-buttons" do %>
-              <i class="fas fa-check"></i>
-              <%= todo.ingredient.name %> <%= todo.actionverb %> <%= todo.comments %>
-            <% end %>
-          <% end %>
-        </div>
+  <ul class="list-inline">
+    <% @todos.each do |todo| %>
+      <% if day.weekday == todo.daydue %>
+        <%= render 'todos/showupdate', menu: @menu, todo: todo %>
       <% end %>
     <% end %>
-  <% end %>
-<% end %>
-
-<% @menu.days.each do |day| %>
-  <h3> <%= day.weekday %> </h3>
-  <% @todos.each do |todo| %>
-    <% if day.weekday == todo.daydue %>
-    <%= simple_form_for([@menu, todo], url: menu_todo_path(menu_id: @menu.id, id: todo.id), method: :put, remote: true) do |f| %>
-    <div class="form-inline">
-    <%= f.input :done, class: "done_todo", label: false %>
-    <%= todo.ingredient.name %> <%= todo.actionverb %> <%= todo.comments %>
-    <%= button_tag type: 'submit', class: "submit-buttons" do %>
-        <i class="fas fa-check"></i>
-    <% end %>
-    </div>
-  <% end %>
-    <% end %>
-  <% end %>
-
+  </ul
 <% end %>
 
 <%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>
