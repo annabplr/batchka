@@ -78,6 +78,7 @@ GEM
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
+    flutie (2.1.0)
     font-awesome-sass (5.5.0.1)
       sassc (>= 1.11)
     globalid (0.4.1)
@@ -225,6 +226,7 @@ DEPENDENCIES
   cloudinary (~> 1.9.1)
   devise
   dotenv-rails
+  flutie
   font-awesome-sass (~> 5.5.0)
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
