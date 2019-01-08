@@ -3,5 +3,4 @@ function refreshForm(innerHTML) {
     const checkIngredientForm = document.querySelector("[data-checkingredient-id='<%= @ingredient.id %>']");
     checkIngredientForm.innerHTML = innerHTML;
   }
-console.log("toto");
 refreshForm('<%= j render "ingredients/showupdate", menu: @menu, ingredient: @ingredient %>');

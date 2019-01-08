@@ -1,10 +1,10 @@
 /* Main navbar */
 .navbar-batchka {
   background: transparent;
-  width: 90%;
+  width: 100%;
   position: fixed;
   top: 0%;
-  transition: all 0.3s ease;
+  transition: 0.5s background-color ease;
   height: 70px;
   padding: 0px 30px;
   display: flex;
@@ -12,16 +12,22 @@
   justify-content: space-between;
 }
 
+.navbar-batchka-green {
+  background: $blue;
+}
 /* Logo */
+
+.navbar-batchka-brand:hover {
+  text-decoration: none;
+}
 .navbar-batchka-brand img {
   height: 50px;
 }
 
 /* User Avatar */
 .navbar-batchka .avatar {
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
+  font-size: 2.5em;
+  padding-right: 30%;
 }
 
 /* Right section */
@@ -39,11 +45,11 @@
 
 /* Navbar link */
 .navbar-batchka-link {
-  color: #616668;
+  color: white;
   font-size: 14px;
 }
 .navbar-batchka-link:hover {
-  color: #da552f;
+  color: $gray;
   text-decoration: none;
 }
 

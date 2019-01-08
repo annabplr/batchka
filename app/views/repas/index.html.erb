@@ -1,15 +1,63 @@
 <div class="container">
 <h1>Repas#index</h1>
 
-<h3>Ma liste de course</h3>
+<h3>Ma liste de courseee</h3>
+<h4>Magasin Bio</h4>
 <ul class="list-inline">
-<% @ingredients.each do |ingredient|  %>
-  <%= render 'ingredients/showupdate', menu: @menu, ingredient: ingredient %>
+  <% @ingredients.each do |ingredient|  %>
+    <% if ingredient.shop == "Magasin Bio" %>
+      <%= render 'ingredients/showupdate', menu: @menu, ingredient: ingredient %>
+    <%end %>
+  <% end %>
+</ul>
 
-<% end %>
+<h4>Marché</h4>
+<ul class="list-inline">
+  <% @ingredients.each do |ingredient|  %>
+    <% if ingredient.shop == "Marché" %>
+      <%= render 'ingredients/showupdate', menu: @menu, ingredient: ingredient %>
+    <%end %>
+  <% end %>
+</ul>
+
+<h4>Petit commerce</h4>
+<ul class="list-inline">
+  <% @ingredients.each do |ingredient|  %>
+    <% if ingredient.shop == "Petit commerce" %>
+      <%= render 'ingredients/showupdate', menu: @menu, ingredient: ingredient %>
+    <%end %>
+  <% end %>
+</ul>
+
+<h4>Supermarché</h4>
+<ul class="list-inline">
+  <% @ingredients.each do |ingredient|  %>
+    <% if ingredient.shop == "Supermarché" %>
+      <%= render 'ingredients/showupdate', menu: @menu, ingredient: ingredient %>
+    <%end %>
+  <% end %>
+</ul>
+
+<h4>Internet</h4>
+<ul class="list-inline">
+  <% @ingredients.each do |ingredient|  %>
+    <% if ingredient.shop == "Internet" %>
+      <%= render 'ingredients/showupdate', menu: @menu, ingredient: ingredient %>
+    <%end %>
+  <% end %>
+</ul>
+
+<h4>Autre</h4>
+<ul class="list-inline">
+  <% @ingredients.each do |ingredient|  %>
+    <% if ingredient.shop == nil %>
+      <%= render 'ingredients/showupdate', menu: @menu, ingredient: ingredient %>
+    <%end %>
+  <% end %>
 </ul>
 
 
+<%= link_to "Modifier mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
 <%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>
 <%= link_to "Ma liste de courses", menu_repas_path(menu_id: @menu.id) %>
 <%= link_to "Ma todo list", menu_todos_path(menu_id: @menu.id)  %>

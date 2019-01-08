@@ -22,7 +22,7 @@ class IngredientsController < ApplicationController
             format.js { }
         end
       end
-    elsif @controllerreference === "plats"
+    elsif @controllerreference == "plats"
       respond_to do |format|
         if @ingredient.save
             format.html { redirect_to menu_day_repa_plat_path(menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, id: @plat.id) }
@@ -48,6 +48,9 @@ class IngredientsController < ApplicationController
         format.js { }
       end
     end
+    if @controllerreference == "days"
+      render 'ingredients/index'
+    end
   end
 
   def destroy
@@ -72,6 +75,6 @@ class IngredientsController < ApplicationController
   end
 
   def params_ingredient
-    params.require(:ingredient).permit(:plat_id, :name, :ingredienttype, :quantity, :instock)
+    params.require(:ingredient).permit(:plat_id, :name, :ingredienttype, :quantity, :unity, :shop, :instock)
   end
 end

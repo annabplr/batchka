@@ -1,18 +1,17 @@
 // Specific CSS for your home-page
 body {
-  background-color: $green;
+  background-color: white;
 }
 
-.home-page, #home-explanations {
-  margin-top: 70px;
+#home-explanations {
+  padding-top: 50px;
+  margin-bottom: 50px;
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   min-height: calc(100vh - 110px);
 }
-
-#home-explanations .home-container {
-  margin-top: 50px; }
 
 .home-container {
   width: 90%;
@@ -25,25 +24,35 @@ body {
   }
 }
 
-.home-buttons {
-  margin-top: 10%;
-  width: 100%;
-  margin-left: 40%;
+.home-card {
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  .home-card-inside {
+    width: 80%;
+    background-color: white;
+    margin-top: 10px;
+  }
+  .home-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 8%;
+    width: 100%;
+  }
+  img {
+    margin-bottom: 2vh;
+  }
+  p {
+    color: $gray;
+    text-align: center;
+  }
 }
 
-.home-button {
-  padding: 10px 15px;
-  color: white;
-  font-weight: bold;
-  margin-bottom: 20px;
-  &:active {
-    color: white;
-    text-decoration: none;
-    border-bottom: .2em solid white;
-  }
-  &:hover {
-    color: white;
-    text-decoration: none;
-    border-bottom: .2em solid white;
-  }
+.navbar-space{
+  padding-top: 30px;
+}
+
+.pages-home{
+  background-color: $blue;
+
 }
