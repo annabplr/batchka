@@ -1,0 +1,29 @@
+
+.home-buttons {
+  margin-top: 10%;
+  width: 20vh;
+  margin-left: 70%;
+}
+
+.home-button {
+  padding: 10px 15px;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 20px;
+
+  &:active {
+    color: white;
+    text-decoration: none;
+    border-bottom: .2em solid white;
+  }
+  &:hover {
+    color: white;
+    text-decoration: none;
+    border-bottom: .2em solid white;
+  }
+}
+
+.home-button-inscription {
+  margin-top: 3%;
+  margin-left: 65%;
+}
