@@ -15,6 +15,7 @@
             <div class="form-inline">
               <%= f.input :instock, label: false %>
               <%= f.input :name, label: false %>
+              <%= f.input :shop, label: false, collection: ["Magasin Bio", "Supermarché", "Petit commerce", "Marché", "Internet"] %>
               <div class="button_edit_ingredient">
                 <i class="fas fa-pencil-alt"></i>
               </div>

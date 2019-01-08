@@ -11,7 +11,7 @@
   <% day.repas.each do |repa| %>
     <% repa.plats.each do |plat| %>
       <% if plat.name != nil  %>
-      <li> <%= plat.repa.repastype %> : <%= plat.name %> - <%= link_to "Recette", plat.link, target: :_blank %>
+      <li> <%= plat.repa.repastype %> : <%= plat.name %> <% if plat.link.present? %> - <%= link_to "Recette", plat.link, target: :_blank %> <% end %>
       <% end %>
     <% end %>
   <% end %>
@@ -20,7 +20,7 @@
 
 
 
-
+<%= link_to "Modifier mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
 <%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>
 <%= link_to "Ma liste de courses", menu_repas_path(menu_id: @menu.id) %>
 <%= link_to "Ma todo list", menu_todos_path(menu_id: @menu.id)  %>

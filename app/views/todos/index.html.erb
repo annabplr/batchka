@@ -11,9 +11,10 @@
         <%= render 'todos/showupdate', menu: @menu, todo: todo %>
       <% end %>
     <% end %>
-  </ul
+  </ul>
 <% end %>
 
+<%= link_to "Modifier mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
 <%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>
 <%= link_to "Ma liste de courses", menu_repas_path(menu_id: @menu.id) %>
 <%= link_to "Ma todo list", menu_todos_path(menu_id: @menu.id)  %>
