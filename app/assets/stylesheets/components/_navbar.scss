@@ -1,20 +1,27 @@
 /* Main navbar */
 .navbar-batchka {
-  background: transparent;
+  background: $blue;
   width: 100%;
   position: fixed;
   top: 0%;
   transition: 0.5s background-color ease;
-  height: 70px;
+  height: 50px;
   padding: 0px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.navbar-batchka-green {
-  background: $blue;
+.pages-home{
+  .navbar-batchka {
+  height: 70px;
+  background: transparent;
 }
+}
+.pages-home{
+.navbar-batchka-green {
+  background-color: $blue;
+}}
 /* Logo */
 
 .navbar-batchka-brand:hover {
