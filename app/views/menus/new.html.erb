@@ -1,5 +1,5 @@
-<div class="container">
-<h1>Menus#new</h1>
+<div class="container navbar-space">
+<h1>Nouveau Menu</h1>
 
 <div class="new_menu">
 <%= simple_form_for @menu do |f| %>
@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="button_new_menu">
-    <%= f.submit 'Créer mon menu' %>
+    <%= f.submit 'Créer mon menu', class: "home-button" %>
     </div>
 <% end %>
 </div>

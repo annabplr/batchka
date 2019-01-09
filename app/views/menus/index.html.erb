@@ -4,10 +4,32 @@
 
 
 
-  <h2>Les derniers <%= link_to new_menu_path do  %> <i class="fas fa-plus"></i> <% end %></h2>
+  <h2>Les derniers</h2>
   <div class="last-menus">
     <div class="row">
-      <% @menu.last(4).sort {|x,y| y <=> x }.each do |m| %>
+      <div class="col-xs-6 col-sm-3">
+
+          <div class="lastmenu">
+            <%= link_to new_menu_path do %>
+            <p>NOUVEAU<br>
+              <span class="menu-date">MENU</span> </p>
+            <% end %>
+
+            <div class="links-menu">
+
+
+            <%= link_to new_menu_path do  %>
+            <div class="link-menu1">
+              <i class="fas fa-plus"></i>
+            </div>
+            <% end %>
+          </div>
+
+          </div>
+
+        </div>
+
+      <% @menu.last(3).sort {|x,y| y <=> x }.each do |m| %>
       <div class="col-xs-6 col-sm-3">
 
           <div class="lastmenu", data-menu-id="<%= m.id %>">
@@ -57,24 +79,93 @@
 
   <div class="last-menus">
     <div class="row">
-      <% @menu.last(2).each do |m| %>
-      <div class="col-xs-6 col-sm-3">
-        <%= link_to(menu_path(m.id)) do %>
-          <div class="lastmenu">
+      <% @menu.last(4).each do |m| %>
+       <div class="col-xs-6 col-sm-3">
+
+          <div class="lastmenu", data-menu-id="<%= m.id %>">
+            <%= link_to(menu_path(m.id)) do %>
             <p>
-              <%= m.startdate%> <%= m.season %>
-            </p>
+              SEMAINE DU<br>
+              <span class="menu-date"><%= m.startdate.split('-')[2] %>/<%= m.startdate.split('-')[1] %>/<%= m.startdate.split('-')[0] %></span> </p>
+              <% end %>
+            <div class="links-menu">
+
+
+            <%= link_to menu_days_path(m.id) do  %>
+            <div class="link-menu1">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <% end %>
+
+
+            <%= link_to menu_repas_path(m.id) do  %>
+            <div class="link-menu1">
+              <i class="fas fa-shopping-basket"></i>
+            </div>
+            <% end %>
+
+
+            <%= link_to menu_todos_path(m.id) do  %>
+            <div class="link-menu1">
+              <i class="fas fa-clipboard-list"></i>
+            </div>
+            <% end %>
+
+            </div>
           </div>
-        <% end %>
+
       </div>
       <% end %>
-    </div>
   </div>
 
   <h2>Tous</h2> <p>Afficher</p>
 
+<div class="last-menus">
+    <div class="row">
+      <% @menu.sort {|x,y| y <=> x }.each do |m| %>
+      <div class="col-xs-6 col-sm-3">
 
-<div class="menu_liens">
-  <%= link_to "Nouveau menu", new_menu_path  %>
+          <div class="lastmenu", data-menu-id="<%= m.id %>">
+            <%= link_to(menu_path(m.id)) do %>
+            <p>
+              SEMAINE DU<br>
+              <span class="menu-date"><%= m.startdate.split('-')[2] %>/<%= m.startdate.split('-')[1] %>/<%= m.startdate.split('-')[0] %></span> </p>
+              <% end %>
+              <div class="menu-editlink">
+            <%= link_to menu_path(m.id) do  %>
+              <i class="fas fa-pencil-alt"></i>
+            <% end %>
+            <%= link_to menu_path(m.id) , method: :delete, remote: true, data: { confirm: 'Êtes vous sur(e)?' }  do %> <i class="fas fa-times"></i> <% end %>
+              </div>
+            <div class="links-menu">
+
+
+            <%= link_to menu_days_path(m.id) do  %>
+            <div class="link-menu1">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <% end %>
+
+
+            <%= link_to menu_repas_path(m.id) do  %>
+            <div class="link-menu1">
+              <i class="fas fa-shopping-basket"></i>
+            </div>
+            <% end %>
+
+
+            <%= link_to menu_todos_path(m.id) do  %>
+            <div class="link-menu1">
+              <i class="fas fa-clipboard-list"></i>
+            </div>
+            <% end %>
+
+            </div>
+          </div>
+
+      </div>
+      <% end %>
+    </div>
   </div>
+</div>
 </div>

@@ -2,7 +2,22 @@
 
 .pages-home{
   background-color: $blue;
-
+  h1 {
+    color: white;
+    text-transform: uppercase;
+  }
+  h2 {
+    color: white;
+  }
+  h3 {
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.5em;
+  }
+  p {
+    color : white;
+  }
 }
 
 #home-explanations {
@@ -34,6 +49,7 @@
     width: 80%;
     background-color: white;
     margin-top: 10px;
+    position: relative;
   }
   .home-image {
     display: flex;
@@ -51,3 +67,15 @@
 }
 
 
+.home-accent {
+  position: absolute;
+  top: 0.5em;
+  transform: rotate(-20deg);
+  left: -0.5em;
+  p {
+    font-weight: bold;
+    background-color: $orange;
+    color: white;
+    padding: 1px 4px;
+  }
+}
