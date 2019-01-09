@@ -7,15 +7,13 @@
   <h2>Les derniers</h2>
   <div class="last-menus">
     <div class="row">
-      <div class="col-xs-6 col-sm-3">
+      <div class="col-xs-12 col-sm-6 col-md-3">
 
           <div class="lastmenu">
-            <%= link_to new_menu_path do %>
+
             <p>NOUVEAU<br>
               <span class="menu-date">MENU</span> </p>
-            <% end %>
-
-            <div class="new_menu">
+            <div class="add_menu">
               <%= simple_form_for @menu do |f| %>
                 <div class="form_new_menu">
                   <div class="calendar_new_menu">
@@ -23,7 +21,7 @@
                     <%= f.date_field :startdate, :id => "datepicker" %>
                   </div>
                 </div>
-                <div class="links-menu">
+                <div>
                   <%= button_tag type: 'submit', class: "link-menu1" do %>
                     <i class="fas fa-plus"></i>
                   <% end %>
@@ -35,7 +33,7 @@
         </div>
 
       <% @allmenu.last(3).sort {|x,y| y <=> x }.each do |m| %>
-      <div class="col-xs-6 col-sm-3">
+      <div class="col-xs-12 col-sm-6 col-md-3">
 
           <div class="lastmenu", data-menu-id="<%= m.id %>">
             <%= link_to(menu_path(m.id)) do %>

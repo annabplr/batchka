@@ -4,10 +4,10 @@
   background-color: transparent;
   border-top: 2px dashed $green;
   border-bottom: 2px dashed $green;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   padding: 1em;
   width: 100%;
-  height: 20vh;
+  height: 100%;
   position: relative;
   p, a, a:hover, a:active, a:target {
     text-decoration: none;
@@ -16,7 +16,7 @@
   p {
     height: 60%;
     line-height: 1;
-    padding-top: 10%;
+    padding-top: 2vh;
   }
 }
 
@@ -33,6 +33,8 @@
 .links-menu {
   display: flex;
   justify-content: space-around;
+  padding-top: 3vh;
+  padding-bottom: 10px;
 }
 
 .link-menu1 {
@@ -70,9 +72,15 @@
 
  /* menu_new */
 
- .new_menu {
-  display: flex;
-  justify-content: space-between;
+ .add_menu {
+
+  width: 100%;
+  padding-top: 3vh;
+  padding-bottom: 10px;
+  form {
+    display: flex;
+  justify-content: space-around;
+  }
   p {
     padding-top: 0;
   }
@@ -97,7 +105,7 @@
     width: 100%;
   height : 100%;
     color: $dark-gray;
-
+    font-size: 0.8em;
   }
 }
 
@@ -105,40 +113,63 @@
 
  /* menu show */
 
- .display_all_repas {
-  display: flex;
-  justify-content: center;
- }
-
 .display_repa {
   color: $dark-gray;
   font-size: 0.9em;
-  margin: 0.5em;
   padding-top: 5px;
-  padding-bottom: 5px;
+
   text-align: center;
-  border: 1px solid $green;
-  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  .repastype {
+    font-weight: bold;
+    background-color: $blue;
+    padding-top: 0;
+    margin-top: 1vh;
+    color: white;
+    line-height: 1.3;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   .edit_plat {
     width: 100%;
   }
 
   .plattype-platname {
     font-size: 0.9em;
+    font-weight: bold;
+    line-height: 2.5em;
+    padding-left: 7px;
+
   }
 
-  #plat_name, .plat_name {
-    width: 75%;
+  #plat_name, .plat_name, #plat_link, .plat_link {
     font-size: 0.9em;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-left: 0px !important;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
   }
 
   .form_platname {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+    padding-bottom: 10px;
+    border: 1px solid $dark-gray;
+    margin-bottom: 5px;
+
   }
 }
+
+.edit-input {
+  padding-left: 0;
+    padding-right: 0;
+}
+
 
 .menu-week {
   h3 {

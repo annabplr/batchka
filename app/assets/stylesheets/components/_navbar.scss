@@ -1,6 +1,6 @@
 /* Main navbar */
 .navbar-batchka {
-  background: $blue;
+  background: white;
   width: 100%;
   position: fixed;
   top: 0%;
@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 9;
 }
 
 .pages-home{
@@ -24,9 +25,13 @@
 }}
 /* Logo */
 
-.navbar-batchka-brand:hover {
+
+.navbar-batchka-brand {
+
+  &:hover {
   text-decoration: none;
-}
+
+}}
 .navbar-batchka-brand img {
   height: 50px;
 }
@@ -67,10 +72,10 @@
   margin-right: 0px;
   background: transparent;
   transition: all 0.3s ease;
-  height: 40px;
+  height: 60px;
   padding: 0px 30px;
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: right;
   position: fixed;
   bottom: 0%;
@@ -104,4 +109,15 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.dropup{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $green;
+  border-radius: 50%;
+  height: 5vh;
+  width: 5vh;
+
 }

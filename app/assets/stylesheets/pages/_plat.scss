@@ -3,12 +3,11 @@
   justify-content: center;
 
   input {
-    width: 50vh;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid white;
+    border-bottom: 1px dashed $green;
     box-shadow: none;
-    color: white;
+    color: $green;
   }
   input:focus {
     outline:none;
@@ -19,12 +18,7 @@
 }
 }
 
-.submit-buttons {
-    background-color: transparent;
-    color: white;
-    border: none;
-    box-shadow: none;
-  }
+
 
 
 .add_ingredient {
