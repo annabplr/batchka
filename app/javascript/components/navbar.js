@@ -1,5 +1,5 @@
 const initUpdateNavbarOnScroll = () => {
-  const navbar = document.querySelector('.navbar-batchka');
+  const navbar = document.querySelector('.pages-home .navbar-batchka');
   if (navbar) {
     window.addEventListener('scroll', () => {
       if (window.scrollY >= window.innerHeight) {

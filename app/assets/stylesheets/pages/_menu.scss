@@ -1,8 +1,10 @@
  /* menu index */
 
 .lastmenu {
-  background-color: white;
-  border-radius: 1px;
+  background-color: transparent;
+  border-top: 2px dashed $green;
+  border-bottom: 2px dashed $green;
+
   margin-bottom: 10px;
   padding: 1em;
   width: 100%;
@@ -10,11 +12,11 @@
   position: relative;
   p, a, a:hover, a:active, a:target {
     text-decoration: none;
-    color: $green;
+    color: $dark-gray;
   }
   p {
     height: 60%;
-    text-align: center;
+    line-height: 1;
     padding-top: 10%;
   }
 }
@@ -25,7 +27,7 @@
   margin-right: 1em;
 
   a {
-    color: white;
+    color: $green;
   }
 }
 
@@ -34,19 +36,35 @@
   justify-content: space-around;
   .link-menu1 {
     font-size : 1em;
-    background-color: $orange;
+    border: 1px solid $orange;
     padding: 0.6em;
     border-radius: 1px;
+    width: 2.5em;
+    height: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .link-menu1:hover {
+    background-color: $orange;
   }
   .link-menu1 i {
+    color: $orange;
+  }
+  .link-menu1:hover i {
     color: white;
   }
 }
 
 .menu-editlink {
   position: absolute;
-  top: 0px;
+  top: 0.3em;
   right: 0.3em;
+}
+
+.menu-date {
+  font-weight: bold;
+  font-size: 1.5em;
 }
 
  /* menu_new */
@@ -62,7 +80,7 @@
   margin: 2em auto;
   input {
   background-color: transparent;
-  border: 1px solid white;
+  border: 1px solid $green;
   box-shadow: 0;
   color: white;
   padding: 0.5em;

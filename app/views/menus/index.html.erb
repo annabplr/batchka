@@ -4,7 +4,7 @@
 
 
 
-  <h3>Mes derniers menus  <%= link_to new_menu_path do  %> <i class="fas fa-plus"></i> <% end %></h3>
+  <h2>Les derniers <%= link_to new_menu_path do  %> <i class="fas fa-plus"></i> <% end %></h2>
   <div class="last-menus">
     <div class="row">
       <% @menu.last(4).sort {|x,y| y <=> x }.each do |m| %>
@@ -13,7 +13,8 @@
           <div class="lastmenu", data-menu-id="<%= m.id %>">
             <%= link_to(menu_path(m.id)) do %>
             <p>
-              Semaine du <%= m.startdate%> </p>
+              SEMAINE DU<br>
+              <span class="menu-date"><%= m.startdate.split('-')[2] %>/<%= m.startdate.split('-')[1] %>/<%= m.startdate.split('-')[0] %></span> </p>
               <% end %>
               <div class="menu-editlink">
             <%= link_to menu_path(m.id) do  %>
@@ -23,21 +24,27 @@
               </div>
             <div class="links-menu">
 
-            <div class="link-menu1">
+
             <%= link_to menu_days_path(m.id) do  %>
+            <div class="link-menu1">
               <i class="fas fa-utensils"></i>
-            <% end %>
             </div>
-            <div class="link-menu1">
+            <% end %>
+
+
             <%= link_to menu_repas_path(m.id) do  %>
-              <i class="fas fa-shopping-basket"></i>
-            <% end %>
-            </div>
             <div class="link-menu1">
-            <%= link_to menu_todos_path(m.id) do  %>
-              <i class="fas fa-clipboard-list"></i>
-            <% end %>
+              <i class="fas fa-shopping-basket"></i>
             </div>
+            <% end %>
+
+
+            <%= link_to menu_todos_path(m.id) do  %>
+            <div class="link-menu1">
+              <i class="fas fa-clipboard-list"></i>
+            </div>
+            <% end %>
+
             </div>
           </div>
 
@@ -46,7 +53,7 @@
     </div>
   </div>
 
-  <h3>Trouver de l'inspiration</h3>
+  <h2>L'inspiration</h2>
 
   <div class="last-menus">
     <div class="row">
@@ -64,7 +71,7 @@
     </div>
   </div>
 
-  <h3>Tous mes menus</h3> <p>Afficher</p>
+  <h2>Tous</h2> <p>Afficher</p>
 
 
 <div class="menu_liens">

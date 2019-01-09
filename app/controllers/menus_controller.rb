@@ -93,6 +93,8 @@ class MenusController < ApplicationController
 
   private
 
+
+
   def start_day
     @startday = @menu.startdate.split('-')
     @weekday = Date.new(@startday[0].to_i, @startday[1].to_i, @startday[2].to_i)

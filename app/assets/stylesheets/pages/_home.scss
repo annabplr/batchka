@@ -1,6 +1,8 @@
 // Specific CSS for your home-page
-body {
-  background-color: white;
+
+.pages-home{
+  background-color: $blue;
+
 }
 
 #home-explanations {
@@ -48,11 +50,4 @@ body {
   }
 }
 
-.navbar-space{
-  padding-top: 30px;
-}
 
-.pages-home{
-  background-color: $blue;
-
-}
