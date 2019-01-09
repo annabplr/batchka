@@ -15,21 +15,26 @@
               <span class="menu-date">MENU</span> </p>
             <% end %>
 
-            <div class="links-menu">
-
-
-            <%= link_to new_menu_path do  %>
-            <div class="link-menu1">
-              <i class="fas fa-plus"></i>
+            <div class="new_menu">
+              <%= simple_form_for @menu do |f| %>
+                <div class="form_new_menu">
+                  <div class="calendar_new_menu">
+                    <p class="calendar-label">SEMAINE DU :</p>
+                    <%= f.date_field :startdate, :id => "datepicker" %>
+                  </div>
+                </div>
+                <div class="links-menu">
+                  <%= button_tag type: 'submit', class: "link-menu1" do %>
+                    <i class="fas fa-plus"></i>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
-            <% end %>
-          </div>
-
           </div>
 
         </div>
 
-      <% @menu.last(3).sort {|x,y| y <=> x }.each do |m| %>
+      <% @allmenu.last(3).sort {|x,y| y <=> x }.each do |m| %>
       <div class="col-xs-6 col-sm-3">
 
           <div class="lastmenu", data-menu-id="<%= m.id %>">
@@ -75,11 +80,11 @@
     </div>
   </div>
 
-  <h2>L'inspiration</h2>
+  <h2>Les idées</h2>
 
   <div class="last-menus">
     <div class="row">
-      <% @menu.last(4).each do |m| %>
+      <% @allmenu.last(4).each do |m| %>
        <div class="col-xs-6 col-sm-3">
 
           <div class="lastmenu", data-menu-id="<%= m.id %>">
@@ -122,7 +127,7 @@
 
 <div class="last-menus">
     <div class="row">
-      <% @menu.sort {|x,y| y <=> x }.each do |m| %>
+      <% @allmenu.sort {|x,y| y <=> x }.each do |m| %>
       <div class="col-xs-6 col-sm-3">
 
           <div class="lastmenu", data-menu-id="<%= m.id %>">

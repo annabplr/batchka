@@ -34,7 +34,9 @@ class MenusController < ApplicationController
   end
 
   def index
-    @menu = Menu.all
+    @menu = Menu.new
+
+    @allmenu = Menu.all
     @users = User.all
   end
 
