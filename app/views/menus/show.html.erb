@@ -1,6 +1,6 @@
 <div class="container navbar-space">
   <h1>Mon menu</h1>
-  <h2>du <%= @startday[2] %> / <%= @startday[1] %> / <%= @startday[0] %> au <%= @startday[2].to_i + 6 %> / <%= @startday[1] %> / <%= @startday[0] %>  </h2>
+  <h2>semaine du <%= @startday[2] %> / <%= @startday[1] %> / <%= @startday[0] %>  </h2>
   <% @days.each do |day| %>
     <div class="menu-week">
       <h3> <%= day.weekday %>

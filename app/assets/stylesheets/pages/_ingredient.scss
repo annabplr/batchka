@@ -1,6 +1,8 @@
 .ingredient-card {
-  border: 1px solid white;
+  border: 1px solid $green;
   padding-top: 5px;
+  margin-bottom: 10px;
+  color: $dark-gray;
 }
 
 .form_edit_ingredient {
@@ -10,8 +12,9 @@
 
 .edit-ingredient {
   position: relative;
+  margin-bottom: 5px;
   .ingredient_name, #ingredient_name {
-    width: 75%;
+    width: 100%;
   }
   .button_edit_ingredient {
   position: absolute;
@@ -30,18 +33,54 @@
     padding-left: 3px;
     padding-right: 0px;
   }
-}
-
-.create-todo {
-  position: relative;
-  .todo_comments, #todo_comments {
-    width: 90%;
-    padding-left: 15px;
+  input, select {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 3px;
+    font-size: 0.9em;
+    border: none;
+    border-bottom: 1px solid $green;
+    text-align: center;
+  }
+  .fas {
+    margin-left: 3px;
   }
 }
 
 .submit-todo-button {
-  position: absolute;
-  top: 0.3em;
-  right: 0.5em;
+  padding-top: 1.3em;
+  padding-left: 0em;
+}
+
+.form-todo {
+  margin-left: 0;
+  margin-right: 0;
+  background-color: $blue;
+  label {
+    color: white;
+    margin-bottom: 0;
+  }
+  select {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 3px;
+    font-size: 0.9em;
+    border: none;
+    border-bottom: 1px solid $green;
+    text-align: center;
+  }
+  .todo-select {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+.list-newtodo {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  li {
+    font-size: 0.9em;
+  }
 }
