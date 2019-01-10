@@ -1,45 +1,49 @@
-<div class="container">
+<div class="container navbar-space">
+  <h1> <%= @day.weekday %> </h1>
+  <div class="row">
+    <% @day.repas.each do |repa| %>
+      <div class="col-xs-12 col-sm-6">
+        <div class="lastmenu display_plats">
+        <h3> <%= repa.repastype %> </h3>
 
-<h1>Show Day</h1>
-<h2> <%= @day.weekday %> </h2>
- <% @day.repas.each do |repa| %>
-   <h3> <%= repa.repastype %> </h3>
+        <% repa.plats.sort{ |x,y| x.id <=> y.id }.each do |plat| %>
+            <div class="day-eachplat">
+            <div class="row day-editplatname">
+            <div class="col-xs-3 plat_type">
+              <%= plat.plattype %>
+            </div>
 
-   <% repa.plats.sort{ |x,y| x.id <=> y.id }.each do |plat| %>
-   <div class="row display_plats">
-     <div class="plat_type">
-     <%= plat.plattype %>
-     </div>
+              <%= simple_form_for([@menu, plat], url: menu_day_repa_plat_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id), method: :put, remote: true) do |f| %>
+                <div class="col-xs-7 edit_platname form_platname form-inline">
+                  <%= f.input :name, label: false %>
+                </div>
+                <div class="col-xs-2">
+                  <%= button_tag type: 'submit', class: "submit-buttons submit-day-plat" do %>
+                    <i class="fas fa-check"></i>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
 
-      <div class="col-xs-12 col-sm-4 edit_platname">
-                    <%= simple_form_for([@menu, plat], url: menu_day_repa_plat_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id), method: :put, remote: true) do |f| %>
-                      <div class="form_platname form-inline">
-                        <%= f.input :name, label: false %>
+            <div class="plat_ingredients">
+              <div class="plat-ingredientslist">
+              <ul id="ingredientsimples-<%= plat.id %>", class="list-inline">
+                <% plat.ingredients.each do |ingredient| %>
+                  <%= render 'ingredients/showsimple', menu_id: @menu.id, day_id: @day.id, repa_id: plat.repa.id, id: plat.id, ingredient: ingredient %>
+                <% end %>
+              </ul>
+              </div>
 
-                        <%= button_tag type: 'submit', class: "submit-buttons" do %>
-                          <i class="fas fa-check"></i>
-                        <% end %>
-                      </div>
-                    <% end %>
+              <%= render 'ingredients/formsimple', menu: @menu, day: plat.repa.day, repa: plat.repa, plat: plat %>
+                <%= link_to "+ DE DETAILS", menu_day_repa_plat_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id ), class: "day-platdetail"  %>
+            </div>
+            </div>
+        <% end %>
+        </div>
       </div>
+    <% end %>
+  </div>
 
-     <div class="col-xs-10 col-sm-5 plat_ingredients">
-      <ul id="ingredientsimples-<%= plat.id %>", class="list-inline">
-      <% plat.ingredients.each do |ingredient| %>
-        <%= render 'ingredients/showsimple', menu_id: @menu.id, day_id: @day.id, repa_id: plat.repa.id, id: plat.id, ingredient: ingredient %>
-      <% end %>
-      </ul>
-
-        <%= render 'ingredients/formsimple', menu: @menu, day: plat.repa.day, repa: plat.repa, plat: plat %>
-       <%= link_to "+ de détails", menu_day_repa_plat_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id )  %>
-     </div>
-</div>
-   <% end %>
-
-
- <% end %>
-
-<%= link_to "Vue de la semaine", menu_path(id: @menu.id) %>
-<%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
-<br>
+  <%= link_to "Vue de la semaine", menu_path(id: @menu.id) %>
+  <%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
 </div>

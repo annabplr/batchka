@@ -8,6 +8,7 @@
     border-bottom: 1px dashed $green;
     box-shadow: none;
     color: $green;
+    text-transform: uppercase;
   }
   input:focus {
     outline:none;
@@ -46,6 +47,8 @@
   .form-check {
     color: white;
     padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 10%;
   }
   .form-check label {
     padding-left: 3px;
