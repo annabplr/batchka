@@ -1,11 +1,12 @@
-<div class="container">
-<h1>Plats#show</h1>
+<div class="container navbar-space">
 
-<div class="edit_platname">
 <%= simple_form_for([@menu, @plat], url: menu_day_repa_plat_path(menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, id: @plat.id), method: :put, remote: true) do |f| %>
+<div class="edit_platname">
   <div class="form_platname form-inline">
-    <%= f.input :name, label: false %>
+    <h1><%= f.input :name, label: false %></h1>
 
+  </div>
+  <div>
     <%= button_tag type: 'submit', class: "submit-buttons" do %>
         <i class="fas fa-check"></i>
     <% end %>
@@ -16,16 +17,22 @@
 
 
 <h2>Ingredients principaux : </h2>
-<ul id="ingredientsid">
+<div class="platsshow-inglist">
+<ul id="ingredientsid row">
 <% @plat.ingredients.each do |ingredient| %>
+<div class="col-xs-12 col-sm-4">
   <%= render 'ingredients/show', menu: @menu, day: @day, repa: @repa, id: @plat, ingredient: ingredient %>
+  </div>
 <% end %>
 </ul>
-
-
-<h2>Ajouter un nouvel ingrédient : </h2>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-12">
+<h3>Ajouter un nouvel ingrédient : </h3>
 <%= render 'ingredients/form', menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, id: @plat.id %>
-
+</div>
+</div>
 <%= link_to "Retour", menu_day_path(menu_id: @menu.id, id: @day.id)  %>
 <%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
 </div>
