@@ -18,11 +18,11 @@
 
 <h2>Ingredients principaux : </h2>
 <div class="platsshow-inglist">
-<ul id="ingredientsid row">
+<ul id="ingredientsid"  class="row">
 <% @plat.ingredients.each do |ingredient| %>
-<div class="col-xs-12 col-sm-4">
+
   <%= render 'ingredients/show', menu: @menu, day: @day, repa: @repa, id: @plat, ingredient: ingredient %>
-  </div>
+
 <% end %>
 </ul>
 </div>
