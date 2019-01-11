@@ -1,29 +1,37 @@
-<div class="container">
-<h1>Day#index</h1>
-<p>Find me in app/views/day/index.html.erb</p>
-
-<h3>Mon menu</h3>
-
-
-<% @days.each do |day| %>
-  <h4> <%= day.weekday %> :</h4>
-    <ul class="list-unstyled">
-  <% day.repas.each do |repa| %>
-    <% repa.plats.each do |plat| %>
-      <% if plat.name != nil  %>
-      <li> <%= plat.repa.repastype %> : <%= plat.name %> <% if plat.link.present? %> - <%= link_to "Recette", plat.link, target: :_blank %> <% end %>
-      <% end %>
+<div class="container navbar-space">
+<h1>Mon menu</h1>
+<div class="">
+  <% @days.each do |day| %>
+    <% if day.plats.name != nil %>
+      <h2> <%= day.weekday %></h2>
     <% end %>
+    <div class="finalmenu row">
+      <% day.repas.each do |repa| %>
+      <div class="<% if day.repas.size == 1 %>col-xs-12 <% else %> col-xs-6 <% end %> col-sm-3 ">
+        <% if repa.plats.size != 0 %>
+      <div class="plat-finalmenu">
+        <h3> <%= repa.repastype %></h3>
+        <div>
+        <ul class="list-unstyled">
+        <% repa.plats.sort{ |x,y| x.id <=> y.id }.each do |plat| %>
+          <% if plat.name != nil  %>
+            <li> <span class="menu-plattype"><%= plat.plattype %></span><span class="menu-platname"><%= plat.name %></span> <% if plat.link.present? %><span class="menu-platrecette"><%= link_to plat.link, target: :_blank do %><i class="fas fa-arrow-circle-right"></i> <%end %>
+              <% end %></span></li>
+          <% end %>
+        <% end %>
+        </ul>
+        </div>
+      </div>
+      <% end %>
+      </div>
+      <% end %>
+    </div>
   <% end %>
-    </ul>
-<% end %>
+</div>
 
+  <%= link_to "Modifier mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
+  <%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>
+  <%= link_to "Ma liste de courses", menu_repas_path(menu_id: @menu.id) %>
+  <%= link_to "Ma todo list", menu_todos_path(menu_id: @menu.id)  %>
 
-
-<%= link_to "Modifier mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
-<%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>
-<%= link_to "Ma liste de courses", menu_repas_path(menu_id: @menu.id) %>
-<%= link_to "Ma todo list", menu_todos_path(menu_id: @menu.id)  %>
-
-<p>:)</p>
 </div>
