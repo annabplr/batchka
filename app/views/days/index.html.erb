@@ -29,9 +29,38 @@
   <% end %>
 </div>
 
-  <%= link_to "Modifier mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
-  <%= link_to "Mon menu", menu_days_path(menu_id: @menu.id) %>
-  <%= link_to "Ma liste de courses", menu_repas_path(menu_id: @menu.id) %>
-  <%= link_to "Ma todo list", menu_todos_path(menu_id: @menu.id)  %>
+  <div class="links-menu ingredients-index-links">
+            <%= link_to menu_path(@menu) do  %>
+            <div class="link-menu1">
+              <i class="fas fa-arrow-left"></i>
+              <p>RETOUR</p>
+            </div>
+            <% end %>
+
+
+            <%= link_to menu_days_path(menu_id: @menu.id) do  %>
+            <div class="link-menu1">
+              <i class="fas fa-utensils"></i>
+              <p>MENU</p>
+            </div>
+            <% end %>
+
+
+            <%= link_to menu_repas_path(menu_id: @menu.id) do  %>
+            <div class="link-menu1">
+              <i class="fas fa-shopping-basket"></i>
+              <p>COURSES</p>
+            </div>
+            <% end %>
+
+
+            <%= link_to menu_todos_path(menu_id: @menu.id) do  %>
+            <div class="link-menu1">
+              <i class="fas fa-clipboard-list"></i>
+              <p>TO DO</p>
+            </div>
+            <% end %>
+
+            </div>
 
 </div>
