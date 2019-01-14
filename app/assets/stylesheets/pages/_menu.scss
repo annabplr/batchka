@@ -48,12 +48,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  p {
+    font-size: 0.5em;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    margin-bottom: -2px;
+  }
 }
 .link-menu1:hover {
   background-color: $orange;
 }
 .link-menu1 i {
   color: $orange;
+  text-decoration: none;
 }
 .link-menu1:hover i {
   color: white;
@@ -174,6 +183,20 @@
 .menu-week {
   h3 {
     font-size: 1.5em;
-    text-align: center;
   }
+  position: relative;
+}
+
+.links-menushow {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3vh;
+  .home-button-inscription {
+    margin-left: 5%;
+  }
+  .home-button {
+    color: $green;
+    border-color: $green;
+  }
+
 }

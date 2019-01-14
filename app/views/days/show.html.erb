@@ -1,5 +1,6 @@
 <div class="container navbar-space">
-  <h1> <%= @day.weekday %> </h1>
+  <h1>ingrédients</h1>
+  <h2>de <%= @day.weekday %> </h2>
   <div class="row">
     <% @day.repas.each do |repa| %>
       <div class="col-xs-12 col-sm-6">
@@ -44,6 +45,15 @@
     <% end %>
   </div>
 
-  <%= link_to "Vue de la semaine", menu_path(id: @menu.id) %>
-  <%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
+<div class="links-menushow">
+    <div class="home-button-inscription">
+  <%= link_to "Vue de la semaine", menu_path(id: @menu.id), class: "home-button" %>
+</div>
+  <div class="home-button-inscription">
+  <%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id), class: "home-button" %>
+  </div>
+</div>
+
+
+
 </div>

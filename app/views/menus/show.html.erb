@@ -5,7 +5,10 @@
     <div class="menu-week">
       <h3> <%= day.weekday %>
         <%= link_to menu_day_path(menu_id: @menu.id,id: day.id) do  %>
+        <div class="button-editingredient">
           <i class="fas fa-pencil-alt"></i>
+          <div>ingredient</div>
+        </div>
         <% end %> </h3>
       <div class="row">
         <% day.repas.each do |repa| %>
@@ -42,6 +45,12 @@
     </div>
   <% end %>
 
-  <%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
-  <%= link_to "Tous mes menus", menus_path  %>
+  <div class="links-menushow">
+    <div class="home-button-inscription">
+  <%= link_to "Mes menus", menus_path, class: "home-button"  %>
+</div>
+  <div class="home-button-inscription">
+  <%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id), class: "home-button" %>
+  </div>
+</div>
 </div>
