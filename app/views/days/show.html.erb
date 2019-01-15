@@ -45,15 +45,12 @@
     <% end %>
   </div>
 
-<div class="links-menushow">
-    <div class="home-button-inscription">
-  <%= link_to "Vue de la semaine", menu_path(id: @menu.id), class: "home-button" %>
+<div class="links-menu ingredients-index-links">
+  <%= link_to menu_path(@menu) do  %>
+    <div class="link-menu1">
+      <i class="fas fa-arrow-left"></i>
+      <p>RETOUR</p>
+    </div>
+  <% end %>
 </div>
-  <div class="home-button-inscription">
-  <%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id), class: "home-button" %>
-  </div>
-</div>
-
-
-
 </div>

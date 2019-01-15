@@ -1,89 +1,88 @@
 <div class="container navbar-space">
   <h1>QUAND ? QUOI ? OU ?</h1>
   <% @menu.days.each do |day| %>
-  <h2><%= day.weekday %></h2>
-  <div class="row">
-    <% day.plats.sort{ |x,y| x.id <=> y.id }.each do |plat| %>
+    <h2><%= day.weekday %></h2>
+    <div class="row ingindex-sort">
+      <% day.plats.sort{ |x,y| x.id <=> y.id }.each do |plat| %>
+        <div class="col-xs-12">
+          <% if plat.name.present? %><h3> <%= plat.name %></h3> <% end %>
+          <div class="ingindex-plat row">
+            <% plat.ingredients.each do |i| %>
+              <div class="col-xs-6 col-sm-3">
+                <div class="ingredient-card">
+                  <div class="edit-ingredient form-group">
+                    <%= simple_form_for([i.plat, i], url: menu_day_repa_plat_ingredient_path(menu_id: @menu.id, day_id: i.plat.repa.day.id, repa_id: i.plat.repa.id, plat_id: i.plat.id, id: i.id), method: :put, remote: true) do |f| %>
+                        <div class="row">
+                          <div class="col-xs-5">
+                          <%= f.input :name, label: false %>
+                          </div>
+                          <div class="col-xs-2 stocking">
+                            <label class="ingredient-instock stock-checkbox-ingindex">
+                          <%= f.input :instock, label: "STOCK", class: "stock-check-ingindex"  %>
 
-        <% if plat.name.present? %><h3> <%= plat.name %></h3> <% end %>
-    <div>
-    <% plat.ingredients.each do |i| %>
-      <div class="col-xs-6 col-sm-3">
-        <div class="ingredient-card">
-        <div class="edit-ingredient form-group">
-          <%= simple_form_for([i.plat, i], url: menu_day_repa_plat_ingredient_path(menu_id: @menu.id, day_id: i.plat.repa.day.id, repa_id: i.plat.repa.id, plat_id: i.plat.id, id: i.id), method: :put, remote: true) do |f| %>
-            <div class="row">
-              <div class="col-xs-5">
-              <%= f.input :name, label: false %>
-              </div>
-              <div class="col-xs-1">
-                <label class="ingredient-instock">
-              <%= f.input :instock, label: "EN STOCK"  %>
+                            </label>
+                          </div>
 
-                </label>
-              </div>
+                          <div class="col-xs-4">
+                            <%= f.input :shop, label: false, collection: ["Magasin Bio", "Supermarché", "Petit commerce", "Marché", "Internet"], prompt: "OU?" %>
+                          </div>
+                          <div class="submit-edit-button">
+                            <%= button_tag type: 'submit', class: "submit-buttons" do %>
+                            <i class="fas fa-check"></i>
+                            <% end %>
+                          </div>
+                        </div>
+                      <% end %>
+                  </div>
 
-              <div class="col-xs-4">
-              <%= f.input :shop, label: false, collection: ["Magasin Bio", "Supermarché", "Petit commerce", "Marché", "Internet"] %>
+                  <div class="list-newtodo">
+                    <ul id="todos-<%= i.id %>", class="list-inline">
+
+                      <% i.todos.each do |todo| %>
+                        <%= render 'todos/show', menu: @menu, todo: todo %>
+                      <% end %>
+                    </ul>
+                  </div>
+                  <%= render 'todos/form', menu: @menu, ingredient: i, todo: @todo %>
+                </div>
               </div>
-              <div class="col-xs-2 submit-edit-button">
-                <%= button_tag type: 'submit', class: "submit-buttons" do %>
-                <i class="fas fa-check"></i>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
-
-          <div class="list-newtodo">
-        <ul id="todos-<%= i.id %>", class="list-inline">
-
-        <% i.todos.each do |todo| %>
-          <%= render 'todos/show', menu: @menu, todo: todo %>
-        <% end %>
-        </ul>
-        </div>
-        <%= render 'todos/form', menu: @menu, ingredient: i, todo: @todo %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
     </div>
-    <% end %>
-  </div>
   <% end %>
 
   <div class="links-menu ingredients-index-links">
-            <%= link_to menu_path(@menu) do  %>
-            <div class="link-menu1">
-              <i class="fas fa-arrow-left"></i>
-              <p>RETOUR</p>
-            </div>
-            <% end %>
+    <%= link_to menu_path(@menu) do  %>
+      <div class="link-menu1">
+        <i class="fas fa-arrow-left"></i>
+        <p>RETOUR</p>
+      </div>
+    <% end %>
 
 
-            <%= link_to menu_days_path(menu_id: @menu.id) do  %>
-            <div class="link-menu1">
-              <i class="fas fa-utensils"></i>
-              <p>MENU</p>
-            </div>
-            <% end %>
+    <%= link_to menu_days_path(menu_id: @menu.id) do  %>
+      <div class="link-menu1">
+        <i class="fas fa-utensils"></i>
+        <p>MENU</p>
+      </div>
+    <% end %>
 
 
-            <%= link_to menu_repas_path(menu_id: @menu.id) do  %>
-            <div class="link-menu1">
-              <i class="fas fa-shopping-basket"></i>
-              <p>COURSES</p>
-            </div>
-            <% end %>
+    <%= link_to menu_repas_path(menu_id: @menu.id) do  %>
+      <div class="link-menu1">
+        <i class="fas fa-shopping-basket"></i>
+        <p>COURSES</p>
+      </div>
+    <% end %>
 
 
-            <%= link_to menu_todos_path(menu_id: @menu.id) do  %>
-            <div class="link-menu1">
-              <i class="fas fa-clipboard-list"></i>
-              <p>TO DO</p>
-            </div>
-            <% end %>
-
-            </div>
-
+    <%= link_to menu_todos_path(menu_id: @menu.id) do  %>
+      <div class="link-menu1">
+        <i class="fas fa-clipboard-list"></i>
+        <p>TO DO</p>
+      </div>
+    <% end %>
+  </div>
 </div>

@@ -1,4 +1,3 @@
-<li data-todo-id="<%= todo.id %>">
-  <%= todo.actionverb %> (<%= todo.daydue[0] %><%= todo.daydue[1] %>) <%= link_to menu_todo_path(menu_id: @menu.id, id: todo.id) , method: :delete, remote: true do %> <i class="fas fa-times"></i> <% end %>
+<li data-todo-id="<%= todo.id %>"> <span class="ingredient-list">
+  <%= todo.actionverb %> <span class="dayduelist">(<%= todo.daydue[0] %><%= todo.daydue[1] %>) </span></span> <%= link_to menu_todo_path(menu_id: @menu.id, id: todo.id) , method: :delete, remote: true do %> <i class="fas fa-times"></i> <% end %>
 </li>
-
