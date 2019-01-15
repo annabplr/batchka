@@ -121,9 +121,11 @@
       <% end %>
   </div>
 
-  <h2>Tous</h2> <p>Afficher</p>
+  <div class="hiding_allmenus">
 
-<div class="last-menus">
+  <h2>Tous</h2> <div id="button-displaymenus"> Afficher </div>
+
+<div class="last-menus allmenus-list">
     <div class="row">
       <% @allmenu.sort {|x,y| y <=> x }.each do |m| %>
       <div class="col-xs-6 col-sm-3">
@@ -169,6 +171,7 @@
       </div>
       <% end %>
     </div>
+  </div>
   </div>
 </div>
 </div>
