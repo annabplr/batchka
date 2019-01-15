@@ -6,8 +6,8 @@
       <h3> <%= day.weekday %>
         <%= link_to menu_day_path(menu_id: @menu.id,id: day.id) do  %>
         <div class="button-editingredient">
-          <i class="fas fa-pencil-alt"></i>
-          <div>ingredient</div>
+          <i class="fas fa-plus"></i>
+          <div>ingredients</div>
         </div>
         <% end %> </h3>
       <div class="row">
@@ -45,12 +45,23 @@
     </div>
   <% end %>
 
-  <div class="links-menushow">
-    <div class="home-button-inscription">
-  <%= link_to "Mes menus", menus_path, class: "home-button"  %>
-</div>
-  <div class="home-button-inscription">
-  <%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id), class: "home-button" %>
-  </div>
-</div>
+  <div class="links-menu ingredients-index-links links-menushow">
+            <%= link_to menus_path do  %>
+        <div class="link-menu1">
+          <i class="fas fa-arrow-left"></i>
+          <p>MENUS</p>
+        </div>
+        <% end %>
+
+
+            <%= link_to menu_ingredients_path(menu_id: @menu.id) do  %>
+        <div class="link-menu1">
+          <i class="fas fa-arrow-right"></i>
+          <p>CREER LISTES</p>
+        </div>
+        <% end %>
+
+            </div>
+
+
 </div>
