@@ -1,3 +1,15 @@
+.days-show {
+  h1 {
+    font-size: 1.8em;
+  }
+  .lastmenu {
+    border: none;
+  }
+  .stock-checkbox {
+    margin-top: 2px;
+  }
+}
+
 .day-editplatname {
 
   margin-bottom: 0.3em;
@@ -30,13 +42,21 @@
   justify-content: center;
   align-content: center;
   color: $dark-gray;
+
   ul {
     width: 90%;
   }
   ul li {
   text-align: center;
   margin-bottom: 2px;
+  position: relative;
 
+  }
+  a {
+    font-size: 0.5em;
+    position: absolute;
+    top: 0px;
+    right: 0px;
   }
 
 }
