@@ -1,36 +1,41 @@
 <div class="container navbar-space">
 <h1>Menu</h1>
-<div class="">
-  <% @days.each do |day| %>
-    <% if day.plats.name != nil %>
-      <h2> <%= day.weekday %></h2>
-    <% end %>
-    <div class="finalmenu row">
-      <% day.repas.each do |repa| %>
-      <div class="<% if day.repas.size == 1 %>col-xs-12 <% else %> col-xs-6 <% end %> col-sm-3 ">
-        <% if repa.plats.size != 0 %>
-      <div class="plat-finalmenu">
-        <h3> <%= repa.repastype %></h3>
-        <div>
-        <ul class="list-unstyled">
-        <% repa.plats.sort{ |x,y| x.id <=> y.id }.each do |plat| %>
-          <% if plat.name != nil  %>
-            <li> <span class="menu-plattype"><%= plat.plattype %></span><span class="menu-platname"><%= plat.name %></span> <% if plat.link.present? %><span class="menu-platrecette"><%= link_to plat.link, target: :_blank do %><i class="fas fa-arrow-circle-right"></i> <%end %>
-              <% end %></span></li>
+
+  <div class="row todo-minheight">
+    <% @days.each do |day| %>
+      <% if day.plats.select{|plat| (plat.name != nil) && (plat.name != "") }.present? %>
+      <div class="col-xs-12 col-sm-4">
+        <h2><%= day.weekday %></h2>
+        <div class="finalmenu">
+          <% day.repas.each do |repa| %>
+            <% if repa.plats.select{|plat| (plat.name != nil) && (plat.name != "") }.present? %>
+
+                  <div class="plat-finalmenu row">
+                    <div class="col-xs-4">
+                      <h3> <%= repa.repastype %></h3>
+                    </div>
+                    <div class="col-xs-8">
+                      <ul class="list-unstyled">
+                        <% repa.plats.sort{ |x,y| x.id <=> y.id }.each do |plat| %>
+                          <% if plat.name != nil  %>
+                            <li> <span class="menu-plattype"><%= plat.plattype %></span><span class="menu-platname"><%= plat.name %></span> <% if plat.link.present? %><span class="menu-platrecette"><%= link_to plat.link, target: :_blank do %><i class="fas fa-arrow-circle-right"></i> <%end %>
+                              <% end %></span></li>
+                          <% end %>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+
+            <% end %>
           <% end %>
-        <% end %>
-        </ul>
         </div>
       </div>
-      <% end %>
-      </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+      <% end  %>
+    <% end %>
+  </div>
 
   <div class="links-menu ingredients-index-links">
-            <%= link_to menu_path(@menu) do  %>
+            <%= link_to menu_ingredients_path(@menu) do  %>
             <div class="link-menu1">
               <i class="fas fa-arrow-left"></i>
               <p>RETOUR</p>

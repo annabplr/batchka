@@ -1,49 +1,70 @@
 <div class="container navbar-space">
   <h1>Mon menu</h1>
   <h2>semaine du <%= @startday[2] %> / <%= @startday[1] %> / <%= @startday[0] %>  </h2>
-  <% @days.each do |day| %>
-    <div class="menu-week">
-      <h3> <%= day.weekday %>
-        <%= link_to menu_day_path(menu_id: @menu.id,id: day.id) do  %>
-        <div class="button-editingredient">
-          <i class="fas fa-plus"></i>
-          <div>ingredients</div>
-        </div>
-        <% end %> </h3>
-      <div class="row">
-        <% day.repas.each do |repa| %>
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="lastmenu display_repa">
-            <p class="repastype"> <%= repa.repastype.upcase %></p>
-            <% repa.plats.sort{ |x,y| x.id <=> y.id }.each do |plat| %>
-              <div class="edit_platname">
-                <%= simple_form_for([@menu, plat], url: menu_day_repa_plat_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id), method: :put, remote: true) do |f| %>
-                  <div class="form_platname form-inline row">
-                    <div class="col-xs-10 row">
-                    <div class="plattype-platname col-xs-4">  <%= plat.plattype %></div>
-                    <div class="col-xs-8 edit-input">
-                    <%= f.input :name, label: false %></div>
-                    <div class="plattype-platname col-xs-4">  <i class="fas fa-link"></i></div>
-                    <div class="col-xs-8 edit-input">
-                    <%= f.input :link, placeholder: "Lien vers la recette", label: false %>
-                  </div>
-                    </div>
-                    <div class="col-xs-2">
-                    <%= button_tag type: 'submit', class: "submit-buttons" do %>
-                      <i class="fas fa-check"></i>
-                    <% end %>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
+  <div class="row">
+    <% @days.each do |day| %>
+
+      <% if day.repas.size == 1 %>
+        <div class="col-xs-12 col-sm-3">
+      <% elsif day.repas.size == 2 %>
+        <div class="col-xs-12 col-sm-6">
+      <% elsif day.repas.size >= 3 %>
+        <div class="col-xs-12">
+      <% end %>
+          <div class="menu-week">
+            <h3> <%= day.weekday %> </h3>
+            <%= link_to menu_day_path(menu_id: @menu.id,id: day.id) do  %>
+            <div class="button-editingredient">
+              <i class="fas fa-plus"></i>
+              <div>ingredients</div>
+            </div>
             <% end %>
+            <div class="row">
+              <% day.repas.each do |repa| %>
+                <% if day.repas.size == 1 %>
+                  <div class="col-xs-12">
+                <% elsif day.repas.size == 2 %>
+                  <div class="col-xs-12 col-sm-6">
+                <% else %>
+                  <div class="col-xs-12 col-sm-3">
+                <% end %>
+                    <div class="lastmenu display_repa">
+                      <p class="repastype"> <%= repa.repastype.upcase %></p>
+                      <% repa.plats.sort{ |x,y| x.id <=> y.id }.each do |plat| %>
+                        <div class="edit_platname">
+                          <%= simple_form_for([@menu, plat], url: menu_day_repa_plat_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id), method: :put, remote: true) do |f| %>
+                            <div class="form_platname form-inline row">
+                              <div class="col-xs-10 row">
+                                <div class="plattype-platname col-xs-4">
+                                  <%= plat.plattype %>
+                                </div>
+                                <div class="col-xs-8 edit-input">
+                                  <%= f.input :name, label: false %>
+                                </div>
+                                <div class="plattype-platname col-xs-4">
+                                  <i class="fas fa-link"></i>
+                                </div>
+                                <div class="col-xs-8 edit-input">
+                                  <%= f.input :link, placeholder: "Lien vers la recette", label: false %>
+                                </div>
+                              </div>
+                              <div class="col-xs-2">
+                                <%= button_tag type: 'submit', class: "submit-buttons" do %>
+                                  <i class="fas fa-check"></i>
+                                <% end %>
+                              </div>
+                            </div>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+              <% end %>
             </div>
           </div>
-
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+        </div>
+    <% end %>
+  </div>
 
   <div class="links-menu ingredients-index-links links-menushow">
             <%= link_to menus_path do  %>

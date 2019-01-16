@@ -1,10 +1,12 @@
 <div class="container navbar-space">
   <h1>QUAND ? QUOI ? OU ?</h1>
   <% @menu.days.each do |day| %>
+    <% if day.ingredients.select{|ingredient| (ingredient.name != nil) && (ingredient.name != "") }.present? %>
     <h2><%= day.weekday %></h2>
     <div class="row ingindex-sort">
       <% day.plats.sort{ |x,y| x.id <=> y.id }.each do |plat| %>
         <div class="col-xs-12">
+          <% if plat.ingredients.select{|ingredient| (ingredient.name != nil) && (ingredient.name != "") }.present? %>
           <% if plat.name.present? %><h3> <%= plat.name %></h3> <% end %>
           <div class="ingindex-plat row">
             <% plat.ingredients.each do |i| %>
@@ -48,9 +50,11 @@
               </div>
             <% end %>
           </div>
+          <% end %>
         </div>
       <% end %>
     </div>
+    <% end %>
   <% end %>
 
   <div class="links-menu ingredients-index-links">

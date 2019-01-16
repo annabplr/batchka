@@ -1,3 +1,5 @@
+// DAY-SHOW
+
 .days-show {
   h1 {
     font-size: 1.8em;
@@ -127,9 +129,9 @@
 }
 
 .plat-finalmenu {
-  border-bottom: 1px solid $dark-gray;
-  min-height: 15vh;
   margin-bottom: 1vh;
+  margin-left: 0;
+  margin-right: 0;
   div {
     padding-left: 5px;
     padding-right: 5px;
@@ -140,9 +142,9 @@
     text-transform: uppercase;
     font-weight: bold;
     padding-left: 5px;
-    font-size: 1.5vh;
-    background-color: $dark-gray;
-    color: white;
+    padding-right: 5px;
+    font-size: 2vh;
+    color: $green;
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 0.3vh ;
@@ -151,16 +153,15 @@
   .menu-plattype {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 1.5vh;
-    background-color: $blue;
+    font-size: 2vh;
+    background-color: $orange;
     color: white;
     padding-left: 5px;
     padding-right: 5px;
   }
   .menu-platname {
-    line-height: 100%;
     margin-left: 3px;
-    font-size: 1.5vh;
+    font-size: 2vh;
     text-transform: uppercase;
   }
   .menu-platrecette {

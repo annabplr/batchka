@@ -38,6 +38,14 @@ class TodosController < ApplicationController
   def index
     @menu = Menu.find(params[:menu_id])
     @todos = @menu.todos
+    todo_monday
+    todo_tuesday
+    todo_wednesday
+    todo_thursday
+    todo_friday
+    todo_saturday
+    todo_sunday
+    todo_none
   end
 
   def show
@@ -51,5 +59,37 @@ class TodosController < ApplicationController
 
   def params_todo
     params.require(:todo).permit(:menu_id, :ingredient_id, :actionverb, :daydue, :comments, :done)
+  end
+
+  def todo_monday
+    @todomonday = @todos.select{|todo| todo.daydue == "Lundi" }
+  end
+
+  def todo_tuesday
+    @todotuesday = @todos.select{|todo| todo.daydue == "Mardi" }
+  end
+
+  def todo_wednesday
+    @todowednesday = @todos.select{|todo| todo.daydue == "Mercredi" }
+  end
+
+  def todo_thursday
+    @todothursday = @todos.select{|todo| todo.daydue == "Jeudi" }
+  end
+
+  def todo_friday
+    @todofriday = @todos.select{|todo| todo.daydue == "Vendredi" }
+  end
+
+  def todo_saturday
+    @todosaturday = @todos.select{|todo| todo.daydue == "Samedi" }
+  end
+
+  def todo_sunday
+    @todosunday = @todos.select{|todo| todo.daydue == "Dimanche" }
+  end
+
+  def todo_none
+    @todonone = @todos.select{|todo| todo.daydue == "" }
   end
 end

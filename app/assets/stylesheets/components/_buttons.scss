@@ -26,7 +26,7 @@
 
 .home-button-inscription {
   margin-top: 3%;
-  margin-left: 65%;
+  margin-left: 60%;
 }
 
 
@@ -145,6 +145,7 @@
   padding: 0.2vh 0.4vh;
   border-radius: 2px;
   border: 1px solid $orange;
+  z-index: 9;
   &:hover {
     border: 1px solid $orange;
     background-color: white;

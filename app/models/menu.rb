@@ -6,4 +6,6 @@ class Menu < ApplicationRecord
   has_many :plats, through: :repas
   has_many :ingredients, through: :plats
 
+  validates :startdate, presence: true
+
 end
