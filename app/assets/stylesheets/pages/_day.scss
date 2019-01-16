@@ -1,3 +1,5 @@
+// DAY-SHOW
+
 .days-show {
   h1 {
     font-size: 1.8em;
@@ -123,12 +125,11 @@
 
 .finalmenu {
   color: $dark-gray;
-
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .plat-finalmenu {
-  border-bottom: 1px solid $dark-gray;
-  min-height: 15vh;
   margin-bottom: 1vh;
   div {
     padding-left: 5px;
