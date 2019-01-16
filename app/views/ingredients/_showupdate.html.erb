@@ -4,13 +4,13 @@
       <%= f.hidden_field :instock, class: "undone_todo", value: false %>
       <%= button_tag type: 'submit', class: "submit-buttons checklist-buttons checklist-done" do %>
         <i class="fas fa-check"></i>
-        <%= ingredient.name %> (<%= ingredient.quantity %> - <%= ingredient.plat.name %>) - <%= ingredient.instock %> - <%= ingredient.shop %>
+        <span class="todo-ingname todo-ingname-stock"><%= ingredient.name %></span><span class="todo-ingplat"> (<% if ingredient.quantity.present? %> <%= ingredient.quantity %> - <% end %><%= ingredient.plat.name %>)</span>
       <% end %>
     <% else %>
       <%= f.hidden_field :instock, class: "undone_todo", value: true %>
         <%= button_tag type: 'submit', class: "submit-buttons checklist-buttons" do %>
           <i class="fas fa-check"></i>
-          <%= ingredient.name %> (<%= ingredient.quantity %> - <%= ingredient.plat.name %>) - <%= ingredient.instock %> - <%= ingredient.shop %>
+          <span class="todo-ingname"><%= ingredient.name %></span> <span class="todo-ingplat"> (<% if ingredient.quantity.present? %> <%= ingredient.quantity %> - <% end %><%= ingredient.plat.name %>)</span>
         <% end %>
     <% end %>
   </li>
