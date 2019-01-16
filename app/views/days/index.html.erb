@@ -1,14 +1,14 @@
 <div class="container navbar-space">
 <h1>Menu</h1>
 
-  <div class="row">
+  <div class="row todo-minheight">
     <% @days.each do |day| %>
-      <% if day.plats.select{|plat| plat.name != nil }.present? %>
-      <div class="col-sm-3">
+      <% if day.plats.select{|plat| (plat.name != nil) && (plat.name != "") }.present? %>
+      <div class="col-xs-12 col-sm-4">
         <h2><%= day.weekday %></h2>
         <div class="finalmenu">
           <% day.repas.each do |repa| %>
-            <% if repa.plats.select{|plat| plat.name != nil }.present? %>
+            <% if repa.plats.select{|plat| (plat.name != nil) && (plat.name != "") }.present? %>
 
                   <div class="plat-finalmenu row">
                     <div class="col-xs-4">
