@@ -1,19 +1,103 @@
-
 <div class="container navbar-space">
-<h1>Todos#index</h1>
+<h1>To do list</h1>
 
-<h3>Ma to do list</h3>
+<div class="row todo-minheight">
+
 <% @menu.days.each do |day| %>
-  <h3> <%= day.weekday %> </h3>
+  <% if @todomonday.present? && day.weekday == @todomonday.find{|todo| todo.daydue}.daydue %>
+    <h2> <%= day.weekday %> </h2>
+    <ul class="list-inline">
+      <% @todomonday.each do |todo| %>
+        <% if todo.done != true %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% else %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% end %>
+      <% end %>
+    </ul>
+  <% elsif @todotuesday.present? && day.weekday == @todotuesday.find{|todo| todo.daydue}.daydue %>
+    <h2> <%= day.weekday %> </h2>
+    <ul class="list-inline">
+      <% @todotuesday.each do |todo| %>
+        <% if todo.done != true %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% else %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% end %>
+      <% end %>
+    </ul>
+  <% elsif @todowednesday.present? && day.weekday == @todowednesday.find{|todo| todo.daydue}.daydue %>
+    <h2> <%= day.weekday %> </h2>
+    <ul class="list-inline">
+      <% @todowednesday.each do |todo| %>
+        <% if todo.done != true %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% else %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% end %>
+      <% end %>
+    </ul>
+  <% elsif @todothursday.present? && day.weekday == @todothursday.find{|todo| todo.daydue}.daydue %>
+    <h2> <%= day.weekday %> </h2>
+    <ul class="list-inline">
+      <% @todothursday.each do |todo| %>
+        <% if todo.done != true %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% else %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% end %>
+      <% end %>
+    </ul>
+  <% elsif @todofriday.present? && day.weekday == @todofriday.find{|todo| todo.daydue}.daydue %>
+    <h2> <%= day.weekday %> </h2>
+    <ul class="list-inline">
+      <% @todofriday.each do |todo| %>
+        <% if todo.done != true %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% else %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% end %>
+      <% end %>
+    </ul>
+  <% elsif @todosaturday.present? && day.weekday == @todosaturday.find{|todo| todo.daydue}.daydue %>
+    <h2> <%= day.weekday %> </h2>
+    <ul class="list-inline">
+      <% @todosaturday.each do |todo| %>
+        <% if todo.done != true %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% else %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% end %>
+      <% end %>
+    </ul>
+  <% elsif @todosunday.present? && day.weekday == @todosunday.find{|todo| todo.daydue}.daydue %>
+    <h2> <%= day.weekday %> </h2>
+    <ul class="list-inline">
+      <% @todosunday.each do |todo| %>
+        <% if todo.done != true %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% else %>
+          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% end %>
+      <% end %>
+    </ul>
+  <% elsif @todonone.present? %>
+  <div class="col-xs-12 col-sm-4">
   <ul class="list-inline">
-    <% @todos.each do |todo| %>
-      <% if day.weekday == todo.daydue %>
+    <% @todonone.each do |todo|  %>
+        <% if todo.done != true %>
         <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+      <% else %>
+      <%= render 'todos/showupdate', menu: @menu, todo: todo %>
       <% end %>
     <% end %>
   </ul>
+  </div>
+  <%end %>
 <% end %>
 
+
+</div>
 <div class="links-menu ingredients-index-links">
             <%= link_to menu_path(@menu) do  %>
             <div class="link-menu1">
