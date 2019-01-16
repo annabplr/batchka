@@ -32,7 +32,7 @@
 
         </div>
 
-      <% @allmenu.last(3).sort {|x,y| y <=> x }.each do |m| %>
+      <% @menus.last(3).sort {|x,y| y <=> x }.each do |m| %>
       <div class="col-xs-6 col-md-3">
 
           <div class="lastmenu", data-menu-id="<%= m.id %>">
@@ -82,7 +82,7 @@
 
   <div class="last-menus">
     <div class="row">
-      <% @allmenu.last(4).each do |m| %>
+      <% @menus.last(4).each do |m| %>
        <div class="col-xs-6 col-sm-3">
 
           <div class="lastmenu", data-menu-id="<%= m.id %>">
@@ -127,7 +127,7 @@
 
 <div class="last-menus allmenus-list">
     <div class="row">
-      <% @allmenu.sort {|x,y| y <=> x }.each do |m| %>
+      <% @menus.sort {|x,y| y <=> x }.each do |m| %>
       <div class="col-xs-6 col-sm-3">
 
           <div class="lastmenu", data-menu-id="<%= m.id %>">

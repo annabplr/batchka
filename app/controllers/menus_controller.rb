@@ -11,16 +11,15 @@ class MenusController < ApplicationController
     @menu = Menu.new(params_menu)
     @current_user = current_user
     @menu.user_id = @current_user.id
-
+    @menus = Menu.all
     start_day
-
     def_season
-
     @menu.weekof = Date::DAYNAMES[@weekday.wday]
-
-    @menu.save!
-
-    redirect_to menu_path(@menu)
+    if @menu.save
+      redirect_to menu_path(@menu)
+    else
+      render :index
+    end
   end
 
   def edit
@@ -36,7 +35,7 @@ class MenusController < ApplicationController
   def index
     @menu = Menu.new
 
-    @allmenu = Menu.all
+    @menus = Menu.all
     @users = User.all
   end
 
