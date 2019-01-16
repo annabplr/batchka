@@ -5,6 +5,12 @@ class RepasController < ApplicationController
   def index
     @menu = Menu.find(params[:menu_id])
     @ingredients = @menu.ingredients
+    shop_magbio
+    shop_superm
+    shop_petitcomm
+    shop_marché
+    shop_internet
+    shop_none
   end
 
   def show
@@ -26,7 +32,32 @@ class RepasController < ApplicationController
 
   private
 
+
   def set_repa
     @repa = Repa.find(params[:id])
+  end
+
+   def shop_magbio
+    @shopmagbio = @ingredients.select{|ingredient| ingredient.shop == "Magasin Bio" }
+  end
+
+   def shop_superm
+    @shopsuperm = @ingredients.select{|ingredient| ingredient.shop == "Supermarché" }
+  end
+
+   def shop_petitcomm
+    @shoppetitcomm = @ingredients.select{|ingredient| ingredient.shop == "Petit Commerce" }
+  end
+
+   def shop_marché
+    @shopmarché = @ingredients.select{|ingredient| ingredient.shop == "Marché" }
+  end
+
+   def shop_internet
+    @shopinternet = @ingredients.select{|ingredient| ingredient.shop == "Internet" }
+  end
+
+   def shop_none
+    @shopnone = @ingredients.select{|ingredient| ingredient.shop == nil }
   end
 end
