@@ -5,6 +5,7 @@
 
 <% @menu.days.each do |day| %>
   <% if @todomonday.present? && day.weekday == @todomonday.find{|todo| todo.daydue}.daydue %>
+    <div class="col-xs-12 col-sm-3">
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todomonday.each do |todo| %>
@@ -15,7 +16,9 @@
         <% end %>
       <% end %>
     </ul>
+  </div>
   <% elsif @todotuesday.present? && day.weekday == @todotuesday.find{|todo| todo.daydue}.daydue %>
+    <div class="col-xs-12 col-sm-3">
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todotuesday.each do |todo| %>
@@ -26,7 +29,9 @@
         <% end %>
       <% end %>
     </ul>
+  </div>
   <% elsif @todowednesday.present? && day.weekday == @todowednesday.find{|todo| todo.daydue}.daydue %>
+  <div class="col-xs-12 col-sm-3">
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todowednesday.each do |todo| %>
@@ -37,7 +42,9 @@
         <% end %>
       <% end %>
     </ul>
+  </div>
   <% elsif @todothursday.present? && day.weekday == @todothursday.find{|todo| todo.daydue}.daydue %>
+  <div class="col-xs-12 col-sm-3">
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todothursday.each do |todo| %>
@@ -48,7 +55,9 @@
         <% end %>
       <% end %>
     </ul>
+  </div>
   <% elsif @todofriday.present? && day.weekday == @todofriday.find{|todo| todo.daydue}.daydue %>
+  <div class="col-xs-12 col-sm-3">
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todofriday.each do |todo| %>
@@ -59,7 +68,9 @@
         <% end %>
       <% end %>
     </ul>
+  </div>
   <% elsif @todosaturday.present? && day.weekday == @todosaturday.find{|todo| todo.daydue}.daydue %>
+  <div class="col-xs-12 col-sm-3">
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todosaturday.each do |todo| %>
@@ -70,7 +81,9 @@
         <% end %>
       <% end %>
     </ul>
+  </div>
   <% elsif @todosunday.present? && day.weekday == @todosunday.find{|todo| todo.daydue}.daydue %>
+  <div class="col-xs-12 col-sm-3">
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todosunday.each do |todo| %>
@@ -81,8 +94,13 @@
         <% end %>
       <% end %>
     </ul>
-  <% elsif @todonone.present? %>
-  <div class="col-xs-12 col-sm-4">
+  </div>
+  <%end %>
+<% end %>
+
+<% if @todonone.present? %>
+  <div class="col-xs-12 col-sm-3">
+    <h2>Quand je veux</h2>
   <ul class="list-inline">
     <% @todonone.each do |todo|  %>
         <% if todo.done != true %>
@@ -93,13 +111,12 @@
     <% end %>
   </ul>
   </div>
-  <%end %>
-<% end %>
+  <% end %>
 
 
 </div>
 <div class="links-menu ingredients-index-links">
-            <%= link_to menu_path(@menu) do  %>
+            <%= link_to menu_ingredients_path(@menu) do  %>
             <div class="link-menu1">
               <i class="fas fa-arrow-left"></i>
               <p>RETOUR</p>
