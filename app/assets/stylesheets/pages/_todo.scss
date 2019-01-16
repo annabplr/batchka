@@ -1,11 +1,47 @@
+.repas-index, .todos-index {
+  h1 {
+    margin-bottom: 0.5em;
+  }
+}
+
+.todo-minheight {
+  min-height: 53vh;
+}
+
 .todolist-form {
   i {
     border: 1px solid white;
   }
 }
 
+.checklist-buttons {
+  i {
+    border: 1px solid $dark-gray;
+    border-radius: 2px;
+    color: transparent;
+
+  }
+}
+
 .checklist-done {
   i {
-    border: 3px solid red;
+    color: $orange;
+
   }
+}
+
+.todo-ingname {
+  text-transform: uppercase;
+  color: $dark-gray;
+}
+
+.todo-ingname-stock {
+  text-decoration: line-through;
+  text-decoration-color: $blue;
+}
+.todo-ingplat {
+  text-transform: lowercase;
+  color: $blue;
+  font-size: 0.9em;
+
 }
