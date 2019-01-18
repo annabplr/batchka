@@ -4,13 +4,13 @@
       <%= f.hidden_field :done, class: "undone_todo", value: false %>
       <%= button_tag type: 'submit', class: "submit-buttons checklist-buttons checklist-done" do %>
         <i class="fas fa-check"></i>
-        <span class="todo-ingname todo-ingname-stock"><%= todo.ingredient.name %></span><span class="todo-ingplat"> <%= todo.actionverb %></span>
+        <span class="todo-ingname todo-ingname-stock"><%= todo.ingredient.name %></span><span class="todo-ingaction"> <%= todo.actionverb %></span>
       <% end %>
     <% else %>
       <%= f.hidden_field :done, class: "done_todo", value: true %>
       <%= button_tag type: 'submit', class: "submit-buttons checklist-buttons" do %>
         <i class="fas fa-check"></i>
-        <span class="todo-ingname"><%= todo.ingredient.name %></span><span class="todo-ingplat"> <%= todo.actionverb %></span>
+        <span class="todo-ingname"><%= todo.ingredient.name %></span> <span class="todo-ingaction"><%= todo.actionverb %></span> <span class="todo-ingplat">(<%= todo.ingredient.plat.name %>)</span>
       <% end %>
     <% end %>
   </li>
