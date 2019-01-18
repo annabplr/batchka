@@ -60,9 +60,11 @@
 .navbar-batchka-link {
   color: white;
   font-size: 14px;
+  padding-right: 15px;
+  text-transform: uppercase;
 }
 .navbar-batchka-link:hover {
-  color: $gray;
+  color: $orange;
   text-decoration: none;
 }
 
