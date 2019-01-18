@@ -1,28 +1,24 @@
-<h2>Sign up</h2>
-<div class="container">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://res.cloudinary.com/annabplr/image/upload/v1547832009/squash.jpg');">
+<div class="container row">
+  <div class="col-xs-12 col-sm-6 col-sm-offset-6 signup-form">
+<h2>M'inscrire</h2>
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs form-inline form-signin">
     <%= f.input :username,
-                required: true, autofocus: true %>
+                required: true, label: "nom d'utilisateur", autofocus: true %>
     <%= f.input :email,
                 required: true,
-                autofocus: true ,
+                autofocus: true , label: "e-mail",
                 input_html: { autocomplete: "email" }%>
     <%= f.input :password,
-                required: true,
+                required: true, label: "mot de passe",
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
-                required: true,
+                required: true, label: "mot de passe confirmation",
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :beginweek, collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
-                label: "Ma semaine démarre le :"; %>
-    <%= f.input :groceryshopping, collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
-    label: "Je fais mes courses le :";
-    %>
-
     <div>
     <p>Je planifie mes repas pour : </p>
     <%= f.input :breakfast, as: :boolean, label: "Petit déjeuner" %>
@@ -38,11 +34,16 @@
     <%= f.input :dessert, as: :boolean, label: "Dessert" %>
   </div>
   </div>
-
+  <div class="signup-alignbuttons">
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "M'inscrire" %>
   </div>
-<% end %>
-
+<div>
 <%= render "devise/shared/links" %>
+
+</div>
+</div>
+<% end %>
+</div>
+</div>
 </div>

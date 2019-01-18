@@ -1,20 +1,32 @@
-<h2>Log in</h2>
+
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://res.cloudinary.com/annabplr/image/upload/v1547832009/squash.jpg');">
+<div class="container row">
+  <div class="col-xs-12 col-sm-6 col-sm-offset-6 signup-form">
+<h2>Me connecter</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
+  <div class="form-inputs form-inline">
     <%= f.input :email,
-                required: false,
+                required: false, label: "e-mail",
                 autofocus: true,
                 input_html: { autocomplete: "email" } %>
     <%= f.input :password,
-                required: false,
+                required: false, label: "mot de passe",
                 input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+                <br>
+    <%= f.input :remember_me, label: "mot de passe oublié", as: :boolean if devise_mapping.rememberable? %>
   </div>
-
+<div class="signup-alignbuttons">
   <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+    <%= f.button :submit, "Me connecter" %>
   </div>
-<% end %>
 
+<div>
 <%= render "devise/shared/links" %>
+
+</div></div>
+<% end %>
+</div>
+</div>
+</div>

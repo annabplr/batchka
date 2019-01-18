@@ -52,10 +52,26 @@
 
 .submit-buttons {
     background-color: transparent;
+
     color: $orange;
     border: none;
     box-shadow: none;
+    .fas {
+      padding: 5px;
+      border-radius: 50%;
+      border: 2px solid $orange;
+      background-color: white;
+      font-size: 1.3em;
+      height: 35.1px;
+      width: 35.1px;
+    }
+    &:active {
+      color: $blue;
+
+    }
+
   }
+
 
 
 // Button checkbox boolean
@@ -69,10 +85,13 @@
   background-color: $green;
   margin-bottom: 0;
   outline: 0;
+  height: 48px;
   label {
+    padding-top: 12px;
     height: 100%;
     text-decoration: line-through;
     font-size: 0.7em;
+    color: white;
     }
 }
 .stock-checkbox input[type="checkbox"] {

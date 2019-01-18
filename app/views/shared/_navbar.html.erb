@@ -36,6 +36,8 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
+      <%= link_to "A propos", about_path, class: "navbar-batchka-item navbar-batchka-link" %>
+
       <%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "navbar-batchka-item navbar-batchka-link" %>
     <% end %>
   </div>

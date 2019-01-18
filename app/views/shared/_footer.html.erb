@@ -1,7 +1,23 @@
+<% if controller_name == "pages" %>
+
+
 <div class="footer">
   <div class="footer-links">
-    <a href="http://github.com/annabplr"><i class="fab fa-github"></i></a>
-    <a href="http://instagram.com/batchkagram"><i class="fab fa-instagram"></i></a>
-    <a href="http://linkedin.com/apellier"><i class="fab fa-linkedin"></i></a>
+    <%= link_to "http://github.com/annabplr" do %>
+    <div>
+    <i class="fab fa-github"></i>
+    </div>
+    <% end %>
+    <%= link_to "http://instagram.com/batchkagram" do %>
+    <div>
+    <i class="fab fa-instagram"></i>
+    </div>
+    <% end %>
+    <%= link_to "http://linkedin.com/apellier" do %>
+    <div>
+    <i class="fab fa-linkedin"></i>
+    </div>
+    <% end %>
   </div>
 </div>
+<% end %>

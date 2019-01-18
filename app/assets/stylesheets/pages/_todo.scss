@@ -1,28 +1,44 @@
 .repas-index, .todos-index, .days-index {
   h1 {
-    margin-bottom: 0.5em;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
   }
   h2 {
     background-color: $blue;
     color: white;
     font-weight: bold;
+    margin-top: 0.5em;
   }
 }
 
+.days-index h1 {
+    margin-top: 0.3em;
+    margin-bottom: 0.1em;
+  }
+
 .todo-minheight {
   min-height: 53vh;
+  background-color: white;
+  margin-right: 0;
+  margin-left: 0;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
+
 }
 
 .todolist-form {
   i {
-    border: 1px solid white;
+    border: 1px solid red;
   }
 }
 
 .checklist-buttons {
+  text-align: left;
   i {
-    border: 1px solid $dark-gray;
-    border-radius: 2px;
+    border: 1px solid $dark-gray !important;
+    border-radius: 2px !important;
+    padding: 0 !important;
+    height: auto !important;
+    width: auto !important;
     color: transparent;
 
   }
@@ -37,7 +53,9 @@
 
 .todo-ingname {
   text-transform: uppercase;
+  font-weight: bold;
   color: $dark-gray;
+  padding-right: 3px;
 }
 
 .todo-ingname-stock {
@@ -48,5 +66,15 @@
   text-transform: lowercase;
   color: $blue;
   font-size: 0.9em;
+
+}
+
+.todo-ingaction {
+  text-transform: lowercase;
+  border: 1px solid $green;
+  border-radius: 2px;
+  color: green;
+  padding-left: 3px;
+  padding-right: 3px;
 
 }

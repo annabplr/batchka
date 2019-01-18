@@ -63,28 +63,12 @@
 
 }
 
-.add_ingredient {
-  background-color: $blue;
-  margin-left: 0;
-  margin-right: 0;
-  button {
-    background-color: white;
-    border-radius: 50%;
-    margin-top: 1vh;
-  }
-  button .fas {
-    padding-top: 3px;
-    font-size: 1.5em;
-  }
-  .col-xs-2 {
-    padding-left: 0;
-  }
-
-}
 
 .ingredient-list {
-  color: $green;
-  border: 1px solid $green;
+  color: white;
+  background-color: $green;
+  font-size: 0.9em;
+  text-transform: uppercase;
   padding-left: 4px;
   padding-right: 4px;
   margin-right: 3px;
@@ -106,13 +90,18 @@
 
 .day-platdetail {
   position: absolute;
-  bottom: 0px;
-  right: 0px;
+  bottom: 2px;
+  right: 2px;
   background-color: $dark-gray;
   color: white !important;
   font-size: 0.8em;
-  padding-left: 2px;
-  padding-right: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  opacity: 0.8;
+  border-radius: 2px;
+  &:active {
+    opacity: 1;
+  }
 }
 
 .day-eachplat {
@@ -132,22 +121,25 @@
   margin-bottom: 1vh;
   margin-left: 0;
   margin-right: 0;
-  div {
-    padding-left: 5px;
-    padding-right: 5px;
-    display: flex;
-    align-items: center;
+
+  .finalmenu-plat {
+    ul {
+      margin-bottom: 0;
+      padding-top: 4px;
+    }
   }
+
   h3 {
-    text-transform: uppercase;
+    text-transform: lowercase;
     font-weight: bold;
     padding-left: 5px;
     padding-right: 5px;
-    font-size: 2vh;
+    font-size: 4vh;
     color: $green;
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 0.3vh ;
+    text-align: left;
 
   }
   .menu-plattype {
@@ -160,9 +152,11 @@
     padding-right: 5px;
   }
   .menu-platname {
+    text-align: right;
     margin-left: 3px;
-    font-size: 2vh;
+    font-size: 2.5vh;
     text-transform: uppercase;
+    align-self: flex-end;
   }
   .menu-platrecette {
     .fas {

@@ -2,17 +2,19 @@
   <h1>QUAND ? QUOI ? OU ?</h1>
   <% @menu.days.each do |day| %>
     <% if day.ingredients.select{|ingredient| (ingredient.name != nil) && (ingredient.name != "") }.present? %>
-    <h2><%= day.weekday %></h2>
-    <div class="row ingindex-sort">
+    <div class="createtodo-div">
+    <div class="button-displayplats repastype"> <h2><%= day.weekday %> <i class="fas fa-angle-down"></i> </h2></div>
+    <div class="row ingindex-sort allplats-list">
       <% day.plats.sort{ |x,y| x.id <=> y.id }.each do |plat| %>
         <div class="col-xs-12">
+          <div class="createtodo-form">
           <% if plat.ingredients.select{|ingredient| (ingredient.name != nil) && (ingredient.name != "") }.present? %>
-          <% if plat.name.present? %><h3> <%= plat.name %></h3> <% end %>
-          <div class="ingindex-plat row">
+          <% if plat.name.present? %> <div class="button-displayplats"> <h3> <%= plat.name %> <i class="fas fa-angle-down"></i></h3> </div>  <% end %>
+          <div class="ingindex-plat row allplats-list">
             <% plat.ingredients.each do |i| %>
-              <div class="col-xs-6 col-sm-3">
+              <div class="col-xs-12 col-sm-4">
                 <div class="ingredient-card">
-                  <div class="edit-ingredient form-group">
+                  <div class="edit_platname form-group">
                     <%= simple_form_for([i.plat, i], url: menu_day_repa_plat_ingredient_path(menu_id: @menu.id, day_id: i.plat.repa.day.id, repa_id: i.plat.repa.id, plat_id: i.plat.id, id: i.id), method: :put, remote: true) do |f| %>
                         <div class="row">
                           <div class="col-xs-5">
@@ -25,10 +27,10 @@
                             </label>
                           </div>
 
-                          <div class="col-xs-4">
+                          <div class="col-xs-3">
                             <%= f.input :shop, label: false, collection: ["Magasin Bio", "Supermarché", "Petit commerce", "Marché", "Internet"], prompt: "OU?" %>
                           </div>
-                          <div class="submit-edit-button">
+                          <div class="col-xs-1 button-editplat">
                             <%= button_tag type: 'submit', class: "submit-buttons" do %>
                             <i class="fas fa-check"></i>
                             <% end %>
@@ -52,8 +54,10 @@
           </div>
           <% end %>
         </div>
+      </div>
       <% end %>
     </div>
+  </div>
     <% end %>
   <% end %>
 

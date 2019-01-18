@@ -1,6 +1,6 @@
 /* Main navbar */
 .navbar-batchka {
-  background: white;
+  background: $light-gray;
   width: 100%;
   position: fixed;
   top: 0%;
@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: space-between;
   z-index: 9;
+  border-top: 4px solid $orange;
 }
 
 .pages-home{
@@ -40,6 +41,7 @@
 .navbar-batchka .avatar {
   font-size: 2.5em;
   padding-right: 30%;
+  color: $green;
 }
 
 /* Right section */
@@ -59,9 +61,11 @@
 .navbar-batchka-link {
   color: white;
   font-size: 14px;
+  padding-right: 15px;
+  text-transform: uppercase;
 }
 .navbar-batchka-link:hover {
-  color: $gray;
+  color: $orange;
   text-decoration: none;
 }
 
