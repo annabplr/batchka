@@ -1,15 +1,10 @@
 <div class="row add_ingredient">
   <%= simple_form_for([menu, @ingredient], url: menu_day_repa_plat_ingredients_path(menu_id: menu.id, day_id: day.id, repa_id: repa.id, plat_id: plat.id), method: :post, remote: true, autocomplete: 'off') do |f| %>
-    <div class="col-xs-6">
+    <div class="col-xs-4 col-xs-offset-4">
     <%= f.input :name, label: false, placeholder: "Ingrédient" %>
     </div>
-
-    <div class="col-xs-4">
-      <label class="stock-checkbox">
-    <%= f.input :instock, label: "EN STOCK", class: "stock_check" %>
-      </label>
-    </div>
     <%= f.hidden_field :plat_id, value: plat.id %>
+    <%= f.hidden_field :instock, value: false %>
     <div class="col-xs-2">
     <%= button_tag type: 'submit', class: "submit-buttons" do %>
         <i class="fas fa-plus"></i>

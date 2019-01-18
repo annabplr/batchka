@@ -14,7 +14,7 @@ class IngredientsController < ApplicationController
     @controllerreference = Rails.application.routes.recognize_path(request.referrer)[:controller]
     if @controllerreference == "menus"
       respond_to do |format|
-        if @ingredient.save
+        if @ingredient.save!
             format.html { redirect_to menu_path(menu_id: @menu.id) }
             format.js { }
         else
