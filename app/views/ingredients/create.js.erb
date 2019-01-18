@@ -25,7 +25,7 @@
       addIngredient('<%= j render "ingredients/show", ingredient: @ingredient %>');
       refreshForm('<%= j render "ingredients/form", menu: @menu, day: @day, repa: @repa, plat: @plat, ingredient: @new_ingredient %>');
     <% end %>
-  <% elsif @controllerreference === "days" %>
+  <% elsif @controllerreference === "menus" %>
     <% if @ingredient.errors.present? %>
       refreshForm('<%= j render "ingredients/formsimple", menu: @menu, day: @day, repa: @repa, plat: @plat, ingredient: @ingredient %>');
     <% else %>

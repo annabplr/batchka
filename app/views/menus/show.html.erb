@@ -5,28 +5,18 @@
     <% @days.each do |day| %>
 
       <% if day.repas.size == 1 %>
-        <div class="col-xs-12 col-sm-3">
-      <% elsif day.repas.size == 2 %>
         <div class="col-xs-12 col-sm-6">
-      <% elsif day.repas.size >= 3 %>
+      <% elsif day.repas.size >= 2 %>
         <div class="col-xs-12">
       <% end %>
           <div class="menu-week">
             <h3> <%= day.weekday %> </h3>
-            <%= link_to menu_day_path(menu_id: @menu.id,id: day.id) do  %>
-            <div class="button-editingredient">
-              <i class="fas fa-plus"></i>
-              <div>ingredients</div>
-            </div>
-            <% end %>
             <div class="row">
               <% day.repas.each do |repa| %>
                 <% if day.repas.size == 1 %>
                   <div class="col-xs-12">
-                <% elsif day.repas.size == 2 %>
-                  <div class="col-xs-12 col-sm-6">
-                <% else %>
-                  <div class="col-xs-12 col-sm-3">
+                <% elsif day.repas.size >= 2 %>
+                  <div class="col-xs-12 col-sm-4">
                 <% end %>
                     <div class="lastmenu display_repa">
                       <p class="repastype"> <%= repa.repastype.upcase %></p>
@@ -56,6 +46,19 @@
                             </div>
                           <% end %>
                         </div>
+
+                        <div class="plat_ingredients">
+              <div class="plat-ingredientslist">
+              <ul id="ingredientsimples-<%= plat.id %>", class="list-inline">
+                <% plat.ingredients.each do |ingredient| %>
+                  <%= render 'ingredients/showsimple', menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id, ingredient: ingredient %>
+                <% end %>
+              </ul>
+              </div>
+
+              <%= render 'ingredients/formsimple', menu: @menu, day: plat.repa.day, repa: plat.repa, plat: plat %>
+                <%= link_to "+ DE DETAILS", menu_day_repa_plat_path(menu_id: @menu.id, day_id: plat.repa.day.id, repa_id: plat.repa.id, id: plat.id ), class: "day-platdetail"  %>
+            </div>
                       <% end %>
                     </div>
                   </div>

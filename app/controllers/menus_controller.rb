@@ -44,6 +44,7 @@ class MenusController < ApplicationController
     create_week
     @days = @menu.days
     @repas = @menu.repas
+    @ingredient = Ingredient.new
   end
 
   def create_days

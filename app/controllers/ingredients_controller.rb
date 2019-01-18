@@ -12,13 +12,13 @@ class IngredientsController < ApplicationController
     @plat = Plat.find(params[:plat_id])
     @new_ingredient = Ingredient.new
     @controllerreference = Rails.application.routes.recognize_path(request.referrer)[:controller]
-    if @controllerreference == "days"
+    if @controllerreference == "menus"
       respond_to do |format|
         if @ingredient.save
-            format.html { redirect_to menu_day_path(menu_id: @menu.id, id: @day.id) }
+            format.html { redirect_to menu_path(menu_id: @menu.id) }
             format.js { }
         else
-            format.html { render 'days/show' }
+            format.html { render 'menus/show' }
             format.js { }
         end
       end
