@@ -33,6 +33,22 @@
 <%= render 'ingredients/form', menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, id: @plat.id %>
 </div>
 </div>
-<%= link_to "Retour", menu_day_path(menu_id: @menu.id, id: @day.id)  %>
-<%= link_to "Créer mes listes", menu_ingredients_path(menu_id: @menu.id)  %>
+
+<div class="links-menu ingredients-index-links links-menushow">
+            <%= link_to menu_path(@menu.id) do  %>
+        <div class="link-menu1">
+          <i class="fas fa-arrow-left"></i>
+          <p>RETOUR</p>
+        </div>
+        <% end %>
+
+
+            <%= link_to menu_ingredients_path(menu_id: @menu.id) do  %>
+        <div class="link-menu1">
+          <i class="fas fa-arrow-right"></i>
+          <p>CREER LISTES</p>
+        </div>
+        <% end %>
+
+            </div>
 </div>

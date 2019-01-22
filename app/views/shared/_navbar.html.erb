@@ -51,9 +51,9 @@
     <div class="dropup">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-batchka-dropdown-menu">
-      <li><%= link_to "Mon menu de la semaine", menus_path %></li>
+      <li><%= link_to "Mes menus", menus_path %></li>
 
-      <li><%= link_to "Editer mon profil", edit_user_registration_path %></li>
+      <li><%= link_to "Mon profil", edit_user_registration_path %></li>
       <li><%= link_to "Me déconnecter", destroy_user_session_path %></li>
     </ul>
     </div>
@@ -63,7 +63,7 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-batchka-dropdown-menu">
         <li><%= link_to "M'inscrire", new_user_registration_path %></li>
         <li> <%= link_to "Me connecter", new_user_session_path %></li>
-        <li><a href="#">En savoir plus</a></li>
+        <li><a href="/about">En savoir plus</a></li>
       </ul>
     </div>
     <% end %>

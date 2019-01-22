@@ -88,7 +88,7 @@
             <%= link_to(menu_path(m.id)) do %>
             <p>
               SEMAINE DU<br>
-              <span class="menu-date"><%= m.startdate.split('-')[2] %>/<%= m.startdate.split('-')[1] %>/<%= m.startdate.split('-')[0] %></span> <br> par <%= m.user.username %></p>
+              <span class="menu-date"><%= m.startdate.split('-')[2] %>/<%= m.startdate.split('-')[1] %>/<%= m.startdate.split('-')[0] %></span> <br> par <strong><%= m.user.username %></strong></p>
               <% end %>
             <div class="links-menu">
 
