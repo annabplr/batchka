@@ -57,6 +57,13 @@
   padding: 0;
 }
 
+.navbar-batchka-item-mobile {
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  right: 5%;
+}
+
 /* Navbar link */
 .navbar-batchka-link {
   color: white;
@@ -71,6 +78,7 @@
 
 /* Dropdown menu */
 .navbar-batchka-bottom {
+  position: relative;
   width: 100%;
   margin-left: 0px;
   margin-right: 0px;
