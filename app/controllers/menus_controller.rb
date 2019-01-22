@@ -34,9 +34,9 @@ class MenusController < ApplicationController
 
   def index
     @menu = Menu.new
-
-    @menus = Menu.all
-    @users = User.all
+    @user = current_user
+    @menus = @user.menus.all if @user
+    @allmenus = Menu.all
   end
 
   def show

@@ -13,12 +13,12 @@
     margin-top: 10px;
   }
   label {
-    width: 150px;
+    width: 80%px;
     color: $green;
     padding-right: 10px;
   }
   .boolean label {
-    width: 250px;
+    width: 75%;
     color: $dark-gray;
     padding-left: 10px;
   }
@@ -51,17 +51,25 @@
 
 .devise-sessions-new {
   .signin-btn {
-    margin-top: 25px;
+  height: 100%;
   }
   .signup-alignbuttons {
     margin-bottom: 25px;
     align-items: flex-start;
   }
+  .boolean label {
+    width: 90%;
+    color: $dark-gray;
+    padding-left: 10px;
+  }
+  .other-session-action {
+    height: 37px;
+  }
 }
 
 .form-signin {
   label {
-    width: 280px;
+    width: 80%px;
   }
   .boolean label {
     text-transform: uppercase;

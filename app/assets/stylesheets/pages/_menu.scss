@@ -46,6 +46,7 @@
 
 .link-menu1 {
   background-color: white;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
   font-size : 1em;
   border: 1px solid $orange;
   padding: 0.6em;
@@ -64,15 +65,17 @@
     margin-bottom: -2px;
   }
 }
-.link-menu1:hover {
+.link-menu1:hover, .link-menu1:active {
   background-color: $orange;
+  text-decoration: none;
 }
 .link-menu1 i {
   color: $orange;
   text-decoration: none;
 }
-.link-menu1:hover i {
+.link-menu1:hover i, .link-menu1:active i, .link-menu1:hover p, .link-menu1:active p {
   color: white;
+  text-decoration: none;
 }
 
 .menu-editlink {

@@ -15,14 +15,14 @@
                 required: false, label: "mot de passe",
                 input_html: { autocomplete: "current-password" } %>
                 <br>
-    <%= f.input :remember_me, label: "mot de passe oublié", as: :boolean if devise_mapping.rememberable? %>
+    <%= f.input :remember_me, label: "se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
   </div>
 <div class="signup-alignbuttons">
   <div class="form-actions">
     <%= f.button :submit, "Me connecter" %>
   </div>
 
-<div>
+<div class="other-session-action">
 <%= render "devise/shared/links" %>
 
 </div></div>
