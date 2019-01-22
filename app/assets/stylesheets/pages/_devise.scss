@@ -13,12 +13,12 @@
     margin-top: 10px;
   }
   label {
-    width: 150px;
+    width: 80%px;
     color: $green;
     padding-right: 10px;
   }
   .boolean label {
-    width: 250px;
+    width: 75%;
     color: $dark-gray;
     padding-left: 10px;
   }
@@ -61,7 +61,7 @@
 
 .form-signin {
   label {
-    width: 280px;
+    width: 80%px;
   }
   .boolean label {
     text-transform: uppercase;

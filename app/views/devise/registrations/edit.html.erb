@@ -1,44 +1,57 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://res.cloudinary.com/annabplr/image/upload/v1547832009/squash.jpg');">
+<div class="container row">
+  <div class="col-xs-12 col-sm-6 col-sm-offset-6 signup-form">
+<h2>Modifier mon profil</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :beginweek, collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
-                label: "Ma semaine démarre le :"; %>
-    <%= f.input :groceryshopping, collection: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
-    label: "Je fais mes courses le :";
-    %>
-
-    <div>
+  <div class="form-inputs form-inline">
+    <div class="row">
     <p>Je planifie mes repas pour : </p>
+    <div class="col-xs-6">
     <%= f.input :breakfast, as: :boolean, label: "Petit déjeuner" %>
+    </div>
+    <div class="col-xs-6">
     <%= f.input :lunch, as: :boolean, label: "Déjeuner" %>
+  </div>
+  <div class="col-xs-6">
     <%= f.input :collation, as: :boolean, label: "Gouter" %>
+  </div>
+  <div class="col-xs-6">
     <%= f.input :dinner, as: :boolean, label: "Diner" %>
   </div>
+  </div>
 
-  <div>
-    <p>En général, je cuisine :</p>
+  <div class="row">
+    <p>Je cuisine :</p>
+    <div class="col-xs-4">
     <%= f.input :starter, as: :boolean, label: "Entrée" %>
+    </div>
+    <div class="col-xs-4">
     <%= f.input :maincourse, as: :boolean, label: "Plat" %>
+  </div>
+  <div class="col-xs-4">
     <%= f.input :dessert, as: :boolean, label: "Dessert" %>
   </div>
-  <%= f.input :current_password,
-                hint: "Nous avons besoin de votre mot de passe actuel pour confirmer les changements !",
+  </div >
+  <%= f.input :current_password, label: "Validation des changements",
+                placeholder: "Mot de passe",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
   </div>
-
+  <div class="signup-alignbuttons">
   <div class="form-actions">
     <%= f.button :submit, "Mettre à jour" %>
   </div>
+</div>
 <% end %>
+<h2>Modifier mon mot de passe</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs form-inline">
     <%= f.input :username,
                 required: true, autofocus: true %>
     <%= f.input :email, required: true, autofocus: true %>
@@ -48,7 +61,6 @@
     <% end %>
 
     <%= f.input :password,
-                hint: "Laissez vide si vous ne souhaitez pas le modifier",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
@@ -59,14 +71,13 @@
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
   </div>
-
+  <div class="signup-alignbuttons">
   <div class="form-actions">
     <%= f.button :submit, "Mettre à jour" %>
   </div>
+</div>
 <% end %>
+<p><%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes vous sûr(e)?" }, method: :delete %></p>
 
-<h3></h3>
-
-<p>Pas content(e) de Batchka ? <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes vous sûr(e)?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<%= link_to "Retour", :back %>
+</div></div></div>
