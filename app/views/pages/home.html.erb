@@ -11,74 +11,51 @@
 <div id="home-explanations">
   <div class="container navbar-space">
     <h2>Batchka c'est ...</h2>
-      <h3>Prendre 5 à 10 minutes, une fois par semaine, pour :</h3>
+      <h3>Prendre 10 minutes, une fois par semaine, pour :</h3>
       <div class="row">
-        <div class="col-xs-12 col-sm-4 home-card">
+        <div class="col-xs-4 home-card">
           <div class="home-card-inside">
           <div class="home-image"><%= cl_image_tag("dinner", width: 60, height: 60) %></div>
-          <div> <p> prévoir mon menu </p></div>
+          <div> <h4> prévoir mon <strong>menu</strong> </h4></div>
           </div>
         </div>
-      <div class="col-xs-12 col-sm-4 home-card">
+      <div class="col-xs-4 home-card">
         <div class="home-card-inside">
         <div class="home-image"> <%= cl_image_tag("grocery", width: 60, height: 60) %> </div>
-        <div> <p> faire ma liste de courses </p></div>
+        <div> <h4> faire ma <strong>liste de courses</strong> </h4></div>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-4 home-card">
+      <div class="col-xs-4 home-card">
         <div class="home-card-inside">
         <div class="home-image"> <%= cl_image_tag("to-do", width: 60, height: 60) %> </div>
-        <div> <p> planifier les choses que je peux préparer, pour m'avancer </p></div>
+        <div> <h4> <strong>planifier</strong> ce que je peux préparer, pour m'avancer </h4></div>
         </div>
       </div>
     </div>
-    <h2>Pourquoi ? </h2>
+    <h3>Pourquoi ? </h3>
     <div class="row">
-        <div class="col-xs-12 col-sm-4 home-card">
+        <div class="col-xs-4 home-card">
           <div class="home-card-inside">
           <div class="home-image"><%= cl_image_tag("clock", width: 60, height: 60) %></div>
-          <div> <p> gagner du temps </p></div>
+          <div> <h4> gagner du <strong>temps</strong> </h4></div>
           </div>
         </div>
-      <div class="col-xs-12 col-sm-4 home-card">
+      <div class="col-xs-4 home-card">
         <div class="home-card-inside">
         <div class="home-image"> <%= cl_image_tag("coins", width: 60, height: 60) %> </div>
-        <div> <p> moins gaspiller </p></div>
+        <div> <h4> moins <strong>gaspiller</strong></h4></div>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-4 home-card">
+      <div class="col-xs-4 home-card">
         <div class="home-card-inside">
         <div class="home-image"> <%= cl_image_tag("brain", width: 60, height: 60) %> </div>
-        <div> <p>ne plus se casser la tête tous les soirs. </p></div>
-        <div class="home-accent"> <p> et surtout</p></div>
+        <div> <h4>ne plus me <strong>casser la tête</strong> tous les soirs </h4></div>
         </div>
       </div>
     </div>
 
-    <h2>Concrétement, ca ressemble à :</h2>
-    <div class="row">
-        <div class="col-xs-12 col-sm-4 home-card">
-          <div class="home-card-inside">
-          <div class="home-image"><%= cl_image_tag("dinner", width: 60, height: 60) %></div>
-          <div> <p> un menu </p></div>
-          </div>
-        </div>
-      <div class="col-xs-12 col-sm-4 home-card">
-        <div class="home-card-inside">
-        <div class="home-image"> <%= cl_image_tag("grocery", width: 60, height: 60) %> </div>
-        <div> <p> une liste de courses </p></div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-4 home-card">
-        <div class="home-card-inside">
-        <div class="home-image"> <%= cl_image_tag("to-do", width: 60, height: 60) %> </div>
-        <div> <p> une to-do list </p></div>
-        </div>
-      </div>
-    </div>
-
-    <h3>réunies en un seul endroit !</h3>
     <div class="home-button-inscription">
+    <%= link_to "En savoir plus", about_path , class: "home-button"  %>
     <%= link_to "Je m'inscris", new_user_registration_path , class: "home-button"  %>
     </div>
   </div>
