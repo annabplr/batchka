@@ -9,3 +9,4 @@ import "../components/displayallplats.js";
 import "../components/checkbox-boolean-animation-ingindex.js";
 
 
+import "../components/serviceworker-companion.js";
