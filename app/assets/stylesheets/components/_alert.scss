@@ -6,19 +6,26 @@
   width: 100%;
   display: flex;
   justify-content: center;
+
 }
 
 .alert {
   margin: 0;
+  margin-top: 5px;
   text-align: center;
-  color: white;
+  color: $green;
   font-weight: bold;
   width: 50%;
+  z-index: 9;
+
 }
 .alert-info {
   background: transparent;
+  border: 1px dashed $blue;
+  color: $green;
 }
 .alert-warning {
   background: transparent;
-  border: none;
+  border: 1px dashed $blue;
+  color: $orange;
 }
