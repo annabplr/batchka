@@ -10,15 +10,17 @@
 
 .alert {
   margin: 0;
+  margin-top: 5px;
+  border: 1px dashed $blue;
   text-align: center;
-  color: white;
   font-weight: bold;
   width: 50%;
 }
 .alert-info {
   background: transparent;
+  color: $green;
 }
 .alert-warning {
   background: transparent;
-  border: none;
+  color: $orange;
 }
