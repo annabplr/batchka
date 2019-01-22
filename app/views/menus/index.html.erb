@@ -81,14 +81,14 @@
   <div class="last-menus ideas-menus">
     <h2>Les idées</h2>
     <div class="row">
-      <% @menus.last(4).each do |m| %>
+      <% @allmenus.last(4).each do |m| %>
        <div class="col-xs-6 col-sm-3">
 
           <div class="lastmenu", data-menu-id="<%= m.id %>">
             <%= link_to(menu_path(m.id)) do %>
             <p>
               SEMAINE DU<br>
-              <span class="menu-date"><%= m.startdate.split('-')[2] %>/<%= m.startdate.split('-')[1] %>/<%= m.startdate.split('-')[0] %></span> </p>
+              <span class="menu-date"><%= m.startdate.split('-')[2] %>/<%= m.startdate.split('-')[1] %>/<%= m.startdate.split('-')[0] %></span> <br> par <%= m.user.username %></p>
               <% end %>
             <div class="links-menu">
 

@@ -36,7 +36,7 @@ class MenusController < ApplicationController
     @menu = Menu.new
     @user = current_user
     @menus = @user.menus.all if @user
-    @users = User.all
+    @allmenus = Menu.all
   end
 
   def show
