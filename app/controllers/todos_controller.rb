@@ -24,10 +24,12 @@ class TodosController < ApplicationController
   end
 
   def update
-    @todo.update(params_todo)
-    @menu = Menu.find(params[:menu_id])
-    respond_to do |format|
-      format.js {}
+    if @todo.user_id == current_user.id
+      @todo.update(params_todo)
+      @menu = Menu.find(params[:menu_id])
+      respond_to do |format|
+        format.js {}
+      end
     end
   end
 

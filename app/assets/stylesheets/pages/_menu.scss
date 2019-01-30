@@ -99,9 +99,11 @@
 
 .hiding_allmenus {
   position: relative;
+  padding-bottom: 5vh;
 }
 
 #button-displaymenus {
+  z-index: 9;
   cursor: pointer;
   position: absolute;
   top: 0.5vh;

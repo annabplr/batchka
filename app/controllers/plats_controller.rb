@@ -19,23 +19,24 @@ class PlatsController < ApplicationController
   end
 
   def update
-    @plat.update(params_plat)
-    @day = Day.find(params[:day_id])
-    @menu = Menu.find(params[:menu_id])
-    @repa = Repa.find(params[:repa_id])
+    if @plat.user_id == current_user.id
+      @plat.update(params_plat)
+      @day = Day.find(params[:day_id])
+      @menu = Menu.find(params[:menu_id])
+      @repa = Repa.find(params[:repa_id])
 
-  if @plat.save
-      respond_to do |format|
-        format.html { redirect_to menu_day_repa_plat_path(menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, id: @plat.id) }
-        format.js { }
-      end
-    else
-      respond_to do |format|
-        format.html { render 'plats/show' }
-        format.js { }
+      if @plat.save
+        respond_to do |format|
+          format.html { redirect_to menu_day_repa_plat_path(menu_id: @menu.id, day_id: @day.id, repa_id: @repa.id, id: @plat.id) }
+          format.js { }
+        end
+      else
+        respond_to do |format|
+          format.html { render 'plats/show' }
+          format.js { }
+        end
       end
     end
-
   end
 
 
