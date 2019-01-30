@@ -36,20 +36,21 @@ class IngredientsController < ApplicationController
   end
 
   def update
-
-    @ingredient.update(params_ingredient)
-    @menu = Menu.find(params[:menu_id])
-    @day = Day.find(params[:day_id])
-    @repa = Repa.find(params[:repa_id])
-    @plat = Plat.find(params[:plat_id])
-    @controllerreference = Rails.application.routes.recognize_path(request.referrer)[:controller]
-    if @controllerreference == "repas"
-      respond_to do |format|
-        format.js { }
+    if @ingredient.plat.repa.day.menu.user_id == current_user.id
+      @ingredient.update(params_ingredient)
+      @menu = Menu.find(params[:menu_id])
+      @day = Day.find(params[:day_id])
+      @repa = Repa.find(params[:repa_id])
+      @plat = Plat.find(params[:plat_id])
+      @controllerreference = Rails.application.routes.recognize_path(request.referrer)[:controller]
+      if @controllerreference == "repas"
+        respond_to do |format|
+          format.js { }
+        end
       end
-    end
-    if @controllerreference == "days"
-      render 'ingredients/index'
+      if @controllerreference == "days"
+        render 'ingredients/index'
+      end
     end
   end
 

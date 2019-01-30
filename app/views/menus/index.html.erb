@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-xs-6 col-md-3">
 
-          <div class="lastmenu">
+          <div class="lastmenu" data-aos="zoom-in">
 
             <p>NOUVEAU<br>
               <span class="menu-date">MENU</span> </p>
@@ -33,7 +33,7 @@
       <% @menus.last(3).sort {|x,y| y <=> x }.each do |m| %>
       <div class="col-xs-6 col-md-3">
 
-          <div class="lastmenu", data-menu-id="<%= m.id %>">
+          <div class="lastmenu" data-aos="zoom-in" data-menu-id="<%= m.id %>">
             <%= link_to(menu_path(m.id)) do %>
             <p>
               SEMAINE DU<br>
@@ -80,16 +80,16 @@
 
   <div class="last-menus ideas-menus">
     <h2>Les idées</h2>
-    <div class="row">
+    <div class="row" data-aos="zoom-in">
       <% @allmenus.last(4).each do |m| %>
        <div class="col-xs-6 col-sm-3">
 
           <div class="lastmenu", data-menu-id="<%= m.id %>">
-            <%= link_to(menu_path(m.id)) do %>
+
             <p>
               SEMAINE DU<br>
               <span class="menu-date"><%= m.startdate.split('-')[2] %>/<%= m.startdate.split('-')[1] %>/<%= m.startdate.split('-')[0] %></span> <br> par <strong><%= m.user.username %></strong></p>
-              <% end %>
+
             <div class="links-menu">
 
 
@@ -124,7 +124,7 @@
 
   <h2>Tous</h2> <div id="button-displaymenus"> Afficher </div>
 
-<div class="last-menus allmenus-list">
+<div class="last-menus allmenus-list" data-aos="zoom-in">
     <div class="row">
       <% @menus.sort {|x,y| y <=> x }.each do |m| %>
       <div class="col-xs-6 col-sm-3">

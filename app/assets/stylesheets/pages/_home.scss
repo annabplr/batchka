@@ -30,12 +30,13 @@
 }
 
 #home-explanations {
-  padding-top: 50px;
-  margin-bottom: 50px;
+background: rgb(116,142,136);
+background: linear-gradient(139deg, rgba(116,142,136,1) 32%, rgba(169,204,191,1) 90%);
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-top: 50px;
   min-height: calc(100vh - 110px);
 }
 
