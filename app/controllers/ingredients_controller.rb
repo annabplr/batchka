@@ -36,7 +36,7 @@ class IngredientsController < ApplicationController
   end
 
   def update
-    if @ingredient.user_id == current_user.id
+    if @ingredient.plat.repa.day.menu.user_id == current_user.id
       @ingredient.update(params_ingredient)
       @menu = Menu.find(params[:menu_id])
       @day = Day.find(params[:day_id])

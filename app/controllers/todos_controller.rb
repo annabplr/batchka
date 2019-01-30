@@ -24,7 +24,7 @@ class TodosController < ApplicationController
   end
 
   def update
-    if @todo.user_id == current_user.id
+    if @todo.menu.user_id == current_user.id
       @todo.update(params_todo)
       @menu = Menu.find(params[:menu_id])
       respond_to do |format|

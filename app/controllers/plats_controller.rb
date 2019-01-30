@@ -19,7 +19,7 @@ class PlatsController < ApplicationController
   end
 
   def update
-    if @plat.user_id == current_user.id
+    if @plat.repa.day.menu.user_id == current_user.id
       @plat.update(params_plat)
       @day = Day.find(params[:day_id])
       @menu = Menu.find(params[:menu_id])
