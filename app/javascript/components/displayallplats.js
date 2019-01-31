@@ -3,4 +3,3 @@ document.querySelectorAll(".button-displayplats").forEach((button) => {
   event.currentTarget.nextElementSibling.classList.toggle("allplats-display");
 });
 });
-

@@ -168,6 +168,47 @@
 
  /* menu show */
 
+
+.display-card-plat {
+  display: none;
+}
+ .menus-show {
+  .title {
+  background-color: transparent;
+  box-shadow: none;
+  text-align: center;
+  padding: 20px;
+  }
+  h1 {
+    font-size: 6vh;
+    text-align: right;
+    letter-spacing: 1vh;
+
+    font-weight: bolder;
+    margin: 0;
+    margin-top: 0.5vh;
+  }
+    text-align: center;
+  h2 {
+
+    background-color: $orange;
+    text-align: center;
+    font-weight: normal;
+    font-size: 3vh;
+    color: white;
+    border-radius: 2px;
+    margin: 0;
+    border-bottom: 5px solid $blue;
+  }
+  .title-menu {
+    padding: 0;
+  }
+  .semaine-menu {
+    font-weight: bold;
+  }
+
+ }
+
 .display_repa {
   color: $dark-gray;
   font-size: 0.9em;
@@ -229,6 +270,11 @@
 .menu-week {
   h3 {
     font-size: 1.5em;
+    text-transform: lowercase;
+    letter-spacing: 0.5vh;
+    text-align: left;
+    padding-left: 2vh;
+    border-bottom: 3px solid $green;
   }
   position: relative;
 }
@@ -260,5 +306,9 @@
 }
 
 .allplats-display {
-  display: block;
+  display: block !important;
+}
+
+.plat-form-link {
+  display: none;
 }
