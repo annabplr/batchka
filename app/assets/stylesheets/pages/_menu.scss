@@ -3,13 +3,17 @@
   h1 {
     margin-bottom: 1em;
   }
+  h2 {
+    text-align: left;
+    letter-spacing: 0.1em;
+  }
 }
 
 .lastmenu {
   background-color: white;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.18);
   border-radius: 2px;
-  margin-bottom: 3em;
+  margin-bottom: 2vh;
   padding-left: 0.5em;
   padding-right: 0.5em;
   padding-top: 0.5em;
@@ -42,7 +46,7 @@
   justify-content: space-around;
   padding-top: 3vh;
   padding-bottom: 10px;
-  margin-bottom: 5vh;
+
 }
 
 .link-menu1 {
@@ -113,6 +117,7 @@
   width: 10vh;
   padding-left: 5px;
   padding-right: 5px;
+  text-align: right;
   text-transform: uppercase;
   font-size: 0.8em;
   color: $blue;
@@ -162,6 +167,47 @@
 
 
  /* menu show */
+
+
+.display-card-plat {
+  display: none;
+}
+ .menus-show {
+  .title {
+  background-color: transparent;
+  box-shadow: none;
+  text-align: center;
+  padding: 20px;
+  }
+  h1 {
+    font-size: 6vh;
+    text-align: right;
+    letter-spacing: 1vh;
+
+    font-weight: bolder;
+    margin: 0;
+    margin-top: 0.5vh;
+  }
+    text-align: center;
+  h2 {
+
+    background-color: $orange;
+    text-align: center;
+    font-weight: normal;
+    font-size: 3vh;
+    color: white;
+    border-radius: 2px;
+    margin: 0;
+    border-bottom: 5px solid $blue;
+  }
+  .title-menu {
+    padding: 0;
+  }
+  .semaine-menu {
+    font-weight: bold;
+  }
+
+ }
 
 .display_repa {
   color: $dark-gray;
@@ -224,6 +270,11 @@
 .menu-week {
   h3 {
     font-size: 1.5em;
+    text-transform: lowercase;
+    letter-spacing: 0.5vh;
+    text-align: left;
+    padding-left: 2vh;
+    border-bottom: 3px solid $green;
   }
   position: relative;
 }
@@ -255,5 +306,9 @@
 }
 
 .allplats-display {
-  display: block;
+  display: block !important;
+}
+
+.plat-form-link {
+  display: none;
 }

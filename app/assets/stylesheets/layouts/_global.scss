@@ -32,7 +32,7 @@ h2 {
   text-transform: uppercase;
   text-align: right;
   color: $dark-gray;
-  font-size: 1.5em;
+  font-size: 3vh;
   font-weight: bold;
 }
 
@@ -47,6 +47,6 @@ p {
 }
 
 .navbar-space{
-  padding-top: 30px;
+  padding-top: 50px;
   min-height: calc(100vh - 103px);
 }
