@@ -38,26 +38,26 @@ class RepasController < ApplicationController
   end
 
    def shop_magbio
-    @shopmagbio = @ingredients.select{|ingredient| ingredient.shop == "Magasin Bio" }
+    @shopmagbio = @ingredients.select{|ingredient| ingredient.shop == "Magasin Bio" }.sort_by { |a| a.instock ? 1 : 0 }
   end
 
    def shop_superm
-    @shopsuperm = @ingredients.select{|ingredient| ingredient.shop == "Supermarché" }
+    @shopsuperm = @ingredients.select{|ingredient| ingredient.shop == "Supermarché" }.sort_by { |a| a.instock ? 1 : 0 }
   end
 
    def shop_petitcomm
-    @shoppetitcomm = @ingredients.select{|ingredient| ingredient.shop == "Petit Commerce" }
+    @shoppetitcomm = @ingredients.select{|ingredient| ingredient.shop == "Petit Commerce" }.sort_by { |a| a.instock ? 1 : 0 }
   end
 
    def shop_marché
-    @shopmarché = @ingredients.select{|ingredient| ingredient.shop == "Marché" }
+    @shopmarché = @ingredients.select{|ingredient| ingredient.shop == "Marché" }.sort_by { |a| a.instock ? 1 : 0 }
   end
 
    def shop_internet
-    @shopinternet = @ingredients.select{|ingredient| ingredient.shop == "Internet" }
+    @shopinternet = @ingredients.select{|ingredient| ingredient.shop == "Internet" }.sort_by { |a| a.instock ? 1 : 0 }
   end
 
    def shop_none
-    @shopnone = @ingredients.select{|ingredient| ingredient.shop == nil || ingredient.shop == "" }
+    @shopnone = @ingredients.select{|ingredient| ingredient.shop == nil || ingredient.shop == "" }.sort_by { |a| a.instock ? 1 : 0 }
   end
 end
