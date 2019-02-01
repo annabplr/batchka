@@ -58,6 +58,6 @@ class RepasController < ApplicationController
   end
 
    def shop_none
-    @shopnone = @ingredients.select{|ingredient| ingredient.shop == nil }
+    @shopnone = @ingredients.select{|ingredient| ingredient.shop == nil || ingredient.shop == "" }
   end
 end
