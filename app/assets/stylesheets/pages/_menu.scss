@@ -99,7 +99,7 @@
 }
 
 .allmenus-display {
-  display: block;
+  display: block !important;
 }
 
 .hiding_allmenus {
@@ -113,17 +113,48 @@
   position: absolute;
   top: 0.5vh;
   left: 18vh;
-  border: 1px solid $blue;
+  border: 3px solid $blue;
   width: 10vh;
   padding-left: 5px;
   padding-right: 5px;
   text-align: right;
   text-transform: uppercase;
   font-size: 0.8em;
-  color: $blue;
-  &:hover{
-    border-bottom: 3px solid $blue;
+  background-color: $blue;
+  color: white;
+  &:hover, &:active {
+    border-bottom: 3px solid $green;
+    border-right: 3px solid $green;
   }
+}
+
+#button-displayideas {
+  z-index: 9;
+  cursor: pointer;
+  position: absolute;
+  top: 0.5vh;
+  left: 18vh;
+  border: 3px solid $blue;
+  width: 10vh;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  background-color: $blue;
+  color: white;
+  &:hover, &:active {
+    border-bottom: 3px solid $green;
+    border-right: 3px solid $green;
+  }
+}
+
+.ideas-menus {
+  position: relative;
+}
+
+.hide-ideas {
+  display: none;
 }
  /* menu_new */
 

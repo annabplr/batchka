@@ -5,3 +5,10 @@ if (displaymenus) {
 });
 };
 
+const displayideas = document.getElementById("button-displayideas");
+if (displaymenus) {
+  displayideas.addEventListener("click", (event) => {
+  event.currentTarget.nextElementSibling.classList.toggle("allmenus-display");
+});
+};
+
