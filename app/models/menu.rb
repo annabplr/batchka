@@ -8,4 +8,5 @@ class Menu < ApplicationRecord
 
   validates :startdate, presence: true
 
+
 end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/about' => 'pages#about'
   resources :menus do
+    post :duplicate_menu, on: :member
     resources :days, except: :destroy do
       resources :repas, except: [:show, :index] do
         resources :plats do

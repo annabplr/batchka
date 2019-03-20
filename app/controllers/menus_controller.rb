@@ -22,12 +22,6 @@ class MenusController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def update
-  end
-
   def destroy
     @menu.destroy
   end
@@ -93,9 +87,42 @@ class MenusController < ApplicationController
     end
   end
 
+  def duplicate_menu
+    @menu = Menu.new(params_copiedmenu)
+    menu_to_copy = Menu.find(params[:id])
+    start_day
+    def_season
+    @menu.weekof = Date::DAYNAMES[@weekday.wday]
+    @menu.user_id = current_user.id
+    @menu.save!
+    create_week
+    week = []
+    @resultweek.each do |day_to_copy|
+      new_day = Day.create(weekday: day_to_copy, menu_id: @menu.id)
+      week << new_day
+    end
+    duplicate_plats_ingredients(menu_to_copy, week)
+    respond_to do |format|
+      format.html { redirect_to menus_path }
+    end
+
+  end
+
+  def duplicate_plats_ingredients(menu, week)
+    menu.days.each_with_index do |day, index|
+      day.repas.each do |repa_to_copy|
+        copied_repa = Repa.create(repastype: repa_to_copy.repastype, day_id: week[index].id)
+        repa_to_copy.plats.each do |plat_to_copy|
+          copied_plat = Plat.create(name: plat_to_copy.name, plattype: plat_to_copy.plattype, link: plat_to_copy.link, repa_id: copied_repa.id)
+          plat_to_copy.ingredients.each do |ingredient_to_copy|
+            copied_ingredient = Ingredient.create(name: ingredient_to_copy.name , ingredienttype: ingredient_to_copy.ingredienttype, quantity: ingredient_to_copy.quantity, unity: ingredient_to_copy.unity , instock: false , plat_id: copied_plat.id )
+          end
+        end
+      end
+    end
+  end
+
   private
-
-
 
   def start_day
     @startday = @menu.startdate.split('-')
@@ -152,6 +179,10 @@ class MenusController < ApplicationController
   end
 
   def params_menu
+    params.require(:menu).permit(:startdate)
+  end
+
+  def params_copiedmenu
     params.require(:menu).permit(:startdate)
   end
 end

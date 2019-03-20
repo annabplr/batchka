@@ -14,6 +14,7 @@ class DaysController < ApplicationController
   end
 
   def index
+    @copied_menu = Menu.new
     @menu = Menu.find(params[:menu_id])
     @days = @menu.days
   end

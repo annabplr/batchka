@@ -6,8 +6,15 @@ if (displaymenus) {
 };
 
 const displayideas = document.getElementById("button-displayideas");
-if (displaymenus) {
+if (displayideas) {
   displayideas.addEventListener("click", (event) => {
+  event.currentTarget.nextElementSibling.classList.toggle("allmenus-display");
+});
+};
+
+const displayduplicatemenu = document.getElementById("button-displayduplicatemenu");
+if (displayduplicatemenu) {
+  displayduplicatemenu.addEventListener("click", (event) => {
   event.currentTarget.nextElementSibling.classList.toggle("allmenus-display");
 });
 };

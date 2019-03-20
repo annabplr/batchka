@@ -35,6 +35,32 @@
     <% end %>
   </div>
 
+  <% if @menu.user != current_user %>
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10 col-sm-offset-4 col-sm-4 copy-menu">
+        <div class="title-copy-menu" id="button-displayduplicatemenu">
+          Copier ce menu
+        </div>
+        <div class="form_duplicate_menu">
+          <%= simple_form_for(@copied_menu, url: duplicate_menu_menu_path(@menu.id)) do |f| %>
+            <div class="form_new_menu">
+              <div class="calendar_new_menu">
+                <p class="calendar-label">SEMAINE</p>
+                <%= f.date_field :startdate, :id => "datepicker" %>
+              </div>
+
+              <div>
+                <%= button_tag type: 'submit', class: "link-menu1" do %>
+                  <i class="fas fa-plus"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <div class="links-menu ingredients-index-links">
             <% if @menu.user == current_user %>
               <%= link_to menu_ingredients_path(@menu) do  %>

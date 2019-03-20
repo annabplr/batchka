@@ -18,6 +18,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary', '~> 1.9.1'
 gem "flutie"
+gem 'deep_cloneable', '~> 2.4.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
