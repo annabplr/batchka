@@ -7,6 +7,12 @@ class Menu < ApplicationRecord
   has_many :ingredients, through: :plats
 
   validates :startdate, presence: true
+  validate :startdate_validation
 
+  def startdate_validation
+    if startdate.present? && startdate < Date.today
+      errors.add(:expiration_date, "can't be in the past")
+    end
+  end
 
 end

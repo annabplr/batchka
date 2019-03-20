@@ -1,24 +1,37 @@
 class MenusController < ApplicationController
-
   before_action :set_menu, only: [:show, :update, :destroy]
-  after_action :create_days, only: :create
 
   def new
     @menu = Menu.new
+    @menu.valid?
   end
 
   def create
-    @menu = Menu.new(params_menu)
-    @current_user = current_user
-    @menu.user_id = @current_user.id
-    @menus = Menu.all
-    start_day
-    def_season
-    @menu.weekof = Date::DAYNAMES[@weekday.wday]
-    if @menu.save
-      redirect_to menu_path(@menu)
+    if params_menu[:startdate].present?
+      @menu = Menu.new(params_menu)
+      @allmenus = Menu.all
+      @user = current_user
+      @menus = @user.menus.all if @user
+      @current_user = current_user
+      @menu.user_id = @current_user.id
+      @menus = Menu.all
+      start_day
+      def_season
+      @menu.weekof = Date::DAYNAMES[@weekday.wday]
+
+      if @menu.save
+        create_days
+        redirect_to menu_path(@menu)
+      else
+        render "index"
+      end
     else
-      render :index
+      @error = "Merci de sélectionner une date !"
+      @allmenus = Menu.all
+      @user = current_user
+      @menus = @user.menus.all if @user
+      @current_user = current_user
+      render "index"
     end
   end
 
@@ -88,24 +101,32 @@ class MenusController < ApplicationController
   end
 
   def duplicate_menu
-    @menu = Menu.new(params_copiedmenu)
-    menu_to_copy = Menu.find(params[:id])
-    start_day
-    def_season
-    @menu.weekof = Date::DAYNAMES[@weekday.wday]
-    @menu.user_id = current_user.id
-    @menu.save!
-    create_week
-    week = []
-    @resultweek.each do |day_to_copy|
-      new_day = Day.create(weekday: day_to_copy, menu_id: @menu.id)
-      week << new_day
-    end
-    duplicate_plats_ingredients(menu_to_copy, week)
-    respond_to do |format|
-      format.html { redirect_to menus_path }
-    end
+    if params_menu[:startdate].present?
+      @menu = Menu.new(params_copiedmenu)
+      menu_to_copy = Menu.find(params[:id])
+      start_day
+      def_season
+      @menu.weekof = Date::DAYNAMES[@weekday.wday]
+      @menu.user_id = current_user.id
+      @menu.save!
+      create_week
+      week = []
+      @resultweek.each do |day_to_copy|
+        new_day = Day.create(weekday: day_to_copy, menu_id: @menu.id)
+        week << new_day
+      end
+      duplicate_plats_ingredients(menu_to_copy, week)
 
+      respond_to do |format|
+        format.html { redirect_to menus_path }
+      end
+    else
+      @error = "Merci de sélectionner une date !"
+      @copied_menu = Menu.new
+      @menu = Menu.find(params[:id])
+      @days = @menu.days
+      render 'days/index'
+    end
   end
 
   def duplicate_plats_ingredients(menu, week)
@@ -125,8 +146,11 @@ class MenusController < ApplicationController
   private
 
   def start_day
-    @startday = @menu.startdate.split('-')
-    @weekday = Date.new(@startday[0].to_i, @startday[1].to_i, @startday[2].to_i)
+    @startday = @menu.startdate.day
+    @startmonth = @menu.startdate.month
+    @startyear = @menu.startdate.year
+
+    @weekday = @menu.startdate
   end
 
   def create_week
@@ -151,23 +175,23 @@ class MenusController < ApplicationController
   end
 
   def def_season
-    if @startday[1] == "06"
+    if @startmonth == 6
       @menu.season = "summer"
-    elsif @startday[1] == "07"
+    elsif @startmonth == 7
       @menu.season = "summer"
-    elsif @startday[1] == "08"
+    elsif @startmonth == 8
       @menu.season = "summer"
-    elsif @startday[1] == "09"
+    elsif @startmonth == 9
       @menu.season = "fall"
-    elsif @startday[1] == "10"
+    elsif @startmonth == 10
       @menu.season = "fall"
-    elsif @startday[1] == "11"
+    elsif @startmonth == 11
       @menu.season = "fall"
-    elsif @startday[1] == "12"
+    elsif @startmonth == 12
       @menu.season = "winter"
-    elsif @startday[1] == "01"
+    elsif @startmonth == 1
       @menu.season = "winter"
-    elsif @startday[1] == "02"
+    elsif @startmonth == 2
       @menu.season = "winter"
     else
       @menu.season = "spring"

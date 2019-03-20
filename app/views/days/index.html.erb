@@ -42,6 +42,11 @@
           Copier ce menu
         </div>
         <div class="form_duplicate_menu">
+          <% if @error.present? %>
+          <div class="errors-container">
+            <%= @error %>
+          </div>
+        <% end %>
           <%= simple_form_for(@copied_menu, url: duplicate_menu_menu_path(@menu.id)) do |f| %>
             <div class="form_new_menu">
               <div class="calendar_new_menu">
@@ -56,6 +61,7 @@
               </div>
             </div>
           <% end %>
+
         </div>
       </div>
     </div>

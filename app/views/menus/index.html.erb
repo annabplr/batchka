@@ -12,11 +12,11 @@
             <p>NOUVEAU<br>
               <span class="menu-date">MENU</span> </p>
             <div class="add_menu">
-              <%= simple_form_for @menu do |f| %>
+              <%= simple_form_for Menu.new do |f| %>
                 <div class="form_new_menu">
                   <div class="calendar_new_menu">
                     <p class="calendar-label">SEMAINE</p>
-                    <%= f.date_field :startdate, :id => "datepicker" %>
+                    <%= f.date_field :startdate, required: true, :id => "datepicker" %>
                   </div>
                 </div>
                 <div>
@@ -26,6 +26,11 @@
                 </div>
               <% end %>
             </div>
+            <% if @error.present? %>
+                  <div class="errors-container">
+                    <%= @error %>
+                  </div>
+                  <% end %>
           </div>
 
         </div>
@@ -37,7 +42,7 @@
             <%= link_to(menu_path(m.id)) do %>
             <p>
               SEMAINE DU<br>
-              <span class="menu-date"><%= m.startdate.split('-')[2] %>/<%= m.startdate.split('-')[1] %>/<%= m.startdate.split('-')[0] %></span> </p>
+              <span class="menu-date"><%= m.startdate.day %>/<%= m.startdate.month %>/<%= m.startdate.year %></span> </p>
               <% end %>
               <div class="menu-editlink">
             <%= link_to menu_path(m.id) do  %>
@@ -88,7 +93,7 @@
 
             <p>
               SEMAINE DU<br>
-              <span class="menu-date"><%= m.startdate.split('-')[2] %>/<%= m.startdate.split('-')[1] %>/<%= m.startdate.split('-')[0] %></span> <br> par <strong><%= m.user.username %></strong></p>
+              <span class="menu-date"><%= m.startdate.day %>/<%= m.startdate.month %>/<%= m.startdate.year %></span> <br> par <strong><%= m.user.username %></strong></p>
 
             <div class="links-menu">
 
@@ -133,7 +138,7 @@
             <%= link_to(menu_path(m.id)) do %>
             <p>
               SEMAINE DU<br>
-              <span class="menu-date"><%= m.startdate.split('-')[2] %>/<%= m.startdate.split('-')[1] %>/<%= m.startdate.split('-')[0] %></span> </p>
+              <span class="menu-date"><%= m.startdate.day %>/<%= m.startdate.month %>/<%= m.startdate.year %></span> </p>
               <% end %>
               <div class="menu-editlink">
             <%= link_to menu_path(m.id) do  %>

@@ -4,7 +4,7 @@
     margin-bottom: 1em;
   }
   h2 {
-    text-align: left;
+    text-align: left !important;
     letter-spacing: 0.1em;
   }
 }
@@ -193,6 +193,14 @@
     color: $dark-gray;
     font-size: 0.8em;
   }
+}
+
+.errors-container {
+  font-size: 0.5em;
+  color: $orange;
+  font-weight: bold;
+  margin-bottom: 1vh;
+  text-align: center;
 }
 
 
