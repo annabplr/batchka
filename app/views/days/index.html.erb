@@ -36,12 +36,23 @@
   </div>
 
   <div class="links-menu ingredients-index-links">
-            <%= link_to menu_ingredients_path(@menu) do  %>
-            <div class="link-menu1">
-              <i class="fas fa-arrow-left"></i>
-              <p>RETOUR</p>
-            </div>
+            <% if @menu.user == current_user %>
+              <%= link_to menu_ingredients_path(@menu) do  %>
+                <div class="link-menu1">
+                <i class="fas fa-arrow-left"></i>
+                <p>RETOUR</p>
+              </div>
+              <% end %>
+            <% else %>
+              <%= link_to menus_path do  %>
+              <div class="link-menu1">
+                <i class="fas fa-arrow-left"></i>
+                <p>RETOUR</p>
+              </div>
+              <% end %>
             <% end %>
+
+
 
 
             <%= link_to menu_days_path(menu_id: @menu.id) do  %>

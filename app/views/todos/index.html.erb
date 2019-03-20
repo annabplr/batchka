@@ -9,10 +9,16 @@
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todomonday.each do |todo| %>
-        <% if todo.done != true %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% if @menu.user == current_user %>
+          <% if todo.done != true %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% else %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% end %>
         <% else %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <li class="ingredient-notuser">
+        <span class="todo-ingname todo-ingname-stock"><%= todo.ingredient.name %></span><span class="todo-ingaction"> <%= todo.actionverb %></span>
+      </li>
         <% end %>
       <% end %>
     </ul>
@@ -22,10 +28,16 @@
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todotuesday.each do |todo| %>
-        <% if todo.done != true %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% if @menu.user == current_user %>
+          <% if todo.done != true %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% else %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% end %>
         <% else %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <li class="ingredient-notuser">
+        <span class="todo-ingname todo-ingname-stock"><%= todo.ingredient.name %></span><span class="todo-ingaction"> <%= todo.actionverb %></span>
+      </li>
         <% end %>
       <% end %>
     </ul>
@@ -35,10 +47,16 @@
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todowednesday.each do |todo| %>
-        <% if todo.done != true %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% if @menu.user == current_user %>
+          <% if todo.done != true %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% else %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% end %>
         <% else %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <li class="ingredient-notuser">
+        <span class="todo-ingname todo-ingname-stock"><%= todo.ingredient.name %></span><span class="todo-ingaction"> <%= todo.actionverb %></span>
+      </li>
         <% end %>
       <% end %>
     </ul>
@@ -48,10 +66,16 @@
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todothursday.each do |todo| %>
-        <% if todo.done != true %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% if @menu.user == current_user %>
+          <% if todo.done != true %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% else %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% end %>
         <% else %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <li class="ingredient-notuser">
+        <span class="todo-ingname todo-ingname-stock"><%= todo.ingredient.name %></span><span class="todo-ingaction"> <%= todo.actionverb %></span>
+      </li>
         <% end %>
       <% end %>
     </ul>
@@ -61,10 +85,16 @@
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todofriday.each do |todo| %>
-        <% if todo.done != true %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% if @menu.user == current_user %>
+          <% if todo.done != true %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% else %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% end %>
         <% else %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <li class="ingredient-notuser">
+        <span class="todo-ingname todo-ingname-stock"><%= todo.ingredient.name %></span><span class="todo-ingaction"> <%= todo.actionverb %></span>
+      </li>
         <% end %>
       <% end %>
     </ul>
@@ -74,10 +104,16 @@
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todosaturday.each do |todo| %>
-        <% if todo.done != true %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% if @menu.user == current_user %>
+          <% if todo.done != true %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% else %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% end %>
         <% else %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <li class="ingredient-notuser">
+        <span class="todo-ingname todo-ingname-stock"><%= todo.ingredient.name %></span><span class="todo-ingaction"> <%= todo.actionverb %></span>
+      </li>
         <% end %>
       <% end %>
     </ul>
@@ -87,10 +123,16 @@
     <h2> <%= day.weekday %> </h2>
     <ul class="list-inline">
       <% @todosunday.each do |todo| %>
-        <% if todo.done != true %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <% if @menu.user == current_user %>
+          <% if todo.done != true %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% else %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% end %>
         <% else %>
-          <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+        <li class="ingredient-notuser">
+        <span class="todo-ingname todo-ingname-stock"><%= todo.ingredient.name %></span><span class="todo-ingaction"> <%= todo.actionverb %></span>
+      </li>
         <% end %>
       <% end %>
     </ul>
@@ -103,11 +145,17 @@
     <h2>Quand je veux</h2>
   <ul class="list-inline">
     <% @todonone.each do |todo|  %>
-        <% if todo.done != true %>
-        <%= render 'todos/showupdate', menu: @menu, todo: todo %>
-      <% else %>
-      <%= render 'todos/showupdate', menu: @menu, todo: todo %>
-      <% end %>
+        <% if @menu.user == current_user %>
+          <% if todo.done != true %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% else %>
+            <%= render 'todos/showupdate', menu: @menu, todo: todo %>
+          <% end %>
+        <% else %>
+        <li class="ingredient-notuser">
+        <span class="todo-ingname todo-ingname-stock"><%= todo.ingredient.name %></span><span class="todo-ingaction"> <%= todo.actionverb %></span>
+      </li>
+        <% end %>
     <% end %>
   </ul>
   </div>
@@ -116,11 +164,20 @@
 
 </div>
 <div class="links-menu ingredients-index-links">
-            <%= link_to menu_ingredients_path(@menu) do  %>
-            <div class="link-menu1">
-              <i class="fas fa-arrow-left"></i>
-              <p>RETOUR</p>
-            </div>
+            <% if @menu.user == current_user %>
+              <%= link_to menu_ingredients_path(@menu) do  %>
+                <div class="link-menu1">
+                <i class="fas fa-arrow-left"></i>
+                <p>RETOUR</p>
+              </div>
+              <% end %>
+            <% else %>
+              <%= link_to menus_path do  %>
+              <div class="link-menu1">
+                <i class="fas fa-arrow-left"></i>
+                <p>RETOUR</p>
+              </div>
+              <% end %>
             <% end %>
 
 
