@@ -15,4 +15,7 @@ class Menu < ApplicationRecord
     end
   end
 
+  RSpec.describe Menu, type: :model do
+    it { should validate_presence_of(:startdate) }
+  end
 end
