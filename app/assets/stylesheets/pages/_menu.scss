@@ -351,3 +351,28 @@
 .plat-form-link {
   display: none;
 }
+
+.menu-show .repastype {
+  position:relative;
+}
+
+.marker-plat {
+  position: absolute;
+  right : 5%;
+  color: $green;
+
+}
+
+.marker-uncompleted {
+  color: white;
+  animation: 1s infinite blink;
+}
+
+@keyframes blink {
+    0%, 15% {
+        opacity: 0;
+    }
+    16%, 100% {
+        opacity: 1;
+    }
+}

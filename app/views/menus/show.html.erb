@@ -27,7 +27,10 @@
                   <div class="col-xs-12 col-sm-4">
                 <% end %>
                     <div class="lastmenu display_repa">
-                      <p class="repastype button-displayplats"> <%= repa.repastype.upcase %></p>
+                      <p class="repastype button-displayplats"> <%= repa.repastype.upcase %>
+                        <span class="marker-plat <%= 'marker-uncompleted' if repa.uncompleted? %>"><i class="<%= repa.uncompleted? ? 'far' : 'fas' %> fa-circle"></i></span>
+                      </p>
+
                       <div class="display-card-plat">
                       <% repa.plats.sort{ |x,y| x.id <=> y.id }.each do |plat| %>
                         <div class="edit_platname">
