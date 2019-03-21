@@ -84,8 +84,8 @@ class MenusController < ApplicationController
   def create_plat
     @repas = @menu.repas
     @repas.each do |repa|
-    if repa.repastype == "Petit déjeuner" || repa.repastype == "Gouter"
-        Plat.create(plattype: "Plat", repa_id: repa.id)
+      if repa.repastype == "Petit déjeuner" || repa.repastype == "Gouter"
+          Plat.create(plattype: "Plat", repa_id: repa.id)
       elsif repa.repastype == "Déjeuner" || repa.repastype == "Diner"
         if current_user.starter == true
           Plat.create(plattype: "Entrée", repa_id: repa.id)

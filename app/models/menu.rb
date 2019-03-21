@@ -14,8 +14,4 @@ class Menu < ApplicationRecord
       errors.add(:expiration_date, "can't be in the past")
     end
   end
-
-  RSpec.describe Menu, type: :model do
-    it { should validate_presence_of(:startdate) }
-  end
 end

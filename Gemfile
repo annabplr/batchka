@@ -36,6 +36,12 @@ group :development, :test do
 end
 
 group :test do
+  gem 'factory_bot_rails'
+  gem 'json'
+  gem 'warden'
   gem 'shoulda-matchers'
   gem 'rails-controller-testing'
+  gem 'capybara'
+  gem 'chromedriver-helper'
+  gem 'selenium-webdriver'
 end

@@ -20,9 +20,6 @@ class TodosController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     if @todo.menu.user_id == current_user.id
       @todo.update(params_todo)
@@ -48,9 +45,6 @@ class TodosController < ApplicationController
     todo_saturday
     todo_sunday
     todo_none
-  end
-
-  def show
   end
 
   private
