@@ -15,9 +15,6 @@ class PlatsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     if @plat.repa.day.menu.user_id == current_user.id
       @plat.update(params_plat)

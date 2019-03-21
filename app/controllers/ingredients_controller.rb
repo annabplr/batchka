@@ -1,10 +1,11 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :update, :destroy]
+
   def new
     @ingredient = Ingredient.new
   end
-  def create
 
+  def create
     @ingredient = Ingredient.new(params_ingredient)
     @menu = Menu.find(params[:menu_id])
     @day = Day.find(params[:day_id])
@@ -63,10 +64,6 @@ class IngredientsController < ApplicationController
     @ingredients = @menu.ingredients
 
     @todo = Todo.new
-  end
-
-
-  def show
   end
 
   private

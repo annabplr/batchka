@@ -35,38 +35,81 @@
     <% end %>
   </div>
 
+  <% if @menu.user != current_user %>
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10 col-sm-offset-4 col-sm-4 copy-menu">
+        <div class="title-copy-menu" id="button-displayduplicatemenu">
+          Copier ce menu
+        </div>
+        <div class="form_duplicate_menu">
+          <% if @error.present? %>
+          <div class="errors-container">
+            <%= @error %>
+          </div>
+        <% end %>
+          <%= simple_form_for(@copied_menu, url: duplicate_menu_menu_path(@menu.id)) do |f| %>
+            <div class="form_new_menu">
+              <div class="calendar_new_menu">
+                <p class="calendar-label">SEMAINE</p>
+                <%= f.date_field :startdate, :id => "datepicker" %>
+              </div>
+
+              <div>
+                <%= button_tag type: 'submit', class: "link-menu1" do %>
+                  <i class="fas fa-plus"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <div class="links-menu ingredients-index-links">
-            <%= link_to menu_ingredients_path(@menu) do  %>
-            <div class="link-menu1">
-              <i class="fas fa-arrow-left"></i>
-              <p>RETOUR</p>
-            </div>
-            <% end %>
+  <% if @menu.user == current_user %>
+    <%= link_to menu_ingredients_path(@menu) do  %>
+      <div class="link-menu1">
+      <i class="fas fa-arrow-left"></i>
+      <p>RETOUR</p>
+    </div>
+    <% end %>
+  <% else %>
+    <%= link_to menus_path do  %>
+    <div class="link-menu1">
+      <i class="fas fa-arrow-left"></i>
+      <p>RETOUR</p>
+    </div>
+    <% end %>
+  <% end %>
 
 
-            <%= link_to menu_days_path(menu_id: @menu.id) do  %>
-            <div class="link-menu1">
-              <i class="fas fa-utensils"></i>
-              <p>MENU</p>
-            </div>
-            <% end %>
 
 
-            <%= link_to menu_repas_path(menu_id: @menu.id) do  %>
-            <div class="link-menu1">
-              <i class="fas fa-shopping-basket"></i>
-              <p>COURSES</p>
-            </div>
-            <% end %>
+  <%= link_to menu_days_path(menu_id: @menu.id) do  %>
+  <div class="link-menu1">
+    <i class="fas fa-utensils"></i>
+    <p>MENU</p>
+  </div>
+  <% end %>
 
 
-            <%= link_to menu_todos_path(menu_id: @menu.id) do  %>
-            <div class="link-menu1">
-              <i class="fas fa-clipboard-list"></i>
-              <p>TO DO</p>
-            </div>
-            <% end %>
+  <%= link_to menu_repas_path(menu_id: @menu.id) do  %>
+  <div class="link-menu1">
+    <i class="fas fa-shopping-basket"></i>
+    <p>COURSES</p>
+  </div>
+  <% end %>
 
-            </div>
+
+  <%= link_to menu_todos_path(menu_id: @menu.id) do  %>
+  <div class="link-menu1">
+    <i class="fas fa-clipboard-list"></i>
+    <p>TO DO</p>
+  </div>
+  <% end %>
+
+  </div>
 
 </div>

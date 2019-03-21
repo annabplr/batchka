@@ -4,7 +4,7 @@
     margin-bottom: 1em;
   }
   h2 {
-    text-align: left;
+    text-align: left !important;
     letter-spacing: 0.1em;
   }
 }
@@ -195,6 +195,14 @@
   }
 }
 
+.errors-container {
+  font-size: 0.5em;
+  color: $orange;
+  font-weight: bold;
+  margin-bottom: 1vh;
+  text-align: center;
+}
+
 
 
  /* menu show */
@@ -342,4 +350,29 @@
 
 .plat-form-link {
   display: none;
+}
+
+.menu-show .repastype {
+  position:relative;
+}
+
+.marker-plat {
+  position: absolute;
+  right : 5%;
+  color: $green;
+
+}
+
+.marker-uncompleted {
+  color: white;
+  animation: 1s infinite blink;
+}
+
+@keyframes blink {
+    0%, 15% {
+        opacity: 0;
+    }
+    16%, 100% {
+        opacity: 1;
+    }
 }
